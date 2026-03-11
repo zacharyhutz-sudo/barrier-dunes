@@ -1,0 +1,45 @@
+---
+const navLinks = [
+	{ text: 'Home', href: '/' },
+	{ text: 'Rules & Regulations', href: '/rules-and-regulations' },
+	{ text: 'Local Attractions', href: '/local-attractions' },
+	{ text: 'Local Resources', href: '/local-resources' },
+	{ text: 'Lost & Found', href: '/lost-and-found' },
+	{ text: 'Resources', href: '/barrier-dunes-resources' },
+];
+---
+
+<header class="bg-white border-b border-beach-sky/30 sticky top-0 z-50">
+	<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+		<div class="flex-shrink-0">
+			<a href="/" class="flex items-center group">
+				<div class="h-12 w-12 bg-beach-sea flex items-center justify-center rounded-full mr-3 group-hover:bg-beach-sky transition-colors">
+					<span class="text-white font-serif text-xl italic">BD</span>
+				</div>
+				<div>
+					<h1 class="text-xl font-serif text-beach-slate uppercase tracking-widest leading-none">Barrier Dunes</h1>
+					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-[.25em] mt-1">St. Joseph Peninsula</p>
+				</div>
+			</a>
+		</div>
+
+		<!-- Desktop Navigation -->
+		<div class="hidden md:flex items-center space-x-8">
+			{navLinks.map((link) => (
+				<a href={link.href} class="text-sm font-sans text-beach-slate hover:text-beach-sea transition-colors uppercase tracking-wider">
+					{link.text}
+				</a>
+			))}
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="bg-beach-slate text-white px-6 py-2 rounded-sm text-sm font-sans uppercase tracking-widest hover:bg-beach-sea transition-colors">
+				Login
+			</a>
+		</div>
+
+		<!-- Mobile Menu Button (simplified) -->
+		<div class="md:hidden">
+			<button class="text-beach-slate p-2" aria-label="Menu">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+			</button>
+		</div>
+	</nav>
+</header>

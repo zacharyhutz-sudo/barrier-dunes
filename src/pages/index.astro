@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Welcome to Barrier Dunes">
+	<!-- Hero Section -->
+	<section class="relative h-[80vh] flex items-center overflow-hidden">
+		<!-- Background (simulated with gradient since no image yet) -->
+		<div class="absolute inset-0 bg-gradient-to-br from-beach-sky via-white to-beach-sea/30"></div>
+		
+		<!-- Hero Content -->
+		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+			<span class="inline-block text-beach-sand font-sans text-xs uppercase tracking-[.4em] mb-6 opacity-80">ESTABLISHED ON THE ST. JOSEPH PENINSULA</span>
+			<h1 class="text-5xl md:text-8xl font-serif text-beach-slate mb-8 leading-tight tracking-tight">
+				Coastal Life, <br />
+				<span class="italic font-light">Elegantly Defined.</span>
+			</h1>
+			<p class="max-w-xl mx-auto text-beach-slate/70 font-sans leading-relaxed mb-12 text-sm md:text-base uppercase tracking-wider">
+				Discover one of the most beautiful and pristine capes in a private residential complex.
+			</p>
+			<div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
+				<a href="/rules-and-regulations" class="bg-beach-slate text-white px-10 py-4 rounded-sm text-xs font-sans uppercase tracking-[.25em] hover:bg-beach-sea transition-all duration-300">
+					Explore Community
+				</a>
+				<a href="/barrier-dunes-resources" class="text-beach-slate text-xs font-sans uppercase tracking-[.25em] border-b border-beach-sand hover:border-beach-sea transition-all duration-300 pb-1">
+					Resources
+				</a>
+			</div>
+		</div>
+
+		<!-- Scroll Indicator -->
+		<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m7 13 5 5 5-5"/><path d="m7 6 5 5 5-5"/></svg>
+		</div>
+	</section>
+
+	<!-- Amenity Highlight -->
+	<section class="py-24 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+				<div class="p-8 border-r border-beach-sky/20">
+					<h3 class="text-3xl font-serif text-beach-slate mb-2">3</h3>
+					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-widest">Pristine Ponds</p>
+				</div>
+				<div class="p-8 border-r border-beach-sky/20">
+					<h3 class="text-3xl font-serif text-beach-slate mb-2">2</h3>
+					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-widest">Resort Pools</p>
+				</div>
+				<div class="p-8 border-r border-beach-sky/20">
+					<h3 class="text-3xl font-serif text-beach-slate mb-2">1</h3>
+					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-widest">Playground</p>
+				</div>
+				<div class="p-8">
+					<h3 class="text-3xl font-serif text-beach-slate mb-2">1</h3>
+					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-widest">Tennis Court</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Content Section 1: The Area -->
+	<section class="py-32 bg-beach-sky/10">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+			<div>
+				<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">THE PENINSULA</span>
+				<h2 class="text-4xl font-serif text-beach-slate mb-8 leading-tight">
+					Cape San Blas is one of Florida's rarest finds.
+				</h2>
+				<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-10 tracking-wide">
+					This slender peninsula of sugar-white sand juts into the emerald green waters of the Gulf of Mexico in the center of Florida's northwest coastline. 
+					For years St. Joseph Peninsula State Park, which occupies the last 10 miles of the peninsula, was the only sign of development. 
+					Now, the park has a friendly neighbor.
+				</p>
+				<a href="/local-attractions" class="group flex items-center text-xs font-sans uppercase tracking-widest text-beach-slate">
+					<span class="border-b border-beach-sand group-hover:border-beach-sea transition-colors pb-1 mr-4">Local Attractions</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
+			</div>
+			<div class="relative">
+				<div class="aspect-[4/5] bg-beach-sea/20 overflow-hidden">
+					<div class="absolute inset-0 flex items-center justify-center text-beach-slate/30 italic font-serif">Awaiting Imagery</div>
+				</div>
+				<!-- Floating Decorative Element -->
+				<div class="absolute -bottom-10 -left-10 w-48 h-48 bg-beach-sky p-8 hidden md:block">
+					<p class="text-[10px] font-sans uppercase tracking-[.2em] leading-loose text-beach-slate/60">
+						Sugar-white sand and emerald green waters.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Content Section 2: The Community -->
+	<section class="py-32 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+			<div class="order-2 md:order-1 relative">
+				<div class="aspect-[4/3] bg-beach-sand/20 overflow-hidden">
+					<div class="absolute inset-0 flex items-center justify-center text-beach-slate/30 italic font-serif">Awaiting Imagery</div>
+				</div>
+			</div>
+			<div class="order-1 md:order-2">
+				<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">THE COMMUNITY</span>
+				<h2 class="text-4xl font-serif text-beach-slate mb-8 leading-tight">
+					Barrier Dunes is the place to go.
+				</h2>
+				<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-10 tracking-wide">
+					Barrier Dunes is a gated community development located just outside the gates of the State Park. 
+					Townhomes and palm trees, sand dunes and sea oats, lakes, boardwalks and beaches all blend to create a peaceful unspoiled environment in which to live and play. 
+					Many homes are available for vacation stays, rented through local vacation rentals companies.
+				</p>
+				<a href="/barrier-dunes-resources" class="group flex items-center text-xs font-sans uppercase tracking-widest text-beach-slate">
+					<span class="border-b border-beach-sand group-hover:border-beach-sea transition-colors pb-1 mr-4">Community Resources</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Homeowner CTA -->
+	<section class="py-24 bg-beach-slate text-white text-center">
+		<div class="max-w-xl mx-auto px-4">
+			<h2 class="text-3xl font-serif mb-8">Homeowner Account Panel</h2>
+			<p class="text-white/70 font-sans text-sm mb-12 uppercase tracking-widest leading-loose">
+				Already own a property in Barrier Dunes? Login to your account to manage your documents and requests.
+			</p>
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="inline-block border border-white px-12 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-white hover:text-beach-slate transition-all duration-300">
+				Access Portal
+			</a>
+		</div>
+	</section>
+</Layout>

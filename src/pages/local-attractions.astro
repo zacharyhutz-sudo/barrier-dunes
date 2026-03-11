@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const destinations = [
+	{
+		name: "Cape San Blas",
+		description: "A string of soft white sand beaches protecting an aquatic preserve. The 8.7-mile Loggerhead Trail is a paved pathway that runs the length of the Cape, lined with local stores and unique restaurants.",
+		image: "/images/cape-san-blas.jpg"
+	},
+	{
+		name: "Indian Pass & Apalachicola Bay",
+		description: "An eclectic array of beach homes and pet-friendly beaches. Visit St. Vincent Island, a national wildlife refuge accessible only by boat, and try the world-famous oysters.",
+		image: "/images/indian-pass.jpg"
+	},
+	{
+		name: "St. Joe Beach",
+		description: "Where the Eastern Time Zone meets the Central Time Zone. Known for spectacular sunsets, shell-filled beaches, and old-fashioned relaxation.",
+		image: "/images/st-joe-beach.jpg"
+	},
+	{
+		name: "Wewahitchka",
+		description: "Defined by its waterways, the Chipola River, and the legendary Dead Lakes. Home to one of the richest ecosystems and the unique Tupelo Honey.",
+		image: "/images/wewahitchka.jpg"
+	}
+];
+
+const categories = [
+	{
+		title: "Outdoor Experiences",
+		items: [
+			{ name: "St. Joseph Bay Aquatic Preserve", type: "Park" },
+			{ name: "T.H. Stone Memorial State Park", type: "Park" },
+			{ name: "Two-Bit Stable Horseback Riding", type: "Activity" },
+			{ name: "Congo Charters", type: "Fishing" },
+			{ name: "Shore Thang Charters", type: "Fishing" }
+		]
+	},
+	{
+		title: "Rentals & Supplies",
+		items: [
+			{ name: "San Flea Rentals", type: "Water Sports" },
+			{ name: "Scallop Cove Cape San Blas", type: "Bait & Tackle" },
+			{ name: "Daly’s Dock & Dive Center", type: "Diving" }
+		]
+	},
+	{
+		title: "Local Dining",
+		items: [
+			{ name: "Coneheads 8020", type: "Restaurant" },
+			{ name: "Indian Pass Raw Bar", type: "Seafood" },
+			{ name: "The Smokehouse", type: "BBQ" },
+			{ name: "LongBill’s", type: "Restaurant" },
+			{ name: "Weber’s Little Donut Shop", type: "Bakery" },
+			{ name: "St. Joe Shrimp Co.", type: "Seafood" }
+		]
+	}
+];
+---
+
+<Layout title="Local Attractions">
+	<section class="py-20 bg-beach-sea/10">
+		<div class="max-w-4xl mx-auto px-4 text-center">
+			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">EXPLORE GULF COUNTY</span>
+			<h1 class="text-5xl font-serif text-beach-slate mb-8">Local Attractions</h1>
+			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
+				Discover the hidden gems of the St. Joseph Peninsula and surrounding areas. From pristine parks to world-class seafood.
+			</p>
+		</div>
+	</section>
+
+	<section class="py-24 bg-white">
+		<div class="max-w-7xl mx-auto px-4">
+			<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-16 text-center">Destinations</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+				{destinations.map((dest) => (
+					<div class="group">
+						<div class="aspect-[16/9] bg-beach-sky/20 mb-8 overflow-hidden relative">
+							<div class="absolute inset-0 flex items-center justify-center text-beach-slate/20 italic font-serif">Photography Pending</div>
+						</div>
+						<h3 class="text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
+						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-6">{dest.description}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="py-24 bg-beach-slate text-white">
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+				{categories.map((cat) => (
+					<div>
+						<h3 class="text-beach-sea font-sans text-[10px] uppercase tracking-[.3em] mb-8 border-b border-beach-sea/30 pb-4">{cat.title}</h3>
+						<ul class="space-y-6">
+							{cat.items.map((item) => (
+								<li>
+									<p class="text-sm font-serif tracking-wide">{item.name}</p>
+									<p class="text-[9px] font-sans text-white/40 uppercase tracking-widest mt-1">{item.type}</p>
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Local Resources">
+	<section class="py-20 bg-beach-sand/10">
+		<div class="max-w-4xl mx-auto px-4 text-center">
+			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">COMMUNITY SUPPORT</span>
+			<h1 class="text-5xl font-serif text-beach-slate mb-8">Local Resources</h1>
+			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
+				Essential services, safety information, and government contacts for the Barrier Dunes community and Gulf County.
+			</p>
+		</div>
+	</section>
+
+	<section class="py-24 bg-white">
+		<div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16">
+			<!-- Digital Directories -->
+			<div class="border border-beach-sky/20 p-12 hover:border-beach-sea transition-all duration-300">
+				<h2 class="text-2xl font-serif text-beach-slate mb-6 uppercase tracking-wider">Digital Directories</h2>
+				<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-8">
+					View current directories to assist with locating services and other resources within Gulf County.
+				</p>
+				<a href="https://business.gulfchamber.org/list/searchalpha/c" target="_blank" class="inline-block bg-beach-slate text-white px-8 py-3 rounded-sm text-[10px] font-sans uppercase tracking-widest hover:bg-beach-sea transition-colors">
+					View Directory
+				</a>
+			</div>
+
+			<!-- Beach Safety -->
+			<div class="border border-beach-sky/20 p-12 hover:border-beach-sea transition-all duration-300">
+				<h2 class="text-2xl font-serif text-beach-slate mb-6 uppercase tracking-wider">Beach Safety</h2>
+				<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-8">
+					Stay safe while enjoying our private beach. Familiarize yourself with the South Gulf Fire & Rescue Flag Warning System.
+				</p>
+				<a href="https://www.facebook.com/sgcfire/?ref=page_internal" target="_blank" class="inline-block bg-beach-sea text-white px-8 py-3 rounded-sm text-[10px] font-sans uppercase tracking-widest hover:bg-beach-slate transition-colors">
+					Learn More
+				</a>
+			</div>
+
+			<!-- Safety Contacts -->
+			<div>
+				<h3 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Safety Contacts</h3>
+				<ul class="space-y-6">
+					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
+						<span class="text-sm font-serif">Florida Fish & Wildlife (FWC)</span>
+						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Tallahassee, FL</span>
+					</li>
+					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
+						<span class="text-sm font-serif">South Gulf County Fire & Rescue</span>
+						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">SGCFR</span>
+					</li>
+					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
+						<span class="text-sm font-serif">Gulf County Sheriff’s Office</span>
+						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">911</span>
+					</li>
+					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
+						<span class="text-sm font-serif">Port St Joe Police Department</span>
+						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Law Enforcement</span>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Government Contacts -->
+			<div>
+				<h3 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Government</h3>
+				<ul class="space-y-6">
+					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
+						<span class="text-sm font-serif">City of Port St Joe</span>
+						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Municipal</span>
+					</li>
+					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
+						<span class="text-sm font-serif">State of Florida</span>
+						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Tallahassee</span>
+					</li>
+					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
+						<span class="text-sm font-serif">Gulf County Chamber of Commerce</span>
+						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Business</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</Layout>

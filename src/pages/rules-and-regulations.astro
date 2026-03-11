@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const ruleSections = [
+	{
+		title: "General Complex Rules",
+		subtitle: "Town Houses & Cottages",
+		rules: [
+			"Charcoal grills/smokers or other open flames are not permitted on any property in Barrier Dunes.",
+			"Please do not hang towels or clothing from decks or outside railings.",
+			"Loud music is not permitted outside."
+		]
+	},
+	{
+		title: "General Information",
+		rules: [
+			"Fires and fireworks are not permitted anywhere on Barrier Dunes property.",
+			"Golf carts are for transportation only. Drivers must be licensed and at least 16 years old. No parking on grass.",
+			"Speed limit within the gates is 17 miles per hour. Please abide for the safety of pedestrians and cyclists.",
+			"The gate code changes monthly. Ensure you and your guests have the proper code.",
+			"Sea turtle nesting season (May 1st – Oct 31st): Turn off or shield outdoor lights and close drapes at night."
+		]
+	},
+	{
+		title: "Garbage & Parking",
+		rules: [
+			"Garbage Pickup: Mon, Wed, Fri (Mar 15 – Labor Day); Mon, Thu otherwise. Place in containment areas the night before.",
+			"Household garbage must be in bags and kept in closed closets/containment areas, not visible from the street.",
+			"Fishing remnants (fish guts, scallop shells, etc.) must be disposed of off-site.",
+			"Large items (grills, furniture, etc.) will not be picked up by the grounds crew.",
+			"Boats and trailers must be parked under units or in approved overflow areas (14-day limit).",
+			"No parking in the street or on the grass. R.V.s and Campers are not permitted in common areas."
+		]
+	},
+	{
+		title: "Common Areas & Pools",
+		rules: [
+			"Pets must be on a leash at all times. Clean up after your pet using provided waste stations.",
+			"Golf carts, skateboards, and scooters are not allowed on boardwalks or walkways.",
+			"Pool Hours: 9:00 A.M. until dusk. Children under 12 must be accompanied by an adult.",
+			"Pets and glass containers are strictly prohibited in pool areas.",
+			"Observe posted pool rules: No jumping, diving, or running."
+		]
+	},
+	{
+		title: "Tennis & Boat Station",
+		rules: [
+			"Tennis Hours: 8:00 A.M. until 10:00 P.M. Lights must be turned off when leaving.",
+			"Regulation shoes required on courts. No pets, bicycles, or skateboards allowed.",
+			"Boat Station: Dispose of trash in provided bins, turn off water, and do not block the roadway."
+		]
+	},
+	{
+		title: "Beach Information",
+		rules: [
+			"Walking or playing on the dunes is prohibited by State Law.",
+			"No lifeguard on duty. Swim at your own risk and be aware of rip currents.",
+			"All materials and trash must be removed from the beach daily (Leave No Trace).",
+			"All holes dug in the sand must be filled in before dusk for turtle safety.",
+			"Open fires must follow Gulf County ordinances (100ft from structures, natural wood only)."
+		]
+	}
+];
+---
+
+<Layout title="Rules & Regulations">
+	<section class="py-20 bg-beach-sky/20">
+		<div class="max-w-4xl mx-auto px-4 text-center">
+			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">COMMUNITY STANDARDS</span>
+			<h1 class="text-5xl font-serif text-beach-slate mb-8">Rules & Regulations</h1>
+			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
+				To maintain the beauty and peace of Barrier Dunes, we ask all residents and guests to abide by the following community guidelines.
+			</p>
+		</div>
+	</section>
+
+	<section class="py-24 bg-white">
+		<div class="max-w-4xl mx-auto px-4">
+			<div class="space-y-16">
+				{ruleSections.map((section) => (
+					<div class="border-l border-beach-sand/30 pl-8">
+						<h2 class="text-2xl font-serif text-beach-slate mb-6 uppercase tracking-widest">{section.title}</h2>
+						{section.subtitle && <h3 class="text-beach-sand font-sans text-xs uppercase tracking-widest mb-4 italic">{section.subtitle}</h3>}
+						<ul class="space-y-4">
+							{section.rules.map((rule) => (
+								<li class="flex items-start group">
+									<span class="inline-block w-2 h-[1px] bg-beach-sea mt-3 mr-4 group-hover:w-4 transition-all duration-300"></span>
+									<p class="text-beach-slate/80 font-sans text-sm leading-relaxed">{rule}</p>
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+
+			<!-- Download CTA -->
+			<div class="mt-24 p-12 bg-beach-sky/10 text-center border border-beach-sky/20">
+				<h3 class="text-xl font-serif text-beach-slate mb-4 italic">Fishing & Scalloping</h3>
+				<p class="text-beach-slate/60 font-sans text-xs uppercase tracking-widest mb-8">St. Joe Bay Scallop Season: August 16 - September 24</p>
+				<a href="https://myfwc.com/news/all-news/scallop-821/" target="_blank" class="inline-block bg-beach-slate text-white px-8 py-3 rounded-sm text-[10px] font-sans uppercase tracking-widest hover:bg-beach-sea transition-colors">
+					View FWC Regulations
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

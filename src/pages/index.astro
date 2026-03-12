@@ -5,11 +5,16 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Welcome to Barrier Dunes">
 	<!-- Hero Section -->
 	<section class="relative h-[80vh] flex items-center overflow-hidden">
-		<!-- Background (simulated with gradient since no image yet) -->
-		<div class="absolute inset-0 bg-gradient-to-br from-beach-sky via-white to-beach-sea/30"></div>
+		<!-- Background Image -->
+		<div class="absolute inset-0 bg-beach-slate/20 z-10"></div>
+		<img 
+			src="/barrier-dunes/images/community-drone.webp" 
+			alt="Barrier Dunes Community Drone View" 
+			class="absolute inset-0 w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
+		/>
 		
 		<!-- Hero Content -->
-		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20">
 			<span class="inline-block text-beach-sand font-sans text-xs uppercase tracking-[.4em] mb-6 opacity-80">ESTABLISHED ON THE ST. JOSEPH PENINSULA</span>
 			<h1 class="text-5xl md:text-8xl font-serif text-beach-slate mb-8 leading-tight tracking-tight">
 				Coastal Life, <br />
@@ -78,7 +83,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 			<div class="relative">
 				<div class="aspect-[4/5] bg-beach-sea/20 overflow-hidden">
-					<div class="absolute inset-0 flex items-center justify-center text-beach-slate/30 italic font-serif">Awaiting Imagery</div>
+					<img src="/barrier-dunes/images/beach-boardwalk.webp" alt="Beach Boardwalk" class="w-full h-full object-cover" />
 				</div>
 				<!-- Floating Decorative Element -->
 				<div class="absolute -bottom-10 -left-10 w-48 h-48 bg-beach-sky p-8 hidden md:block">
@@ -95,7 +100,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
 			<div class="order-2 md:order-1 relative">
 				<div class="aspect-[4/3] bg-beach-sand/20 overflow-hidden">
-					<div class="absolute inset-0 flex items-center justify-center text-beach-slate/30 italic font-serif">Awaiting Imagery</div>
+					<img src="/barrier-dunes/images/pool-beach-view.jpg" alt="Gulf Front Pool" class="w-full h-full object-cover" />
 				</div>
 			</div>
 			<div class="order-1 md:order-2">

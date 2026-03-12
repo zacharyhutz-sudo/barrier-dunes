@@ -5,22 +5,22 @@ const destinations = [
 	{
 		name: "Cape San Blas",
 		description: "A string of soft white sand beaches protecting an aquatic preserve. The 8.7-mile Loggerhead Trail is a paved pathway that runs the length of the Cape, lined with local stores and unique restaurants.",
-		image: "/images/cape-san-blas.jpg"
+		image: "/barrier-dunes/images/community-drone.webp"
 	},
 	{
 		name: "Indian Pass & Apalachicola Bay",
 		description: "An eclectic array of beach homes and pet-friendly beaches. Visit St. Vincent Island, a national wildlife refuge accessible only by boat, and try the world-famous oysters.",
-		image: "/images/indian-pass.jpg"
+		image: "/barrier-dunes/images/beach-boardwalk.webp"
 	},
 	{
 		name: "St. Joe Beach",
 		description: "Where the Eastern Time Zone meets the Central Time Zone. Known for spectacular sunsets, shell-filled beaches, and old-fashioned relaxation.",
-		image: "/images/st-joe-beach.jpg"
+		image: "/barrier-dunes/images/beach-sunset.jpeg"
 	},
 	{
 		name: "Wewahitchka",
 		description: "Defined by its waterways, the Chipola River, and the legendary Dead Lakes. Home to one of the richest ecosystems and the unique Tupelo Honey.",
-		image: "/images/wewahitchka.jpg"
+		image: "/barrier-dunes/images/pool-overhead.webp"
 	}
 ];
 
@@ -75,7 +75,7 @@ const categories = [
 				{destinations.map((dest) => (
 					<div class="group">
 						<div class="aspect-[16/9] bg-beach-sky/20 mb-8 overflow-hidden relative">
-							<div class="absolute inset-0 flex items-center justify-center text-beach-slate/20 italic font-serif">Photography Pending</div>
+							<img src={dest.image} alt={dest.name} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
 						</div>
 						<h3 class="text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
 						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-6">{dest.description}</p>

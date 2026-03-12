@@ -1,18 +1,18 @@
 ---
 const navLinks = [
-	{ text: 'Home', href: '/' },
-	{ text: 'Rules & Regulations', href: '/rules-and-regulations' },
-	{ text: 'Local Attractions', href: '/local-attractions' },
-	{ text: 'Local Resources', href: '/local-resources' },
-	{ text: 'Lost & Found', href: '/lost-and-found' },
-	{ text: 'Resources', href: '/barrier-dunes-resources' },
+	{ text: 'Home', href: '/barrier-dunes/' },
+	{ text: 'Rules & Regulations', href: '/barrier-dunes/rules-and-regulations' },
+	{ text: 'Local Attractions', href: '/barrier-dunes/local-attractions' },
+	{ text: 'Local Resources', href: '/barrier-dunes/local-resources' },
+	{ text: 'Lost & Found', href: '/barrier-dunes/lost-and-found' },
+	{ text: 'Resources', href: '/barrier-dunes/barrier-dunes-resources' },
 ];
 ---
 
 <header class="bg-white border-b border-beach-sky/30 sticky top-0 z-50">
 	<nav class="mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 		<div class="flex-shrink-0">
-			<a href="/" class="flex items-center group">
+			<a href="/barrier-dunes/" class="flex items-center group">
 				<div class="h-12 w-12 bg-beach-sea flex items-center justify-center rounded-full mr-3 group-hover:bg-beach-sky transition-colors">
 					<span class="text-white font-serif text-xl italic">BD</span>
 				</div>
@@ -34,11 +34,77 @@ const navLinks = [
 			</a>
 		</div>
 
-		<!-- Mobile Menu Button (simplified) -->
+		<!-- Mobile Menu Button -->
 		<div class="md:hidden">
-			<button class="text-beach-slate p-2" aria-label="Menu">
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+			<button id="mobile-menu-button" class="text-beach-slate p-2" aria-label="Menu">
+				<svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+				<svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 			</button>
 		</div>
 	</nav>
+
+	<!-- Mobile Menu Sidebar -->
+	<div id="mobile-menu" class="fixed inset-0 z-[100] transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+		<!-- Backdrop -->
+		<div id="mobile-menu-backdrop" class="absolute inset-0 bg-beach-slate/40 backdrop-blur-sm"></div>
+		
+		<!-- Sidebar -->
+		<div class="absolute right-0 top-0 h-full w-4/5 max-w-sm bg-white shadow-2xl p-8 overflow-y-auto">
+			<div class="flex flex-col space-y-8 mt-8">
+				{navLinks.map((link) => (
+					<a href={link.href} class="text-lg font-serif text-beach-slate hover:text-beach-sand transition-colors uppercase tracking-widest border-b border-beach-sky/20 pb-4">
+						{link.text}
+					</a>
+				))}
+				<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="bg-beach-slate text-white px-8 py-4 rounded-sm text-sm font-sans uppercase tracking-[.3em] text-center hover:bg-beach-sea transition-colors">
+					HOA Login
+				</a>
+			</div>
+
+			<div class="mt-20 pt-12 border-t border-beach-sky/20 text-center">
+				<p class="text-[10px] font-sans text-beach-sand uppercase tracking-[.4em]">Established on the St. Joseph Peninsula</p>
+			</div>
+		</div>
+	</div>
 </header>
+
+<script>
+	const menuButton = document.getElementById('mobile-menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+	const backdrop = document.getElementById('mobile-menu-backdrop');
+	const menuIcon = document.getElementById('menu-icon');
+	const closeIcon = document.getElementById('close-icon');
+
+	function toggleMenu() {
+		const isOpen = mobileMenu.classList.contains('translate-x-0');
+		
+		if (isOpen) {
+			mobileMenu.classList.remove('translate-x-0');
+			mobileMenu.classList.add('translate-x-full');
+			menuIcon.classList.remove('hidden');
+			closeIcon.classList.add('hidden');
+			document.body.style.overflow = 'auto';
+		} else {
+			mobileMenu.classList.remove('translate-x-full');
+			mobileMenu.classList.add('translate-x-0');
+			menuIcon.classList.add('hidden');
+			closeIcon.classList.remove('hidden');
+			document.body.style.overflow = 'hidden';
+		}
+	}
+
+	menuButton?.addEventListener('click', toggleMenu);
+	backdrop?.addEventListener('click', toggleMenu);
+
+	// Close menu on link click
+	const links = mobileMenu?.querySelectorAll('a');
+	links?.forEach(link => {
+		link.addEventListener('click', () => {
+			mobileMenu.classList.add('translate-x-full');
+			mobileMenu.classList.remove('translate-x-0');
+			menuIcon.classList.remove('hidden');
+			closeIcon.classList.add('hidden');
+			document.body.style.overflow = 'auto';
+		});
+	});
+</script>

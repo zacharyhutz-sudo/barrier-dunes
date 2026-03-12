@@ -6,7 +6,7 @@ export default {
 			colors: {
 				'beach-sky': '#D8EBF5',
 				'beach-sea': '#9AD9D9',
-				'beach-sand': '#D6C7A1',
+				'beach-sand': '#968863',
 				'beach-slate': '#455A64',
 			},
 			fontFamily: {

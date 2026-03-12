@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const condos = [
+	{
+		name: "There's Always Time for the Sea",
+		image: "/barrier-dunes/images/sherri-condo.jpg",
+		beds: "2 Bedrooms (1 King, 2 Queens)",
+		baths: "2 Bathrooms",
+		features: [
+			"Steps from the beach boardwalk",
+			"Fully stocked gourmet kitchen",
+			"Private balconies for each bedroom",
+			"Located near tennis courts and pool"
+		],
+		link: "https://www.airbnb.com/rooms/1075306606822263054" // Placeholder or actual if known
+	}
+];
+---
+
+<Layout title="Condos for Rent">
+	<section class="py-20 bg-beach-sand/5">
+		<div class="max-w-4xl mx-auto px-4 text-center">
+			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">STAY AT BARRIER DUNES</span>
+			<h1 class="text-5xl font-serif text-beach-slate mb-8">Condos for Rent</h1>
+			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
+				Discover private rentals within our gated community. From beachfront escapes to poolside retreats.
+			</p>
+		</div>
+	</section>
+
+	<section class="py-24 bg-white">
+		<div class="max-w-6xl mx-auto px-4">
+			<div class="space-y-16">
+				{condos.map((condo) => (
+					<div class="flex flex-col md:flex-row bg-white border border-beach-sky/20 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500">
+						<!-- Image Left -->
+						<div class="w-full md:w-1/2 aspect-video md:aspect-auto h-64 md:h-auto overflow-hidden">
+							<img src={condo.image} alt={condo.name} class="w-full h-full object-cover" />
+						</div>
+						
+						<!-- Content Right -->
+						<div class="w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+							<h2 class="text-2xl font-serif text-beach-slate mb-6 uppercase tracking-widest leading-tight">{condo.name}</h2>
+							
+							<div class="flex items-center space-x-6 mb-8 text-[10px] font-sans text-beach-sand uppercase tracking-widest font-bold">
+								<span class="flex items-center">
+									<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v16"/><path d="M2 17h20"/></svg>
+									{condo.beds}
+								</span>
+								<span class="flex items-center">
+									<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.12 0 1.5 1.5 0 0 0 0 2.12L7 8.5"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M5 14v-2a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v2"/></svg>
+									{condo.baths}
+								</span>
+							</div>
+
+							<ul class="space-y-3 mb-12">
+								{condo.features.map((feature) => (
+									<li class="flex items-center text-sm text-beach-slate/70 font-sans">
+										<span class="w-1.5 h-1.5 rounded-full bg-beach-sea mr-3"></span>
+										{feature}
+									</li>
+								))}
+							</ul>
+
+							<a href={condo.link} target="_blank" class="inline-block bg-beach-slate text-white px-10 py-4 text-[10px] font-sans uppercase tracking-[.4em] text-center hover:bg-beach-sea transition-all duration-300">
+								View Availability
+							</a>
+						</div>
+					</div>
+				))}
+			</div>
+
+			<!-- Renter Notice -->
+			<div class="mt-24 p-12 bg-beach-sky/10 border border-beach-sky/20 text-center">
+				<h3 class="text-xl font-serif text-beach-slate mb-4">Want to list your condo?</h3>
+				<p class="text-beach-slate/60 font-sans text-xs uppercase tracking-widest leading-loose mb-8 max-w-xl mx-auto">
+					This page is a directory of private rentals at Barrier Dunes. Owners can contact the association to have their listing included.
+				</p>
+				<a href="/barrier-dunes/barrier-dunes-resources" class="inline-block border border-beach-slate text-beach-slate px-8 py-3 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-slate hover:text-white transition-all duration-300">
+					Contact Association
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

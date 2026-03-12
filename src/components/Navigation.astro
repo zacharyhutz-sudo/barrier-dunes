@@ -23,14 +23,13 @@ const navLinks = [
 			</a>
 		</div>
 
-		<!-- Desktop Navigation -->
-		<div class="hidden md:flex items-center space-x-8">
+		<div class="hidden md:flex items-center space-x-4 lg:space-x-8">
 			{navLinks.map((link) => (
-				<a href={link.href} class="text-sm font-sans text-beach-slate hover:text-beach-sea transition-colors uppercase tracking-wider">
+				<a href={link.href} class="text-[11px] lg:text-sm font-sans text-beach-slate hover:text-beach-sea transition-colors uppercase tracking-wider whitespace-nowrap">
 					{link.text}
 				</a>
 			))}
-			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="bg-beach-slate text-white px-6 py-2 rounded-sm text-sm font-sans uppercase tracking-widest hover:bg-beach-sea transition-colors">
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="bg-beach-slate text-white px-4 lg:px-6 py-2 rounded-sm text-[11px] lg:text-sm font-sans uppercase tracking-widest hover:bg-beach-sea transition-colors whitespace-nowrap">
 				Login
 			</a>
 		</div>

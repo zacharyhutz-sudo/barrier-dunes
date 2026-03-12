@@ -3,58 +3,74 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Lost & Found">
-	<section class="py-20 bg-beach-sea/10">
+	<section class="py-20 bg-beach-sky/10">
 		<div class="max-w-4xl mx-auto px-4 text-center">
-			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">COMMUNITY REACH</span>
+			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">COMMUNITY ASSISTANCE</span>
 			<h1 class="text-5xl font-serif text-beach-slate mb-8">Lost & Found</h1>
 			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
-				Reuniting pets and property with their owners using our community network. 
-				A simple, one-stop source for exchanging lost and found information at Barrier Dunes.
+				Reuniting pets and property with their owners. 
+				A community effort to keep Barrier Dunes whole.
 			</p>
 		</div>
 	</section>
 
 	<section class="py-24 bg-white">
-		<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-24">
-			<!-- Current Listings -->
-			<div>
-				<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-12">Current Listings</h2>
-				<div class="border border-beach-sky/20 p-16 text-center">
-					<p class="text-beach-slate/40 italic font-serif text-lg">No active listings at this time.</p>
-					<div class="w-12 h-[1px] bg-beach-sand mx-auto mt-8 opacity-30"></div>
+		<div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-20">
+			
+			<!-- Information & Policy -->
+			<div class="space-y-12">
+				<div>
+					<h2 class="text-3xl font-serif text-beach-slate mb-8 italic">Reuniting our Community</h2>
+					<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-6">
+						The sole purpose of the Barrier Dunes' Lost and Found page is to reunite lost and found pets and property with their respective owners using our community reach.
+					</p>
+					<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-6">
+						Whether it's a family pet, a favorite pair of sunglasses, or beach gear left on the boardwalk, we are pleased to offer this convenient source for the exchange of information.
+					</p>
+				</div>
+
+				<div class="p-8 bg-beach-sand/5 border border-beach-sand/20">
+					<h3 class="text-xs font-sans uppercase tracking-widest text-beach-sand mb-4">Current Notices</h3>
+					<div class="flex items-center text-beach-slate/40 italic font-serif py-4 border-t border-beach-sand/10">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-3"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+						No active lost or found items at the moment.
+					</div>
 				</div>
 			</div>
 
-			<!-- Request Form -->
-			<div>
-				<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-12">Submit a Request</h2>
-				<form class="space-y-8 font-sans">
+			<!-- Report Form (Visualized) -->
+			<div class="bg-beach-slate p-10 md:p-16 text-white rounded-sm">
+				<h2 class="text-2xl font-serif mb-6 uppercase tracking-widest text-beach-sea">Report an Item</h2>
+				<p class="text-white/60 font-sans text-xs uppercase tracking-widest mb-10 leading-relaxed">
+					Please fill out the details below to add a notice to our community board.
+				</p>
+				
+				<form class="space-y-8">
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-						<div>
-							<label class="block text-[10px] uppercase tracking-widest text-beach-slate/60 mb-3">Your Name</label>
-							<input type="text" class="w-full bg-beach-sky/5 border border-beach-sky/20 p-4 text-sm focus:border-beach-sea focus:outline-none transition-colors" />
+						<div class="space-y-2">
+							<label class="text-[10px] uppercase tracking-widest text-white/40">Full Name</label>
+							<input type="text" class="w-full bg-white/5 border-b border-white/20 py-3 text-sm focus:border-beach-sea outline-none transition-colors" placeholder="John Doe" />
 						</div>
-						<div>
-							<label class="block text-[10px] uppercase tracking-widest text-beach-slate/60 mb-3">Email Address</label>
-							<input type="email" class="w-full bg-beach-sky/5 border border-beach-sky/20 p-4 text-sm focus:border-beach-sea focus:outline-none transition-colors" />
+						<div class="space-y-2">
+							<label class="text-[10px] uppercase tracking-widest text-white/40">Phone Number</label>
+							<input type="tel" class="w-full bg-white/5 border-b border-white/20 py-3 text-sm focus:border-beach-sea outline-none transition-colors" placeholder="(555) 000-0000" />
 						</div>
 					</div>
-					<div>
-						<label class="block text-[10px] uppercase tracking-widest text-beach-slate/60 mb-3">I have...</label>
-						<select class="w-full bg-beach-sky/5 border border-beach-sky/20 p-4 text-sm focus:border-beach-sea focus:outline-none transition-colors">
-							<option>Lost an item</option>
-							<option>Found an item</option>
-						</select>
+					<div class="space-y-2">
+						<label class="text-[10px] uppercase tracking-widest text-white/40">Item Description</label>
+						<textarea class="w-full bg-white/5 border-b border-white/20 py-3 text-sm focus:border-beach-sea outline-none transition-colors min-h-[100px]" placeholder="Detailed description of the item or pet..."></textarea>
 					</div>
-					<div>
-						<label class="block text-[10px] uppercase tracking-widest text-beach-slate/60 mb-3">Description</label>
-						<textarea rows="5" class="w-full bg-beach-sky/5 border border-beach-sky/20 p-4 text-sm focus:border-beach-sea focus:outline-none transition-colors" placeholder="Please describe the item or pet, including location and date..."></textarea>
+					<div class="space-y-2">
+						<label class="text-[10px] uppercase tracking-widest text-white/40">Location Last Seen / Found</label>
+						<input type="text" class="w-full bg-white/5 border-b border-white/20 py-3 text-sm focus:border-beach-sea outline-none transition-colors" placeholder="e.g., Boardwalk #3, Gulf Front Pool" />
 					</div>
-					<button type="submit" class="bg-beach-slate text-white px-12 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sea transition-all duration-300">
-						Submit Request
+					
+					<button type="submit" class="w-full bg-white text-beach-slate py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sea hover:text-white transition-all duration-300 mt-4 shadow-xl">
+						Submit Notice
 					</button>
 				</form>
 			</div>
+
 		</div>
 	</section>
 </Layout>

@@ -1,83 +1,108 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const contacts = [
+	{
+		category: "Safety & Emergency",
+		items: [
+			{ name: "Emergency Dispatch", info: "Dial 911" },
+			{ name: "South Gulf Fire & Rescue", info: "SGCFR Department" },
+			{ name: "Gulf County Sheriff’s Office", info: "Law Enforcement" },
+			{ name: "Port St Joe Police Department", info: "City Police" },
+			{ name: "Florida Fish & Wildlife", info: "FWC Tallahassee" }
+		]
+	},
+	{
+		category: "Government",
+		items: [
+			{ name: "City of Port St Joe", info: "Local Municipality" },
+			{ name: "Gulf County Chamber", info: "Business Directory" },
+			{ name: "State of Florida", info: "Official State Portal" }
+		]
+	}
+];
 ---
 
 <Layout title="Local Resources">
-	<section class="py-20 bg-beach-sand/10">
+	<section class="py-20 bg-beach-sand/5">
 		<div class="max-w-4xl mx-auto px-4 text-center">
-			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">COMMUNITY SUPPORT</span>
+			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">ESSENTIAL SERVICES</span>
 			<h1 class="text-5xl font-serif text-beach-slate mb-8">Local Resources</h1>
 			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
-				Essential services, safety information, and government contacts for the Barrier Dunes community and Gulf County.
+				Directories and safety systems to assist homeowners and guests while in Gulf County.
 			</p>
 		</div>
 	</section>
 
 	<section class="py-24 bg-white">
-		<div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16">
-			<!-- Digital Directories -->
-			<div class="border border-beach-sky/20 p-12 hover:border-beach-sea transition-all duration-300">
-				<h2 class="text-2xl font-serif text-beach-slate mb-6 uppercase tracking-wider">Digital Directories</h2>
-				<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-8">
-					View current directories to assist with locating services and other resources within Gulf County.
-				</p>
-				<a href="https://business.gulfchamber.org/list/searchalpha/c" target="_blank" class="inline-block bg-beach-slate text-white px-8 py-3 rounded-sm text-[10px] font-sans uppercase tracking-widest hover:bg-beach-sea transition-colors">
-					View Directory
-				</a>
-			</div>
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+				
+				<!-- Safety & Fire -->
+				<div class="space-y-12">
+					<div>
+						<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Beach Safety</h2>
+						<h3 class="text-3xl font-serif text-beach-slate mb-6">Beach Flag Warning System</h3>
+						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-8">
+							We encourage all guests to become familiar with the South Gulf Fire and Rescue's Flag Warning System. 
+							Cape San Blas maintains these flags to ensure you stay safe while enjoying the emerald waters. 
+							A dedicated volunteer maintains the beach flags during the winter season.
+						</p>
+						<a href="https://www.facebook.com/sgcfire/" target="_blank" class="group flex items-center text-[10px] font-sans uppercase tracking-[.3em] text-beach-slate">
+							<span class="border-b border-beach-sand group-hover:border-beach-sea transition-colors pb-1 mr-4">Daily Updates on Facebook</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+						</a>
+					</div>
 
-			<!-- Beach Safety -->
-			<div class="border border-beach-sky/20 p-12 hover:border-beach-sea transition-all duration-300">
-				<h2 class="text-2xl font-serif text-beach-slate mb-6 uppercase tracking-wider">Beach Safety</h2>
-				<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-8">
-					Stay safe while enjoying our private beach. Familiarize yourself with the South Gulf Fire & Rescue Flag Warning System.
-				</p>
-				<a href="https://www.facebook.com/sgcfire/?ref=page_internal" target="_blank" class="inline-block bg-beach-sea text-white px-8 py-3 rounded-sm text-[10px] font-sans uppercase tracking-widest hover:bg-beach-slate transition-colors">
-					Learn More
-				</a>
-			</div>
+					<div class="aspect-[16/9] bg-beach-sky/20 overflow-hidden group">
+						<img src="/barrier-dunes/images/beach-sunset.jpeg" alt="Cape San Blas Beach" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+					</div>
+				</div>
 
-			<!-- Safety Contacts -->
-			<div>
-				<h3 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Safety Contacts</h3>
-				<ul class="space-y-6">
-					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
-						<span class="text-sm font-serif">Florida Fish & Wildlife (FWC)</span>
-						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Tallahassee, FL</span>
-					</li>
-					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
-						<span class="text-sm font-serif">South Gulf County Fire & Rescue</span>
-						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">SGCFR</span>
-					</li>
-					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
-						<span class="text-sm font-serif">Gulf County Sheriff’s Office</span>
-						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">911</span>
-					</li>
-					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
-						<span class="text-sm font-serif">Port St Joe Police Department</span>
-						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Law Enforcement</span>
-					</li>
-				</ul>
-			</div>
+				<!-- Directories & Contacts -->
+				<div class="space-y-16">
+					<div>
+						<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Directories</h2>
+						<h3 class="text-3xl font-serif text-beach-slate mb-6">Vacation Catalog</h3>
+						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-8">
+							Access current directories to help assist you with locating services, medical support, 
+							and other resources while in Gulf County.
+						</p>
+						<a href="https://business.gulfchamber.org/list/searchalpha/c" target="_blank" class="inline-block border border-beach-slate px-10 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-slate hover:text-white transition-all duration-300">
+							Search Directory
+						</a>
+					</div>
 
-			<!-- Government Contacts -->
-			<div>
-				<h3 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Government</h3>
-				<ul class="space-y-6">
-					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
-						<span class="text-sm font-serif">City of Port St Joe</span>
-						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Municipal</span>
-					</li>
-					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
-						<span class="text-sm font-serif">State of Florida</span>
-						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Tallahassee</span>
-					</li>
-					<li class="flex justify-between items-center border-b border-beach-sky/10 pb-4">
-						<span class="text-sm font-serif">Gulf County Chamber of Commerce</span>
-						<span class="text-[10px] font-sans text-beach-slate/40 uppercase tracking-widest">Business</span>
-					</li>
-				</ul>
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-12 border-t border-beach-sky/30">
+						{contacts.map((cat) => (
+							<div>
+								<h4 class="text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand mb-6">{cat.category}</h4>
+								<ul class="space-y-4">
+									{cat.items.map((contact) => (
+										<li>
+											<p class="text-sm font-serif text-beach-slate tracking-wide">{contact.name}</p>
+											<p class="text-[9px] font-sans text-beach-slate/40 uppercase tracking-widest mt-0.5">{contact.info}</p>
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
+					</div>
+				</div>
+
 			</div>
+		</div>
+	</section>
+
+	<section class="py-24 bg-beach-slate text-white text-center">
+		<div class="max-w-xl mx-auto px-4">
+			<h2 class="text-2xl font-serif mb-8">Homeowner Management</h2>
+			<p class="text-white/60 font-sans text-xs uppercase tracking-widest leading-loose mb-12">
+				Already own a house in Barrier Dunes? Access the association panel to view full documentation and service contacts.
+			</p>
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="inline-block bg-beach-sand px-12 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-white hover:text-beach-slate transition-all duration-300">
+				HOA Login
+			</a>
 		</div>
 	</section>
 </Layout>

@@ -3,79 +3,88 @@ import Layout from '../layouts/Layout.astro';
 
 const destinations = [
 	{
-		name: "Cape San Blas",
-		description: "A string of soft white sand beaches protecting an aquatic preserve. The 8.7-mile Loggerhead Trail is a paved pathway that runs the length of the Cape, lined with local stores and unique restaurants.",
+		name: "T.H. Stone Memorial State Park",
+		description: "Located at the tip of the peninsula, this park offers camping, cabins, hiking trails, and boat ramps. It's a sanctuary for wildlife and features some of the tallest dunes in Florida.",
+		address: "8899 Cape San Blas Rd",
 		image: "/barrier-dunes/images/community-drone.webp"
 	},
 	{
-		name: "Indian Pass & Apalachicola Bay",
-		description: "An eclectic array of beach homes and pet-friendly beaches. Visit St. Vincent Island, a national wildlife refuge accessible only by boat, and try the world-famous oysters.",
-		image: "/barrier-dunes/images/beach-boardwalk.webp"
-	},
-	{
-		name: "St. Joe Beach",
-		description: "Where the Eastern Time Zone meets the Central Time Zone. Known for spectacular sunsets, shell-filled beaches, and old-fashioned relaxation.",
+		name: "Salinas Park",
+		description: "A dual-access park offering both gulf and bay views. Features a long boardwalk over the marsh, pickleball courts, a playground, and screened picnic areas. Perfect for a family afternoon.",
+		address: "380 Cape San Blas Rd",
 		image: "/barrier-dunes/images/beach-sunset.jpeg"
 	},
 	{
-		name: "Wewahitchka",
-		description: "Defined by its waterways, the Chipola River, and the legendary Dead Lakes. Home to one of the richest ecosystems and the unique Tupelo Honey.",
+		name: "Cape Palms Park",
+		description: "A dog-friendly park featuring a boardwalk over the dunes, a pavilion with picnic tables, and essential facilities like outdoor showers and bathrooms.",
+		address: "6081 Cape San Blas Rd",
+		image: "/barrier-dunes/images/beach-boardwalk.webp"
+	},
+	{
+		name: "Loggerhead Trail",
+		description: "A FREE 8.7-mile paved multi-use trail running the entire length of Cape San Blas Road. It's ideal for walking, biking, or running while enjoying the scenic views of the peninsula.",
+		address: "Runs the length of the Peninsula",
 		image: "/barrier-dunes/images/pool-overhead.webp"
 	}
 ];
 
-const categories = [
+const activityCategories = [
 	{
-		title: "Outdoor Experiences",
+		title: "Activities & Rentals",
 		items: [
-			{ name: "St. Joseph Bay Aquatic Preserve", type: "Park" },
-			{ name: "T.H. Stone Memorial State Park", type: "Park" },
-			{ name: "Two-Bit Stable Horseback Riding", type: "Activity" },
-			{ name: "Congo Charters", type: "Fishing" },
-			{ name: "Shore Thang Charters", type: "Fishing" }
+			{ name: "Two-Bit Stable", info: "Horseback riding on the beach", contact: "850-227-4744" },
+			{ name: "Brokeatoe Horseback", info: "Guided beach rides & photos", contact: "850-899-7433" },
+			{ name: "Scallop Cove Bait & Tackle", info: "Gear, licenses & water rentals", contact: "8am-5pm Daily" },
+			{ name: "Scallop Cove Too", info: "Pontoon & SUP rentals (State Park)", contact: "10am-6pm Daily" },
+			{ name: "San Flea Rentals", info: "Bikes, kayaks & beach gear", contact: "850-381-3953" }
 		]
 	},
 	{
-		title: "Rentals & Supplies",
+		title: "Dining & Sweets",
 		items: [
-			{ name: "San Flea Rentals", type: "Water Sports" },
-			{ name: "Scallop Cove Cape San Blas", type: "Bait & Tackle" },
-			{ name: "Daly’s Dock & Dive Center", type: "Diving" }
+			{ name: "LongBill’s", info: "Seafood, Pizza & Tacos", contact: "850-250-4310" },
+			{ name: "Peachy’s Beach Eats", info: "Fish Tacos & BBQ (Cash Only)", contact: "Closed Sunday" },
+			{ name: "Skully’s Low Country Boil", info: "Shrimp Boil & Gumbo", contact: "850-247-3077" },
+			{ name: "St. Joe Shrimp Co.", info: "Fresh Seafood Market & Kitchen", contact: "850-229-6774" },
+			{ name: "Weber’s Little Donut Shop", info: "Legendary Donuts (Sells out fast!)", contact: "Early Morning" },
+			{ name: "Cone Heads 8020", info: "Burgers, Oysters & Ice Cream", contact: "850-229-5252" }
 		]
 	},
 	{
-		title: "Local Dining",
+		title: "Local Shopping",
 		items: [
-			{ name: "Coneheads 8020", type: "Restaurant" },
-			{ name: "Indian Pass Raw Bar", type: "Seafood" },
-			{ name: "The Smokehouse", type: "BBQ" },
-			{ name: "LongBill’s", type: "Restaurant" },
-			{ name: "Weber’s Little Donut Shop", type: "Bakery" },
-			{ name: "St. Joe Shrimp Co.", type: "Seafood" }
+			{ name: "Scallop Cove General Store", info: "Souvenirs, Apparel & Deli", contact: "7am-9pm" },
+			{ name: "Beach Planet", info: "Souvenirs & Beach Gear", contact: "9am-9pm Daily" },
+			{ name: "Tortuga Moon", info: "Unique Beachwear & Apparel", contact: "Wed-Sat 10am-6pm" },
+			{ name: "Scallop Republic", info: "Craft Beer & Wine on Tap", contact: "850-328-5518" }
 		]
 	}
 ];
 ---
 
 <Layout title="Local Attractions">
-	<section class="py-20 bg-beach-sea/10">
+	<section class="py-20 bg-beach-sand/5">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">EXPLORE GULF COUNTY</span>
 			<h1 class="text-5xl font-serif text-beach-slate mb-8">Local Attractions</h1>
 			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
-				Discover the hidden gems of the St. Joseph Peninsula and surrounding areas. From pristine parks to world-class seafood.
+				From the pristine shores of T.H. Stone State Park to the legendary donuts at Weber's, 
+				discover everything that makes Cape San Blas a world-class destination.
 			</p>
 		</div>
 	</section>
 
 	<section class="py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
-			<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-16 text-center">Destinations</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+			<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-16 text-center">Pristine Parks & Trails</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
 				{destinations.map((dest) => (
 					<div class="group">
 						<div class="aspect-[16/9] bg-beach-sky/20 mb-8 overflow-hidden relative">
 							<img src={dest.image} alt={dest.name} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+							<div class="absolute bottom-0 left-0 bg-beach-slate/90 text-white px-6 py-2 text-[10px] font-sans uppercase tracking-widest">
+								{dest.address}
+							</div>
 						</div>
 						<h3 class="text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
 						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-6">{dest.description}</p>
@@ -88,20 +97,35 @@ const categories = [
 	<section class="py-24 bg-beach-slate text-white">
 		<div class="max-w-7xl mx-auto px-4">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-16">
-				{categories.map((cat) => (
+				{activityCategories.map((cat) => (
 					<div>
-						<h3 class="text-beach-sea font-sans text-[10px] uppercase tracking-[.3em] mb-8 border-b border-beach-sea/30 pb-4">{cat.title}</h3>
-						<ul class="space-y-6">
+						<h3 class="text-beach-sea font-sans text-[10px] uppercase tracking-[.3em] mb-12 border-b border-beach-sea/30 pb-4">{cat.title}</h3>
+						<ul class="space-y-8">
 							{cat.items.map((item) => (
 								<li>
-									<p class="text-sm font-serif tracking-wide">{item.name}</p>
-									<p class="text-[9px] font-sans text-white/40 uppercase tracking-widest mt-1">{item.type}</p>
+									<p class="text-sm font-serif tracking-wide text-white mb-1">{item.name}</p>
+									<p class="text-[10px] font-sans text-white/50 uppercase tracking-widest leading-relaxed mb-1">{item.info}</p>
+									<p class="text-[9px] font-sans text-beach-sea uppercase tracking-widest">{item.contact}</p>
 								</li>
 							))}
 						</ul>
 					</div>
 				))}
 			</div>
+		</div>
+	</section>
+
+	<section class="py-24 bg-white text-center">
+		<div class="max-w-2xl mx-auto px-4">
+			<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Plan Your Adventure</h2>
+			<h3 class="text-3xl font-serif text-beach-slate mb-8 tracking-tight italic">Ready to see the Cape?</h3>
+			<p class="text-beach-slate/60 font-sans text-sm mb-12 leading-relaxed">
+				Whether you're looking for fresh seafood, beach gear, or a sunset horseback ride, the local community 
+				at Cape San Blas has everything you need for a perfect coastal retreat.
+			</p>
+			<a href="/barrier-dunes/condos" class="inline-block bg-beach-slate text-white px-16 py-5 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sand transition-all duration-300 shadow-xl">
+				Book Your Stay
+			</a>
 		</div>
 	</section>
 </Layout>

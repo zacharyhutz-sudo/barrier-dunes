@@ -52,9 +52,6 @@ const condos = [
 	<section class="relative h-[600px] w-full bg-beach-slate overflow-hidden border-y border-beach-sky/20">
 		<div id="condo-map" class="h-full w-full z-10"></div>
 		
-		<!-- Cooler Blue Tint Overlay to neutralize warmth and decrease color temperature -->
-		<div class="absolute inset-0 z-[11] pointer-events-none bg-[#004d4d]/10 mix-blend-multiply"></div>
-		
 		<!-- Map Legend -->
 		<div class="absolute bottom-6 right-6 z-20 hidden md:block">
 			<div class="bg-white/90 backdrop-blur-sm p-4 border border-beach-sky/20 shadow-lg space-y-2">
@@ -187,9 +184,16 @@ const condos = [
 </script>
 
 <style is:global>
-	/* Map Filter to remove yellowish/greenish warmth and decrease temperature (more blue/cool) */
+	/* Realistic Aerial Color Grade */
 	.beachy-map-tiles {
-		filter: saturate(0.6) contrast(1.1) brightness(1.1) hue-rotate(15deg) sepia(0.1) !important;
+		/* 
+		   Saturate 0.8: Mutes the vibrant greens/blues for a dusty look
+		   Brightness 0.95: Prevents the sand/roofs from blowing out to stark white
+		   Contrast 1.1: Maintains depth and distinction between roads and vegetation
+		   Hue-rotate -2deg: Subtle shift to bring the cyans back to a natural blue-green
+		   Sepia 0.15: Adds a soft warmth to the gray roads and beige sand
+		*/
+		filter: saturate(0.8) brightness(0.95) contrast(1.1) hue-rotate(-2deg) sepia(0.15) !important;
 	}
 
 	.leaflet-popup-content-wrapper {

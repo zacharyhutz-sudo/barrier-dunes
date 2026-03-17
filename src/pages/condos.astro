@@ -52,8 +52,8 @@ const condos = [
 	<section class="relative h-[600px] w-full bg-beach-slate overflow-hidden border-y border-beach-sky/20">
 		<div id="condo-map" class="h-full w-full z-10"></div>
 		
-		<!-- Subtle Blue Tint Overlay to neutralize warmth -->
-		<div class="absolute inset-0 z-[11] pointer-events-none bg-beach-sea/5 mix-blend-multiply"></div>
+		<!-- Cooler Blue Tint Overlay to neutralize warmth and decrease color temperature -->
+		<div class="absolute inset-0 z-[11] pointer-events-none bg-[#004d4d]/10 mix-blend-multiply"></div>
 		
 		<!-- Map Legend -->
 		<div class="absolute bottom-6 right-6 z-20 hidden md:block">
@@ -187,9 +187,9 @@ const condos = [
 </script>
 
 <style is:global>
-	/* Map Filter to remove yellowish/greenish warmth */
+	/* Map Filter to remove yellowish/greenish warmth and decrease temperature (more blue/cool) */
 	.beachy-map-tiles {
-		filter: saturate(0.65) contrast(1.15) brightness(1.1) hue-rotate(-5deg) !important;
+		filter: saturate(0.6) contrast(1.1) brightness(1.1) hue-rotate(15deg) sepia(0.1) !important;
 	}
 
 	.leaflet-popup-content-wrapper {

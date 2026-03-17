@@ -40,35 +40,35 @@ import Layout from '../layouts/Layout.astro';
 	</section>
 
 	<!-- Amenity Highlight -->
-	<section class="py-24 bg-white">
+	<section class="py-16 md:py-24 bg-white border-b border-beach-sky/10">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-				<div class="p-8 border-r border-beach-sky/20">
-					<h3 class="text-3xl font-serif text-beach-slate mb-2">3</h3>
-					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-widest">Pristine Ponds</p>
+			<div class="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-8 text-center items-center">
+				<div class="px-4 md:border-r border-beach-sky/20 last:border-0">
+					<h3 class="text-3xl md:text-4xl font-serif text-beach-slate mb-2">3</h3>
+					<p class="text-[9px] md:text-[10px] font-sans text-beach-sand uppercase tracking-[.3em] font-medium">Pristine Ponds</p>
 				</div>
-				<div class="p-8 border-r border-beach-sky/20">
-					<h3 class="text-3xl font-serif text-beach-slate mb-2">2</h3>
-					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-widest">Resort Pools</p>
+				<div class="px-4 md:border-r border-beach-sky/20 last:border-0">
+					<h3 class="text-3xl md:text-4xl font-serif text-beach-slate mb-2">2</h3>
+					<p class="text-[9px] md:text-[10px] font-sans text-beach-sand uppercase tracking-[.3em] font-medium">Resort Pools</p>
 				</div>
-				<div class="p-8 border-r border-beach-sky/20">
-					<h3 class="text-3xl font-serif text-beach-slate mb-2">1</h3>
-					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-widest">Playground</p>
+				<div class="px-4 md:border-r border-beach-sky/20 last:border-0">
+					<h3 class="text-3xl md:text-4xl font-serif text-beach-slate mb-2">1</h3>
+					<p class="text-[9px] md:text-[10px] font-sans text-beach-sand uppercase tracking-[.3em] font-medium">Playground</p>
 				</div>
-				<div class="p-8">
-					<h3 class="text-3xl font-serif text-beach-slate mb-2">1</h3>
-					<p class="text-[10px] font-sans text-beach-sand uppercase tracking-widest">Tennis Court</p>
+				<div class="px-4">
+					<h3 class="text-3xl md:text-4xl font-serif text-beach-slate mb-2">1</h3>
+					<p class="text-[9px] md:text-[10px] font-sans text-beach-sand uppercase tracking-[.3em] font-medium">Tennis Court</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Content Section 1: The Area -->
-	<section class="py-32 bg-beach-sky/10">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+	<section class="py-20 md:py-32 bg-beach-sky/10">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 			<div>
 				<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">THE PENINSULA</span>
-				<h2 class="text-4xl font-serif text-beach-slate mb-8 leading-tight">
+				<h2 class="text-3xl md:text-4xl font-serif text-beach-slate mb-6 md:mb-8 leading-tight">
 					Cape San Blas is one of Florida's rarest finds.
 				</h2>
 				<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-10 tracking-wide">
@@ -76,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
 					For years St. Joseph Peninsula State Park, which occupies the last 10 miles of the peninsula, was the only sign of development. 
 					Now, the park has a friendly neighbor.
 				</p>
-				<a href="/barrier-dunes/local-attractions" class="group flex items-center text-xs font-sans uppercase tracking-widest text-beach-slate">
+				<a href="/barrier-dunes/local-attractions" class="group flex items-center text-[10px] md:text-xs font-sans uppercase tracking-widest text-beach-slate">
 					<span class="border-b border-beach-sand group-hover:border-beach-sea transition-colors pb-1 mr-4">Local Attractions</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</a>
@@ -86,8 +86,8 @@ import Layout from '../layouts/Layout.astro';
 					<img src="/barrier-dunes/images/beach-boardwalk.webp" alt="Beach Boardwalk" class="w-full h-full object-cover" />
 				</div>
 				<!-- Floating Decorative Element -->
-				<div class="absolute -bottom-10 -left-10 w-48 h-48 bg-beach-sky p-8 hidden md:block">
-					<p class="text-[10px] font-sans uppercase tracking-[.2em] leading-loose text-beach-slate/60">
+				<div class="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 w-32 h-32 md:w-48 md:h-48 bg-beach-sky p-4 md:p-8">
+					<p class="text-[9px] md:text-[10px] font-sans uppercase tracking-[.2em] leading-loose text-beach-slate/60">
 						Sugar-white sand and emerald green waters.
 					</p>
 				</div>
@@ -96,8 +96,8 @@ import Layout from '../layouts/Layout.astro';
 	</section>
 
 	<!-- Content Section 2: The Community -->
-	<section class="py-32 bg-white">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+	<section class="py-20 md:py-32 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 			<div class="order-2 md:order-1 relative">
 				<div class="aspect-[4/3] bg-beach-sand/20 overflow-hidden">
 					<img src="/barrier-dunes/images/pool-beach-view.jpg" alt="Gulf Front Pool" class="w-full h-full object-cover" />
@@ -105,7 +105,7 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 			<div class="order-1 md:order-2">
 				<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">THE COMMUNITY</span>
-				<h2 class="text-4xl font-serif text-beach-slate mb-8 leading-tight">
+				<h2 class="text-3xl md:text-4xl font-serif text-beach-slate mb-6 md:mb-8 leading-tight">
 					Barrier Dunes is the place to go.
 				</h2>
 				<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-10 tracking-wide">
@@ -113,7 +113,7 @@ import Layout from '../layouts/Layout.astro';
 					Townhomes and palm trees, sand dunes and sea oats, lakes, boardwalks and beaches all blend to create a peaceful unspoiled environment in which to live and play. 
 					Many homes are available for vacation stays, rented through local vacation rentals companies.
 				</p>
-				<a href="/barrier-dunes/barrier-dunes-resources" class="group flex items-center text-xs font-sans uppercase tracking-widest text-beach-slate">
+				<a href="/barrier-dunes/barrier-dunes-resources" class="group flex items-center text-[10px] md:text-xs font-sans uppercase tracking-widest text-beach-slate">
 					<span class="border-b border-beach-sand group-hover:border-beach-sea transition-colors pb-1 mr-4">Community Resources</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</a>

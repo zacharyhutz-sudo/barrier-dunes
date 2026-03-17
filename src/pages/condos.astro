@@ -15,7 +15,7 @@ const condos = [
 			"Located near tennis courts and pool"
 		],
 		link: "https://theresalwaystimeforthesea.com",
-		coordinates: [29.7534, -85.3923]
+		coordinates: [29.74901, -85.39838]
 	},
 	{
 		id: "dune-reel-good",
@@ -31,24 +31,27 @@ const condos = [
 			"Enclosed Hot/Cold Outdoor Shower"
 		],
 		link: "https://www.thecapeescape.com/cape-san-blas-vacation-rentals/dune-reel-good/",
-		coordinates: [29.7607, -85.3993]
+		coordinates: [29.74788, -85.39801]
 	}
 ];
 ---
 
 <Layout title="Condos for Rent">
+	<!-- Title Section -->
+	<section class="py-20 bg-beach-sand/5">
+		<div class="max-w-4xl mx-auto px-4 text-center">
+			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">STAY AT BARRIER DUNES</span>
+			<h1 class="text-5xl font-serif text-beach-slate mb-8">Community Map</h1>
+			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
+				Find your home away from home. Use the interactive map below to explore our rentals and amenities.
+			</p>
+		</div>
+	</section>
+
 	<!-- Map Section -->
-	<section class="relative h-[500px] w-full bg-beach-slate overflow-hidden">
+	<section class="relative h-[600px] w-full bg-beach-slate overflow-hidden border-y border-beach-sky/20">
 		<div id="condo-map" class="h-full w-full z-10"></div>
 		
-		<!-- Map Overlay -->
-		<div class="absolute top-10 left-1/2 -translate-x-1/2 z-20 w-full max-w-xl px-4 pointer-events-none">
-			<div class="bg-white/80 backdrop-blur-md border border-white/20 p-6 text-center shadow-2xl">
-				<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-2 block">STAY AT BARRIER DUNES</span>
-				<h1 class="text-3xl font-serif text-beach-slate uppercase tracking-widest">Community Map</h1>
-			</div>
-		</div>
-
 		<!-- Map Legend -->
 		<div class="absolute bottom-6 right-6 z-20 hidden md:block">
 			<div class="bg-white/90 backdrop-blur-sm p-4 border border-beach-sky/20 shadow-lg space-y-2">
@@ -59,16 +62,6 @@ const condos = [
 					<span class="w-3 h-3 bg-beach-sand rounded-full mr-3 shadow-sm"></span> Amenities
 				</div>
 			</div>
-		</div>
-	</section>
-
-	<section class="py-20 bg-beach-sand/5">
-		<div class="max-w-4xl mx-auto px-4 text-center">
-			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">STAY AT BARRIER DUNES</span>
-			<h1 class="text-5xl font-serif text-beach-slate mb-8">Condos for Rent</h1>
-			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
-				Discover private rentals within our gated community. From beachfront escapes to poolside retreats.
-			</p>
 		</div>
 	</section>
 
@@ -135,8 +128,8 @@ const condos = [
 	// Wait for Leaflet to be ready
 	window.addEventListener('load', () => {
 		const map = L.map('condo-map', {
-			center: [29.7575, -85.3965],
-			zoom: 16,
+			center: [29.7485, -85.3975],
+			zoom: 17,
 			scrollWheelZoom: false
 		});
 
@@ -166,7 +159,7 @@ const condos = [
 			}
 		});
 
-		// Add Amenities markers (Approximate locations for POI)
+		// Add Amenities markers
 		const amenityIcon = L.divIcon({
 			className: 'custom-div-icon',
 			html: `<div style="background-color: #c4a484; width: 8px; height: 8px; border: 1.5px solid white; border-radius: 50%;"></div>`,
@@ -175,11 +168,11 @@ const condos = [
 		});
 
 		const amenities = [
-			{ name: "Gated Entrance", coords: [29.7523, -85.3916] },
-			{ name: "Beachfront Pool", coords: [29.7544, -85.3934] },
-			{ name: "Interior Pool", coords: [29.7554, -85.3935] },
-			{ name: "Tennis Courts", coords: [29.7548, -85.3931] },
-			{ name: "Playground", coords: [29.7528, -85.3920] }
+			{ name: "Gated Entrance", coords: [29.74821, -85.39611] },
+			{ name: "Beachfront Pool", coords: [29.74852, -85.39932] },
+			{ name: "Interior Pool", coords: [29.74931, -85.39780] },
+			{ name: "Tennis Courts", coords: [29.74927, -85.39813] },
+			{ name: "Playground", coords: [29.74882, -85.39650] }
 		];
 
 		amenities.forEach(amenity => {

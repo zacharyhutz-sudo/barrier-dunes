@@ -49,9 +49,16 @@ const condos = [
 	</section>
 
 	<!-- Map Section -->
-	<section class="relative h-[600px] w-full bg-beach-slate overflow-hidden border-y border-beach-sky/20">
+	<section class="relative h-[450px] md:h-[600px] w-full bg-beach-slate overflow-hidden border-y border-beach-sky/20">
 		<div id="condo-map" class="h-full w-full z-10"></div>
 		
+		<!-- Mobile Interaction Overlay -->
+		<div id="map-interaction-overlay" class="absolute inset-0 z-[15] bg-beach-slate/10 flex items-center justify-center cursor-pointer group md:hidden">
+			<div class="bg-white/90 backdrop-blur-sm px-6 py-3 border border-beach-sky/20 shadow-xl pointer-events-none">
+				<p class="text-[10px] font-sans uppercase tracking-[.3em] text-beach-slate">Tap to Explore Map</p>
+			</div>
+		</div>
+
 		<!-- Map Legend -->
 		<div class="absolute bottom-6 right-6 z-20 hidden md:block">
 			<div class="bg-white/90 backdrop-blur-sm p-4 border border-beach-sky/20 shadow-lg space-y-2">
@@ -127,10 +134,14 @@ const condos = [
 <script is:inline define:vars={{ condos }}>
 	// Wait for Leaflet to be ready
 	window.addEventListener('load', () => {
+		const isMobile = window.innerWidth < 768;
+		
 		const map = L.map('condo-map', {
 			center: [29.7485, -85.3975],
 			zoom: 17,
-			scrollWheelZoom: false
+			scrollWheelZoom: false,
+			dragging: !isMobile,
+			tap: !isMobile
 		});
 
 		// Add ESRI Satellite Imagery with a custom class for filtering
@@ -138,6 +149,16 @@ const condos = [
 			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
 			className: 'beachy-map-tiles'
 		}).addTo(map);
+
+		// Handle Mobile Interaction Overlay
+		const overlay = document.getElementById('map-interaction-overlay');
+		if (overlay) {
+			overlay.addEventListener('click', () => {
+				overlay.style.display = 'none';
+				map.dragging.enable();
+				if (map.tap) map.tap.enable();
+			});
+		}
 
 		// Custom Condo Icon
 		const condoIcon = L.divIcon({

@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 const condos = [
 	{
+		id: "sherri",
 		name: "There's Always Time for the Sea",
 		image: "/barrier-dunes/images/sherri-condo.jpg",
 		beds: "2 Bedrooms (1 King, 2 Queens)",
@@ -13,9 +14,11 @@ const condos = [
 			"Private balconies for each bedroom",
 			"Located near tennis courts and pool"
 		],
-		link: "https://theresalwaystimeforthesea.com"
+		link: "https://theresalwaystimeforthesea.com",
+		coordinates: [29.7534, -85.3923]
 	},
 	{
+		id: "dune-reel-good",
 		name: "Dune Reel Good",
 		image: "/barrier-dunes/images/dune-reel-good.jpg",
 		beds: "2 Bedrooms (King, Queen)",
@@ -27,12 +30,38 @@ const condos = [
 			"Beach gear included with stay",
 			"Enclosed Hot/Cold Outdoor Shower"
 		],
-		link: "https://www.thecapeescape.com/cape-san-blas-vacation-rentals/dune-reel-good/"
+		link: "https://www.thecapeescape.com/cape-san-blas-vacation-rentals/dune-reel-good/",
+		coordinates: [29.7607, -85.3993]
 	}
 ];
 ---
 
 <Layout title="Condos for Rent">
+	<!-- Map Section -->
+	<section class="relative h-[500px] w-full bg-beach-slate overflow-hidden">
+		<div id="condo-map" class="h-full w-full z-10"></div>
+		
+		<!-- Map Overlay -->
+		<div class="absolute top-10 left-1/2 -translate-x-1/2 z-20 w-full max-w-xl px-4 pointer-events-none">
+			<div class="bg-white/80 backdrop-blur-md border border-white/20 p-6 text-center shadow-2xl">
+				<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-2 block">STAY AT BARRIER DUNES</span>
+				<h1 class="text-3xl font-serif text-beach-slate uppercase tracking-widest">Community Map</h1>
+			</div>
+		</div>
+
+		<!-- Map Legend -->
+		<div class="absolute bottom-6 right-6 z-20 hidden md:block">
+			<div class="bg-white/90 backdrop-blur-sm p-4 border border-beach-sky/20 shadow-lg space-y-2">
+				<div class="flex items-center text-[10px] font-sans uppercase tracking-widest text-beach-slate">
+					<span class="w-3 h-3 bg-beach-sea rounded-full mr-3 shadow-sm"></span> Available Condos
+				</div>
+				<div class="flex items-center text-[10px] font-sans uppercase tracking-widest text-beach-slate">
+					<span class="w-3 h-3 bg-beach-sand rounded-full mr-3 shadow-sm"></span> Amenities
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<section class="py-20 bg-beach-sand/5">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">STAY AT BARRIER DUNES</span>
@@ -47,7 +76,7 @@ const condos = [
 		<div class="max-w-6xl mx-auto px-4">
 			<div class="space-y-16">
 				{condos.map((condo) => (
-					<div class="flex flex-col md:flex-row bg-white border border-beach-sky/20 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500">
+					<div id={condo.id} class="flex flex-col md:flex-row bg-white border border-beach-sky/20 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500">
 						<!-- Image Left -->
 						<div class="w-full md:w-1/2 aspect-video md:aspect-auto h-64 md:h-auto overflow-hidden">
 							<img src={condo.image} alt={condo.name} class="w-full h-full object-cover" />
@@ -98,3 +127,77 @@ const condos = [
 		</div>
 	</section>
 </Layout>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<script is:inline define:vars={{ condos }}>
+	// Wait for Leaflet to be ready
+	window.addEventListener('load', () => {
+		const map = L.map('condo-map', {
+			center: [29.7575, -85.3965],
+			zoom: 16,
+			scrollWheelZoom: false
+		});
+
+		// Add ESRI Satellite Imagery
+		L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+		}).addTo(map);
+
+		// Custom Condo Icon
+		const condoIcon = L.divIcon({
+			className: 'custom-div-icon',
+			html: `<div style="background-color: #004d4d; width: 12px; height: 12px; border: 2px solid white; border-radius: 50%; box-shadow: 0 0 10px rgba(0,0,0,0.5);"></div>`,
+			iconSize: [12, 12],
+			iconAnchor: [6, 6]
+		});
+
+		// Add markers for each condo
+		condos.forEach(condo => {
+			if (condo.coordinates) {
+				const marker = L.marker(condo.coordinates, { icon: condoIcon }).addTo(map);
+				marker.bindPopup(`
+					<div style="font-family: serif; text-align: center; padding: 5px;">
+						<p style="margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; font-weight: bold; color: #333;">${condo.name}</p>
+						<a href="#${condo.id}" style="color: #c4a484; text-decoration: none; font-size: 10px; text-transform: uppercase; font-weight: bold;">View Details</a>
+					</div>
+				`);
+			}
+		});
+
+		// Add Amenities markers (Approximate locations for POI)
+		const amenityIcon = L.divIcon({
+			className: 'custom-div-icon',
+			html: `<div style="background-color: #c4a484; width: 8px; height: 8px; border: 1.5px solid white; border-radius: 50%;"></div>`,
+			iconSize: [8, 8],
+			iconAnchor: [4, 4]
+		});
+
+		const amenities = [
+			{ name: "Gated Entrance", coords: [29.7523, -85.3916] },
+			{ name: "Beachfront Pool", coords: [29.7544, -85.3934] },
+			{ name: "Interior Pool", coords: [29.7554, -85.3935] },
+			{ name: "Tennis Courts", coords: [29.7548, -85.3931] },
+			{ name: "Playground", coords: [29.7528, -85.3920] }
+		];
+
+		amenities.forEach(amenity => {
+			L.marker(amenity.coords, { icon: amenityIcon }).addTo(map)
+				.bindTooltip(amenity.name, { permanent: false, direction: 'top' });
+		});
+	});
+</script>
+
+<style is:global>
+	.leaflet-popup-content-wrapper {
+		border-radius: 0;
+		padding: 5px;
+	}
+	.leaflet-popup-tip {
+		display: none;
+	}
+	.leaflet-container {
+		font-family: inherit;
+	}
+</style>

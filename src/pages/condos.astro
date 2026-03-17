@@ -184,16 +184,15 @@ const condos = [
 </script>
 
 <style is:global>
-	/* Realistic Aerial Color Grade */
+	/* Refined Aerial Color Grade */
 	.beachy-map-tiles {
 		/* 
-		   Saturate 0.8: Mutes the vibrant greens/blues for a dusty look
-		   Brightness 0.95: Prevents the sand/roofs from blowing out to stark white
-		   Contrast 1.1: Maintains depth and distinction between roads and vegetation
-		   Hue-rotate -2deg: Subtle shift to bring the cyans back to a natural blue-green
-		   Sepia 0.15: Adds a soft warmth to the gray roads and beige sand
+		   Brightness 1.15: Lifts the shadows to reveal detail in the water and roads
+		   Saturate 0.8: Mutes the greens to a natural olive/sage palette
+		   Contrast 1.05: Keeps the image crisp without crushing the blacks
+		   Hue-rotate -8deg: Shifts the yellowish-greens toward a cooler, more natural coastal green
 		*/
-		filter: saturate(0.8) brightness(0.95) contrast(1.1) hue-rotate(-2deg) sepia(0.15) !important;
+		filter: brightness(1.15) saturate(0.8) contrast(1.05) hue-rotate(-8deg) !important;
 	}
 
 	.leaflet-popup-content-wrapper {

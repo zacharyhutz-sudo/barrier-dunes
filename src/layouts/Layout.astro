@@ -47,8 +47,21 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 	html {
 		font-family: 'Montserrat', sans-serif;
 		scroll-behavior: smooth;
+		-webkit-tap-highlight-color: transparent;
 	}
 	h1, h2, h3, h4, h5, h6 {
 		font-family: 'Playfair Display', serif;
+	}
+
+	/* Mobile typography refinement */
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 2.5rem !important; /* text-4xl equivalent */
+			line-height: 1.2 !important;
+		}
+		h2 {
+			font-size: 1.875rem !important; /* text-3xl equivalent */
+			line-height: 1.3 !important;
+		}
 	}
 </style>

@@ -63,10 +63,10 @@ const activityCategories = [
 ---
 
 <Layout title="Local Attractions">
-	<section class="py-20 bg-beach-sand/5">
+	<section class="py-16 md:py-20 bg-beach-sand/5">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">EXPLORE GULF COUNTY</span>
-			<h1 class="text-5xl font-serif text-beach-slate mb-8">Local Attractions</h1>
+			<h1 class="text-4xl md:text-5xl font-serif text-beach-slate mb-8">Local Attractions</h1>
 			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
 				From the pristine shores of T.H. Stone State Park to the legendary donuts at Weber's, 
 				discover everything that makes Cape San Blas a world-class destination.
@@ -74,19 +74,19 @@ const activityCategories = [
 		</div>
 	</section>
 
-	<section class="py-24 bg-white">
+	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
-			<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-16 text-center">Pristine Parks & Trails</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
+			<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-12 md:mb-16 text-center">Pristine Parks & Trails</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
 				{destinations.map((dest) => (
 					<div class="group">
-						<div class="aspect-[16/9] bg-beach-sky/20 mb-8 overflow-hidden relative">
+						<div class="aspect-[16/9] bg-beach-sky/20 mb-6 md:mb-8 overflow-hidden relative">
 							<img src={dest.image} alt={dest.name} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-							<div class="absolute bottom-0 left-0 bg-beach-slate/90 text-white px-6 py-2 text-[10px] font-sans uppercase tracking-widest">
+							<div class="absolute bottom-0 left-0 bg-beach-slate/90 text-white px-4 md:px-6 py-2 text-[9px] md:text-[10px] font-sans uppercase tracking-widest">
 								{dest.address}
 							</div>
 						</div>
-						<h3 class="text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
+						<h3 class="text-xl md:text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
 						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-6">{dest.description}</p>
 					</div>
 				))}
@@ -94,13 +94,13 @@ const activityCategories = [
 		</div>
 	</section>
 
-	<section class="py-24 bg-beach-slate text-white">
+	<section class="py-16 md:py-24 bg-beach-slate text-white">
 		<div class="max-w-7xl mx-auto px-4">
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
 				{activityCategories.map((cat) => (
 					<div>
-						<h3 class="text-beach-sea font-sans text-[10px] uppercase tracking-[.3em] mb-12 border-b border-beach-sea/30 pb-4">{cat.title}</h3>
-						<ul class="space-y-8">
+						<h3 class="text-beach-sea font-sans text-[10px] uppercase tracking-[.3em] mb-8 md:mb-12 border-b border-beach-sea/30 pb-4">{cat.title}</h3>
+						<ul class="space-y-6 md:space-y-8">
 							{cat.items.map((item) => (
 								<li>
 									<p class="text-sm font-serif tracking-wide text-white mb-1">{item.name}</p>
@@ -115,15 +115,15 @@ const activityCategories = [
 		</div>
 	</section>
 
-	<section class="py-24 bg-white text-center">
+	<section class="py-20 md:py-24 bg-white text-center">
 		<div class="max-w-2xl mx-auto px-4">
-			<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Plan Your Adventure</h2>
-			<h3 class="text-3xl font-serif text-beach-slate mb-8 tracking-tight italic">Ready to see the Cape?</h3>
+			<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Plan Your Adventure</h2>
+			<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-8 tracking-tight italic">Ready to see the Cape?</h3>
 			<p class="text-beach-slate/60 font-sans text-sm mb-12 leading-relaxed">
 				Whether you're looking for fresh seafood, beach gear, or a sunset horseback ride, the local community 
 				at Cape San Blas has everything you need for a perfect coastal retreat.
 			</p>
-			<a href="/barrier-dunes/condos" class="inline-block bg-beach-slate text-white px-16 py-5 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sand transition-all duration-300 shadow-xl">
+			<a href="/barrier-dunes/condos" class="inline-block bg-beach-slate text-white px-10 md:px-16 py-4 md:py-5 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sand transition-all duration-300 shadow-xl w-full md:w-auto">
 				Book Your Stay
 			</a>
 		</div>

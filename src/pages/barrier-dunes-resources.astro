@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Resources">
-	<section class="py-20 bg-beach-sky/20">
+	<section class="py-16 md:py-20 bg-beach-sky/20">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">COMMUNITY MANAGEMENT</span>
-			<h1 class="text-5xl font-serif text-beach-slate mb-8">Barrier Dunes Resources</h1>
+			<h1 class="text-4xl md:text-5xl font-serif text-beach-slate mb-8">Barrier Dunes Resources</h1>
 			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
 				Forms, documents, and essential information for renters and homeowners. 
 				Manage your stay and access community amenities.
@@ -14,59 +14,59 @@ import Layout from '../layouts/Layout.astro';
 		</div>
 	</section>
 
-	<section class="py-24 bg-white">
-		<div class="max-w-5xl mx-auto px-4 space-y-32">
+	<section class="py-16 md:py-24 bg-white">
+		<div class="max-w-5xl mx-auto px-4 space-y-20 md:space-y-32">
 			
 			<!-- Renter Maintenance -->
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
 				<div>
-					<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Maintenance</h2>
-					<h3 class="text-3xl font-serif text-beach-slate mb-6">Report Amenity Issues</h3>
+					<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-6 md:mb-8">Maintenance</h2>
+					<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Report Amenity Issues</h3>
 					<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-10">
 						If you are a renter at Barrier Dunes and need to report issues concerning our services, rental amenities, 
 						or missing items, please contact your **rental contact person** as shown on your rental contract.
 					</p>
-					<div class="p-8 bg-beach-sky/10 border-l-2 border-beach-sea">
-						<p class="text-[11px] font-sans text-beach-slate/60 uppercase tracking-widest leading-loose">
+					<div class="p-6 md:p-8 bg-beach-sky/10 border-l-2 border-beach-sea">
+						<p class="text-[10px] md:text-[11px] font-sans text-beach-slate/60 uppercase tracking-widest leading-loose">
 							Note: The Association does not manage individual rentals directly. Issues within the home must be addressed via your rental agency or owner.
 						</p>
 					</div>
 				</div>
-				<div class="aspect-square bg-beach-sea/5 overflow-hidden group">
+				<div class="aspect-square bg-beach-sea/5 overflow-hidden group rounded-sm">
 					<img src="/barrier-dunes/images/pool-overhead.webp" alt="Barrier Dunes Amenity" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
 				</div>
 			</div>
 
 			<!-- Clubhouse Rental -->
-			<div class="bg-beach-slate text-white p-12 md:p-24 relative overflow-hidden">
+			<div class="bg-beach-slate text-white p-8 md:p-24 relative overflow-hidden rounded-sm shadow-2xl">
 				<!-- Decorative Background Text -->
-				<div class="absolute top-0 right-0 text-white/5 font-serif text-[12rem] select-none pointer-events-none -translate-y-1/2 translate-x-1/4">Rental</div>
+				<div class="absolute top-0 right-0 text-white/5 font-serif text-[8rem] md:text-[12rem] select-none pointer-events-none -translate-y-1/2 translate-x-1/4">Rental</div>
 				
-				<div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-16">
+				<div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16">
 					<div class="lg:col-span-2">
-						<h2 class="text-xs font-sans font-bold text-beach-sea uppercase tracking-[.4em] mb-8">Private Events</h2>
-						<h3 class="text-4xl font-serif mb-8 italic">Reserve the Barrier Dunes Clubhouse</h3>
-						<p class="text-white/70 font-sans text-sm leading-relaxed mb-12 max-w-xl">
+						<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sea uppercase tracking-[.4em] mb-6 md:mb-8">Private Events</h2>
+						<h3 class="text-3xl md:text-4xl font-serif mb-6 md:mb-8 italic">Reserve the Barrier Dunes Clubhouse</h3>
+						<p class="text-white/70 font-sans text-sm leading-relaxed mb-10 md:mb-12 max-w-xl">
 							The clubhouse is available for private events, meetings, and community gatherings. 
 							We encourage all residents to do their due diligence before renting the space and read the agreement in full to ensure a seamless experience.
 						</p>
 						<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
-							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/CLUBHOUSE%20RENTAL%20AGREEMENT%20August%202020.pdf" target="_blank" class="inline-block bg-white text-beach-slate px-10 py-4 text-[10px] font-sans uppercase tracking-[.3em] hover:bg-beach-sea hover:text-white transition-all duration-300 text-center">
+							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/CLUBHOUSE%20RENTAL%20AGREEMENT%20August%202020.pdf" target="_blank" class="inline-block bg-white text-beach-slate px-10 py-4 text-[10px] font-sans uppercase tracking-[.3em] hover:bg-beach-sea hover:text-white transition-all duration-300 text-center w-full sm:w-auto">
 								Download Agreement
 							</a>
-							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" class="inline-block border border-white/20 px-10 py-4 text-[10px] font-sans uppercase tracking-[.3em] hover:bg-white hover:text-beach-slate transition-all duration-300 text-center">
+							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" class="inline-block border border-white/20 px-10 py-4 text-[10px] font-sans uppercase tracking-[.3em] hover:bg-white hover:text-beach-slate transition-all duration-300 text-center w-full sm:w-auto">
 								Rules & Regulations
 							</a>
 						</div>
 					</div>
 					
 					<div class="flex flex-col justify-center">
-						<div class="bg-white/5 p-10 border border-white/10 backdrop-blur-sm">
-							<h4 class="text-[10px] font-sans uppercase tracking-widest text-beach-sea mb-6">Reservation Form</h4>
-							<p class="text-xs text-white/50 font-sans leading-relaxed mb-8">
+						<div class="bg-white/5 p-8 md:p-10 border border-white/10 backdrop-blur-sm rounded-sm">
+							<h4 class="text-[10px] font-sans uppercase tracking-widest text-beach-sea mb-6 text-center lg:text-left">Reservation Form</h4>
+							<p class="text-xs text-white/50 font-sans leading-relaxed mb-8 text-center lg:text-left">
 								Clubhouse booking requests are managed via the official Homeowner Portal.
 							</p>
-							<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="group flex items-center text-[10px] font-sans uppercase tracking-widest text-white">
+							<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="group flex items-center justify-center lg:justify-start text-[10px] font-sans uppercase tracking-widest text-white">
 								<span class="border-b border-beach-sea pb-1 mr-4">Access Portal</span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 							</a>
@@ -79,14 +79,14 @@ import Layout from '../layouts/Layout.astro';
 	</section>
 
 	<!-- HOA CTA -->
-	<section class="py-24 bg-white text-center">
+	<section class="py-16 md:py-24 bg-white text-center border-t border-beach-sky/10">
 		<div class="max-w-2xl mx-auto px-4">
-			<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Homeowner Access</h2>
-			<h3 class="text-3xl font-serif text-beach-slate mb-8 tracking-tight">Already own a property?</h3>
+			<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Homeowner Access</h2>
+			<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-8 tracking-tight">Already own a property?</h3>
 			<p class="text-beach-slate/60 font-sans text-sm mb-12 leading-relaxed">
 				Login to your Homeowner Association account panel to view private community updates, manage documents, and submit maintenance requests.
 			</p>
-			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="inline-block bg-beach-slate text-white px-16 py-5 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sand transition-all duration-300 shadow-xl">
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="inline-block bg-beach-slate text-white px-10 md:px-16 py-4 md:py-5 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sand transition-all duration-300 shadow-xl w-full sm:w-auto">
 				HOA Login
 			</a>
 		</div>

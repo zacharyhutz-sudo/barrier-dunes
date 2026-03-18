@@ -25,25 +25,25 @@ const contacts = [
 ---
 
 <Layout title="Local Resources">
-	<section class="py-20 bg-beach-sand/5">
+	<section class="py-16 md:py-20 bg-beach-sand/5">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">ESSENTIAL SERVICES</span>
-			<h1 class="text-5xl font-serif text-beach-slate mb-8">Local Resources</h1>
+			<h1 class="text-4xl md:text-5xl font-serif text-beach-slate mb-8">Local Resources</h1>
 			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
 				Directories and safety systems to assist homeowners and guests while in Gulf County.
 			</p>
 		</div>
 	</section>
 
-	<section class="py-24 bg-white">
+	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
 				
 				<!-- Safety & Fire -->
-				<div class="space-y-12">
+				<div class="space-y-10 md:space-y-12">
 					<div>
-						<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Beach Safety</h2>
-						<h3 class="text-3xl font-serif text-beach-slate mb-6">Beach Flag Warning System</h3>
+						<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-6 md:mb-8">Beach Safety</h2>
+						<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Beach Flag Warning System</h3>
 						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-8">
 							We encourage all guests to become familiar with the South Gulf Fire and Rescue's Flag Warning System. 
 							Cape San Blas maintains these flags to ensure you stay safe while enjoying the emerald waters. 
@@ -61,20 +61,20 @@ const contacts = [
 				</div>
 
 				<!-- Directories & Contacts -->
-				<div class="space-y-16">
+				<div class="space-y-12 md:space-y-16">
 					<div>
-						<h2 class="text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Directories</h2>
-						<h3 class="text-3xl font-serif text-beach-slate mb-6">Vacation Catalog</h3>
+						<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-6 md:mb-8">Directories</h2>
+						<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Vacation Catalog</h3>
 						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-8">
 							Access current directories to help assist you with locating services, medical support, 
 							and other resources while in Gulf County.
 						</p>
-						<a href="https://business.gulfchamber.org/list/searchalpha/c" target="_blank" class="inline-block border border-beach-slate px-10 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-slate hover:text-white transition-all duration-300">
+						<a href="https://business.gulfchamber.org/list/searchalpha/c" target="_blank" class="inline-block border border-beach-slate px-10 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-slate hover:text-white transition-all duration-300 w-full md:w-auto text-center">
 							Search Directory
 						</a>
 					</div>
 
-					<div class="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-12 border-t border-beach-sky/30">
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12 pt-10 md:pt-12 border-t border-beach-sky/30">
 						{contacts.map((cat) => (
 							<div>
 								<h4 class="text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand mb-6">{cat.category}</h4>
@@ -95,13 +95,13 @@ const contacts = [
 		</div>
 	</section>
 
-	<section class="py-24 bg-beach-slate text-white text-center">
+	<section class="py-16 md:py-24 bg-beach-slate text-white text-center">
 		<div class="max-w-xl mx-auto px-4">
 			<h2 class="text-2xl font-serif mb-8">Homeowner Management</h2>
-			<p class="text-white/60 font-sans text-xs uppercase tracking-widest leading-loose mb-12">
+			<p class="text-white/70 font-sans text-[11px] md:text-xs uppercase tracking-widest leading-loose mb-12">
 				Already own a house in Barrier Dunes? Access the association panel to view full documentation and service contacts.
 			</p>
-			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="inline-block bg-beach-sand px-12 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-white hover:text-beach-slate transition-all duration-300">
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="inline-block bg-beach-sand px-12 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-white hover:text-beach-slate transition-all duration-300 w-full sm:w-auto">
 				HOA Login
 			</a>
 		</div>

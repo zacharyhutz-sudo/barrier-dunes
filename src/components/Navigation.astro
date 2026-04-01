@@ -24,19 +24,19 @@ const navLinks = [
 			</a>
 		</div>
 
-		<div class="hidden md:flex items-center space-x-4 lg:space-x-8">
+		<div class="hidden xl:flex items-center space-x-6 lg:space-x-8">
 			{navLinks.map((link) => (
-				<a href={link.href} class="text-[11px] lg:text-sm font-sans text-beach-slate hover:text-beach-sea transition-colors uppercase tracking-wider whitespace-nowrap">
+				<a href={link.href} class="text-[11px] lg:text-xs font-sans text-beach-slate hover:text-beach-sea transition-colors uppercase tracking-[.15em] whitespace-nowrap">
 					{link.text}
 				</a>
 			))}
-			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="bg-beach-slate text-white px-4 lg:px-6 py-2 rounded-sm text-[11px] lg:text-sm font-sans uppercase tracking-widest hover:bg-beach-sea transition-colors whitespace-nowrap">
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" class="bg-beach-slate text-white px-4 lg:px-6 py-2 rounded-sm text-[11px] lg:text-xs font-sans uppercase tracking-widest hover:bg-beach-sea transition-colors whitespace-nowrap">
 				Login
 			</a>
 		</div>
 
-		<!-- Mobile Menu Button -->
-		<div class="md:hidden">
+		<!-- Mobile Menu Button (Tablet & Mobile) -->
+		<div class="xl:hidden">
 			<button id="mobile-menu-button" class="text-beach-slate p-2" aria-label="Menu">
 				<svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
 				<svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -45,7 +45,7 @@ const navLinks = [
 	</nav>
 
 	<!-- Mobile Menu Sidebar -->
-	<div id="mobile-menu" class="fixed inset-0 z-[100] transform translate-x-full transition-transform duration-500 ease-in-out md:hidden invisible overflow-hidden">
+	<div id="mobile-menu" class="fixed inset-0 z-[100] transform translate-x-full transition-transform duration-500 ease-in-out xl:hidden invisible overflow-hidden">
 		<!-- Backdrop -->
 		<div id="mobile-menu-backdrop" class="absolute inset-0 bg-beach-slate/60 backdrop-blur-md opacity-0 transition-opacity duration-500"></div>
 		

@@ -1,6 +1,7 @@
 import { isSupabaseConfigured, supabase } from '../lib/supabaseClient.js';
 
-const baseUrl = import.meta.env.BASE_URL || '/';
+const rawBaseUrl = import.meta.env.BASE_URL || '/';
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 const adminUrl = `${baseUrl}admin`;
 
 const form = document.querySelector('[data-login-form]');

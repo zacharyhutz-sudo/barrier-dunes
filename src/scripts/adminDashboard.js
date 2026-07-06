@@ -1,7 +1,8 @@
 import { isSupabaseConfigured, supabase } from '../lib/supabaseClient.js';
 import { STATUS_LABELS, formatDisplayDate, getPrimaryStatus, toDateInputValue } from '../lib/adminStatus.js';
 
-const baseUrl = import.meta.env.BASE_URL || '/';
+const rawBaseUrl = import.meta.env.BASE_URL || '/';
+const baseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl : `${rawBaseUrl}/`;
 const loginUrl = `${baseUrl}admin/login`;
 
 const state = {

@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<Layout title="Admin Login">
+  <section class="min-h-[70vh] bg-beach-sky/10 px-4 py-16 md:py-24">
+    <div class="mx-auto max-w-md border border-beach-sky/30 bg-white p-8 shadow-sm md:p-10">
+      <a href={base} class="mb-8 inline-block text-[10px] font-sans uppercase tracking-[.3em] text-beach-slate/60 hover:text-beach-slate">
+        ← Back to site
+      </a>
+
+      <span class="mb-4 block text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand">Private HOA Access</span>
+      <h1 class="mb-4 font-serif text-3xl text-beach-slate">Admin Login</h1>
+      <p class="mb-8 text-sm leading-relaxed text-beach-slate/70">
+        Sign in to view and update private Barrier Dunes unit status records.
+      </p>
+
+      <form data-login-form class="space-y-5">
+        <label class="block">
+          <span class="mb-2 block text-[10px] font-sans uppercase tracking-[.25em] text-beach-slate/70">Email</span>
+          <input name="email" type="email" autocomplete="email" required class="w-full border border-beach-sky/40 px-4 py-3 font-sans text-sm text-beach-slate outline-none focus:border-beach-sea" />
+        </label>
+
+        <label class="block">
+          <span class="mb-2 block text-[10px] font-sans uppercase tracking-[.25em] text-beach-slate/70">Password</span>
+          <input name="password" type="password" autocomplete="current-password" required class="w-full border border-beach-sky/40 px-4 py-3 font-sans text-sm text-beach-slate outline-none focus:border-beach-sea" />
+        </label>
+
+        <button data-login-submit type="submit" class="w-full bg-beach-slate px-6 py-4 text-[10px] font-sans uppercase tracking-[.35em] text-white transition hover:bg-beach-sea disabled:cursor-not-allowed disabled:opacity-50">
+          Sign In
+        </button>
+
+        <p data-login-message class="min-h-6 text-sm text-beach-slate/70" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import '../../scripts/adminLogin.js';
+</script>
+
+<style is:global>
+  [data-login-message][data-type="error"] { color: #b91c1c; }
+  [data-login-message][data-type="success"] { color: #166534; }
+</style>

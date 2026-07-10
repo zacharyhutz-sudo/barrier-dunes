@@ -44,6 +44,8 @@ const els = {
   signOut: q('[data-sign-out]'),
   message: q('[data-admin-message]'),
   adminToolsOpen: q('[data-admin-tools-open]'),
+  addUnitOpen: q('[data-add-unit-open]'),
+  emptyAddUnit: q('[data-empty-add-unit]'),
 
   summaryAttention: q('[data-summary-attention]'),
   summaryOverdue: q('[data-summary-overdue]'),
@@ -107,6 +109,19 @@ const els = {
   batchPeriod: q('[data-batch-period]'),
   batchNotes: q('[data-batch-notes]'),
   batchSubmit: q('[data-batch-submit]'),
+
+  addUnitDialog: q('[data-add-unit-dialog]'),
+  addUnitForm: q('[data-add-unit-form]'),
+  addUnitNumber: q('[data-add-unit-number]'),
+  addUnitDisplay: q('[data-add-unit-display]'),
+  addUnitBuilding: q('[data-add-unit-building]'),
+  addUnitLat: q('[data-add-unit-lat]'),
+  addUnitLng: q('[data-add-unit-lng]'),
+  addUnitNotes: q('[data-add-unit-notes]'),
+  addUnitPlace: q('[data-add-unit-place]'),
+  addUnitLocationStatus: q('[data-add-unit-location-status]'),
+  addUnitError: q('[data-add-unit-error]'),
+  addUnitSubmit: q('[data-add-unit-submit]'),
 
   adminDialog: q('[data-admin-dialog]'),
   unitForm: q('[data-unit-form]'),
@@ -603,16 +618,21 @@ function renderMap() {
     }).addTo(state.map);
     state.map.on('click', (event) => {
       if (!state.placingLocation || !canEditUnits()) return;
-      els.unitLat.value = event.latlng.lat.toFixed(6);
-      els.unitLng.value = event.latlng.lng.toFixed(6);
+      const placingForAdd = state.placingLocation === 'add';
+      const latInput = placingForAdd ? els.addUnitLat : els.unitLat;
+      const lngInput = placingForAdd ? els.addUnitLng : els.unitLng;
+      latInput.value = event.latlng.lat.toFixed(6);
+      lngInput.value = event.latlng.lng.toFixed(6);
       state.tempMarker?.remove();
-      state.tempMarker = L.marker(event.latlng, { draggable: true }).addTo(state.map).on('dragend', (dragEvent) => {
-        const next = dragEvent.target.getLatLng();
-        els.unitLat.value = next.lat.toFixed(6);
-        els.unitLng.value = next.lng.toFixed(6);
-      });
+      state.tempMarker = L.marker(event.latlng).addTo(state.map);
       state.placingLocation = false;
-      setMessage('Location selected. Return to Admin Tools and save the unit.', 'success');
+      if (placingForAdd) {
+        els.addUnitLocationStatus.textContent = `Location selected: ${latInput.value}, ${lngInput.value}`;
+        els.addUnitDialog.showModal();
+        setMessage('Location selected. Finish adding the unit.', 'success');
+      } else {
+        setMessage('Location selected. Return to Admin Tools and save the unit.', 'success');
+      }
     });
   }
 
@@ -811,6 +831,83 @@ async function saveBatch(event) {
   state.selectedUnitIds.clear();
   await loadData();
   setMessage(`${data ?? 'Selected'} unit records updated.`, 'success');
+}
+
+function setAddUnitError(message = '') {
+  if (!els.addUnitError) return;
+  els.addUnitError.textContent = message;
+  show(els.addUnitError, Boolean(message));
+}
+
+function resetAddUnitForm() {
+  els.addUnitForm.reset();
+  els.addUnitLat.value = '';
+  els.addUnitLng.value = '';
+  els.addUnitLocationStatus.textContent = '';
+  setAddUnitError('');
+  state.placingLocation = false;
+  state.tempMarker?.remove();
+  state.tempMarker = null;
+}
+
+function openAddUnitDialog({ reset = true } = {}) {
+  if (!canEditUnits()) return;
+  if (reset) resetAddUnitForm();
+  els.addUnitDialog.showModal();
+  window.setTimeout(() => els.addUnitNumber.focus(), 50);
+}
+
+async function saveNewUnit(event) {
+  event.preventDefault();
+  if (!canEditUnits()) return;
+  setAddUnitError('');
+  const unitNumber = els.addUnitNumber.value.trim();
+  if (!unitNumber) {
+    setAddUnitError('Enter a unit number.');
+    els.addUnitNumber.focus();
+    return;
+  }
+  const duplicate = state.units.find((unit) => String(unit.unit_number).trim().toLowerCase() === unitNumber.toLowerCase());
+  if (duplicate) {
+    setAddUnitError(`Unit ${unitNumber} already exists${duplicate.is_active ? '' : ' and is archived'}.`);
+    els.addUnitNumber.focus();
+    return;
+  }
+  const latitude = els.addUnitLat.value === '' ? null : Number(els.addUnitLat.value);
+  const longitude = els.addUnitLng.value === '' ? null : Number(els.addUnitLng.value);
+  if ((latitude == null) !== (longitude == null)) {
+    setAddUnitError('Enter both latitude and longitude, or leave both blank.');
+    return;
+  }
+  if ((latitude != null && !Number.isFinite(latitude)) || (longitude != null && !Number.isFinite(longitude))) {
+    setAddUnitError('Enter valid coordinates or leave both blank.');
+    return;
+  }
+  els.addUnitSubmit.disabled = true;
+  els.addUnitSubmit.textContent = 'Adding…';
+  const payload = {
+    unit_number: unitNumber,
+    display_name: els.addUnitDisplay.value.trim() || `Unit ${unitNumber}`,
+    building: els.addUnitBuilding.value.trim() || null,
+    lat: latitude,
+    lng: longitude,
+    notes: els.addUnitNotes.value.trim() || null,
+    is_active: true,
+  };
+  const { data, error } = await supabase.from('units').insert(payload).select('id').single();
+  els.addUnitSubmit.disabled = false;
+  els.addUnitSubmit.textContent = 'Add Unit';
+  if (error) {
+    setAddUnitError(error.code === '23505' ? `Unit ${unitNumber} already exists.` : error.message);
+    return;
+  }
+  els.addUnitDialog.close();
+  resetAddUnitForm();
+  await loadData({ preserveSelection: false });
+  await selectUnit(data.id, { moveMap: false });
+  setWorkspaceTab('record');
+  els.workspace?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setMessage(`Unit ${unitNumber} was added. Its tracking items are ready to review.`, 'success');
 }
 
 function populateUnitForm(unit) {
@@ -1015,6 +1112,10 @@ function openAdminDialog(tab = 'units') {
 function closeDialog(name) {
   if (name === 'issue') closeIssueDialog();
   if (name === 'batch') els.batchDialog.close();
+  if (name === 'add-unit') {
+    els.addUnitDialog.close();
+    resetAddUnitForm();
+  }
   if (name === 'admin') els.adminDialog.close();
 }
 
@@ -1159,13 +1260,32 @@ function bind() {
   });
 
   els.adminToolsOpen.addEventListener('click', () => openAdminDialog('units'));
+  els.addUnitOpen.addEventListener('click', () => openAddUnitDialog());
+  els.emptyAddUnit.addEventListener('click', () => openAddUnitDialog());
+  els.addUnitForm.addEventListener('submit', saveNewUnit);
+  els.addUnitNumber.addEventListener('input', () => {
+    setAddUnitError('');
+    const number = els.addUnitNumber.value.trim();
+    els.addUnitDisplay.placeholder = number ? `Defaults to Unit ${number}` : 'Defaults to Unit 150';
+  });
+  els.addUnitPlace.addEventListener('click', async () => {
+    if (!state.units.length) {
+      setAddUnitError('Add the first unit without a location, then place it on the map from Edit Unit.');
+      return;
+    }
+    state.placingLocation = 'add';
+    els.addUnitDialog.close();
+    if (!selectedUnit()) await selectUnit(state.units.find((unit) => unit.is_active)?.id || state.units[0].id, { moveMap: false });
+    setWorkspaceTab('map');
+    setMessage('Click the map where this unit belongs.', 'info');
+  });
   qa('[data-dialog-close]').forEach((button) => button.addEventListener('click', () => closeDialog(button.dataset.dialogClose)));
   qa('[data-admin-tab]').forEach((button) => button.addEventListener('click', () => setAdminTab(button.dataset.adminTab)));
 
   els.unitForm.addEventListener('submit', saveUnit);
-  els.newUnit.addEventListener('click', resetUnitForm);
+  els.newUnit.addEventListener('click', () => { els.adminDialog.close(); openAddUnitDialog(); });
   els.placeUnit.addEventListener('click', () => {
-    state.placingLocation = true;
+    state.placingLocation = 'edit';
     els.adminDialog.close();
     setWorkspaceTab('map');
     setMessage('Click the map to place the unit. Then reopen Admin Tools and save.', 'info');
@@ -1178,10 +1298,11 @@ function bind() {
   });
   els.itemTypeSlug.addEventListener('input', () => { els.itemTypeSlug.dataset.touched = 'true'; });
 
-  [els.issueDialog, els.batchDialog, els.adminDialog].forEach((dialog) => {
+  [els.issueDialog, els.batchDialog, els.addUnitDialog, els.adminDialog].forEach((dialog) => {
     dialog.addEventListener('click', (event) => {
       if (event.target !== dialog) return;
       if (dialog === els.issueDialog) closeIssueDialog();
+      else if (dialog === els.addUnitDialog) closeDialog('add-unit');
       else dialog.close();
     });
   });
@@ -1216,6 +1337,8 @@ async function init() {
   show(els.loading, false);
   show(els.dashboard, true);
   show(els.adminToolsOpen, canEditUnits());
+  show(els.addUnitOpen, canEditUnits());
+  show(els.emptyAddUnit, canEditUnits());
   show(els.editSelectedUnit, canEditUnits());
   show(q('[data-admin-tab="users"]'), canManageUsers());
 

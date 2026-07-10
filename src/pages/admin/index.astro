@@ -70,12 +70,15 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
                 </div>
               </div>
 
-              <div class="flex items-center justify-between gap-3 border-b border-beach-sky/30 px-4 py-3">
-                <div>
-                  <h2 class="font-serif text-xl">Units</h2>
-                  <p data-result-count class="text-xs text-beach-slate/60"></p>
+              <div class="border-b border-beach-sky/30 px-4 py-3">
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                    <h2 class="font-serif text-xl">Units</h2>
+                    <p data-result-count class="text-xs text-beach-slate/60"></p>
+                  </div>
+                  <button data-add-unit-open type="button" class="admin-button-primary hidden">+ Add Unit</button>
                 </div>
-                <button data-select-visible type="button" class="text-[10px] font-semibold uppercase tracking-[.15em] text-beach-slate">Select visible</button>
+                <button data-select-visible type="button" class="mt-3 text-[10px] font-semibold uppercase tracking-[.15em] text-beach-slate">Select visible</button>
               </div>
 
               <div data-batch-bar class="hidden border-b border-beach-sky/30 bg-beach-sky/20 p-3">
@@ -94,6 +97,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
             <div data-no-unit class="border border-dashed border-beach-sky bg-white p-10 text-center shadow-sm">
               <p class="font-serif text-2xl text-beach-slate">Choose a unit to view its record.</p>
               <p class="mt-2 text-sm text-beach-slate/60">Select a unit from the list or map.</p>
+              <button data-empty-add-unit type="button" class="admin-button-primary mt-5 hidden">+ Add the first unit</button>
             </div>
 
             <div data-unit-workspace class="hidden min-w-0 space-y-4">
@@ -186,6 +190,45 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
     </form>
   </dialog>
 
+  <dialog data-add-unit-dialog class="admin-dialog w-[min(94vw,38rem)]">
+    <form data-add-unit-form class="admin-dialog-card">
+      <div class="admin-dialog-header">
+        <div>
+          <span class="admin-kicker">Unit setup</span>
+          <h2 class="mt-2 font-serif text-2xl">Add a unit</h2>
+          <p class="mt-1 text-sm text-beach-slate/60">Only the unit number is required. Tracking items will be created automatically.</p>
+        </div>
+        <button data-dialog-close="add-unit" type="button" class="admin-icon-button" aria-label="Close">×</button>
+      </div>
+      <div class="space-y-4 p-5">
+        <label>
+          <span class="admin-label">Unit number <span class="normal-case tracking-normal text-red-700">Required</span></span>
+          <input data-add-unit-number class="admin-input min-h-11" autocomplete="off" inputmode="text" placeholder="Example: 150" required />
+        </label>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label><span class="admin-label">Display name</span><input data-add-unit-display class="admin-input min-h-11" placeholder="Defaults to Unit 150" /></label>
+          <label><span class="admin-label">Building</span><input data-add-unit-building class="admin-input min-h-11" placeholder="Optional" /></label>
+        </div>
+        <label><span class="admin-label">General notes</span><textarea data-add-unit-notes rows="3" class="admin-input" placeholder="Optional notes about this condo"></textarea></label>
+        <details class="border border-beach-sky/40 bg-beach-sky/10 p-4">
+          <summary class="cursor-pointer text-sm font-semibold text-beach-slate">Location options</summary>
+          <p class="mt-2 text-xs leading-relaxed text-beach-slate/60">Location is optional. Place the unit on the map or enter coordinates manually.</p>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <label><span class="admin-label">Latitude</span><input data-add-unit-lat type="number" step="any" class="admin-input min-h-11" /></label>
+            <label><span class="admin-label">Longitude</span><input data-add-unit-lng type="number" step="any" class="admin-input min-h-11" /></label>
+          </div>
+          <button data-add-unit-place type="button" class="admin-button-secondary mt-4 w-full">Place on map</button>
+          <p data-add-unit-location-status class="mt-2 text-xs text-beach-slate/60"></p>
+        </details>
+        <p data-add-unit-error class="hidden text-sm text-red-700" role="alert"></p>
+      </div>
+      <div class="admin-dialog-footer">
+        <button data-dialog-close="add-unit" type="button" class="admin-button-secondary">Cancel</button>
+        <button data-add-unit-submit type="submit" class="admin-button-primary">Add Unit</button>
+      </div>
+    </form>
+  </dialog>
+
   <dialog data-admin-dialog class="admin-dialog w-[min(96vw,70rem)]">
     <div class="admin-dialog-card max-h-[92vh]">
       <div class="admin-dialog-header"><div><span class="admin-kicker">Administration</span><h2 class="mt-2 font-serif text-2xl">Admin Tools</h2></div><button data-dialog-close="admin" type="button" class="admin-icon-button">×</button></div>
@@ -198,7 +241,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
       <div class="overflow-y-auto p-5">
         <section data-admin-panel="units">
           <form data-unit-form class="mx-auto max-w-2xl space-y-4">
-            <div class="flex items-center justify-between gap-3"><div><h3 class="font-serif text-2xl">Add or edit a unit</h3><p class="text-sm text-beach-slate/60">Select a unit from the dashboard before opening this panel, or create a new one.</p></div><button data-new-unit type="button" class="admin-button-secondary">New</button></div>
+            <div class="flex items-center justify-between gap-3"><div><h3 class="font-serif text-2xl">Edit selected unit</h3><p class="text-sm text-beach-slate/60">Update the selected condo’s name, building, location, notes, or archive status.</p></div><button data-new-unit type="button" class="admin-button-secondary">+ Add Unit</button></div>
             <input data-edit-unit-id type="hidden" />
             <div class="grid gap-4 sm:grid-cols-2"><label><span class="admin-label">Unit number</span><input data-edit-unit-number class="admin-input min-h-11" required /></label><label><span class="admin-label">Display name</span><input data-edit-unit-display-name class="admin-input min-h-11" /></label></div>
             <label><span class="admin-label">Building</span><input data-edit-unit-building class="admin-input min-h-11" /></label>
@@ -206,7 +249,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
             <button data-place-unit type="button" class="admin-button-secondary w-full">Click map to place unit</button>
             <label><span class="admin-label">General unit notes</span><textarea data-edit-unit-notes rows="4" class="admin-input"></textarea></label>
             <label class="flex min-h-11 items-center gap-3 text-sm"><input data-edit-unit-active type="checkbox" checked /> Active unit</label>
-            <button data-save-unit type="submit" class="admin-button-primary w-full">Save unit</button>
+            <button data-save-unit type="submit" class="admin-button-primary w-full">Save unit changes</button>
           </form>
         </section>
 

@@ -2,78 +2,261 @@
 import AdminLayout from '../../layouts/AdminLayout.astro';
 ---
 <AdminLayout title="HOA Admin Dashboard">
-  <section class="px-4 py-6 sm:px-6 lg:px-8 lg:py-10">
-    <div class="mx-auto max-w-7xl">
-      <div class="mb-6 flex flex-col gap-4 border border-beach-sky/30 bg-white p-5 shadow-sm md:flex-row md:items-center md:justify-between">
-        <div><span class="text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand">Private HOA Dashboard</span><h1 class="mt-2 font-serif text-3xl text-beach-slate">Unit Status</h1></div>
-        <div class="flex items-center justify-between gap-4 md:justify-end"><div class="text-sm text-beach-slate/70">Signed in as <strong data-profile-name></strong><br>Role: <span data-profile-role class="uppercase tracking-widest"></span></div><button data-sign-out class="min-h-11 border border-beach-slate px-4 py-3 text-[10px] uppercase tracking-[.25em]">Sign Out</button></div>
+  <section class="px-3 py-5 sm:px-6 lg:px-8 lg:py-8">
+    <div class="mx-auto max-w-[1600px]">
+      <header class="mb-5 flex flex-col gap-4 border border-beach-sky/30 bg-white p-5 shadow-sm md:flex-row md:items-center md:justify-between">
+        <div>
+          <span class="text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand">Private HOA Dashboard</span>
+          <h1 class="mt-2 font-serif text-3xl text-beach-slate">Unit Records</h1>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-3 md:justify-end">
+          <div class="text-sm text-beach-slate/70">
+            Signed in as <strong data-profile-name class="text-beach-slate"></strong><br />
+            Role: <span data-profile-role class="uppercase tracking-widest"></span>
+          </div>
+          <button data-admin-tools-open type="button" class="admin-button-secondary hidden">Admin Tools</button>
+          <button data-sign-out type="button" class="admin-button-secondary">Sign Out</button>
+        </div>
+      </header>
+
+      <div data-admin-loading class="border border-beach-sky/30 bg-white p-8 shadow-sm">Loading admin dashboard…</div>
+      <div data-access-denied class="hidden border border-red-200 bg-white p-8 text-red-700 shadow-sm">
+        <p>Your account does not have an active HOA admin profile.</p>
+        <p class="mt-2">Create or activate the matching row in <code>profiles</code>, then refresh.</p>
       </div>
 
-      <div data-admin-loading class="border border-beach-sky/30 bg-white p-8">Loading admin dashboard…</div>
-      <div data-access-denied class="hidden border border-red-200 bg-white p-8 text-red-700"><p>Your account does not have an active HOA admin profile.</p><p class="mt-2">Create or activate the matching row in <code>profiles</code>, then refresh.</p></div>
+      <div data-admin-dashboard class="hidden space-y-5">
+        <div data-admin-message class="fixed bottom-4 left-4 right-4 z-[1200] hidden rounded-sm border bg-white p-4 text-sm shadow-xl md:left-auto md:max-w-md" aria-live="polite"></div>
 
-      <div data-admin-dashboard class="hidden space-y-6">
-        <div data-admin-message class="fixed bottom-4 left-4 right-4 z-[1000] hidden rounded-sm border bg-white p-4 text-sm shadow-xl md:left-auto md:max-w-md" aria-live="polite"></div>
+        <section class="grid grid-cols-2 gap-3 lg:grid-cols-4" aria-label="Dashboard summary">
+          <button data-summary-filter="attention" type="button" class="admin-summary-card">
+            <span data-summary-attention class="admin-summary-number">0</span>
+            <span class="admin-summary-label">Needs attention</span>
+          </button>
+          <button data-summary-filter="overdue" type="button" class="admin-summary-card">
+            <span data-summary-overdue class="admin-summary-number">0</span>
+            <span class="admin-summary-label">Overdue</span>
+          </button>
+          <button data-summary-filter="due_soon" type="button" class="admin-summary-card">
+            <span data-summary-due-soon class="admin-summary-number">0</span>
+            <span class="admin-summary-label">Due in 30 days</span>
+          </button>
+          <button data-summary-filter="clear" type="button" class="admin-summary-card">
+            <span data-summary-clear class="admin-summary-number">0</span>
+            <span class="admin-summary-label">Units all clear</span>
+          </button>
+        </section>
 
-        <div class="grid gap-6 xl:grid-cols-[1.35fr_.8fr]">
-          <div class="space-y-6 xl:order-1">
-            <div class="grid gap-3 border border-beach-sky/30 bg-white p-4 shadow-sm sm:grid-cols-[1fr_1fr_auto]">
-              <label><span class="admin-label">Search unit</span><input data-unit-search type="search" placeholder="Unit number or building" class="admin-input min-h-11"></label>
-              <label><span class="admin-label">Filter</span><select data-status-filter class="admin-input min-h-11"><option value="all">All statuses</option></select></label>
-              <button data-clear-filters type="button" class="self-end min-h-11 border border-beach-slate/30 px-4 text-[10px] uppercase tracking-[.2em]">Clear</button>
-            </div>
-
+        <div class="grid min-w-0 gap-5 lg:grid-cols-[20rem_minmax(0,1fr)]">
+          <aside class="min-w-0 lg:sticky lg:top-4 lg:self-start">
             <div class="border border-beach-sky/30 bg-white shadow-sm">
-              <div class="flex items-center justify-between gap-4 border-b border-beach-sky/30 p-4"><div><h2 class="font-serif text-2xl">Units</h2><p data-result-count class="text-sm text-beach-slate/60"></p></div><label class="text-sm"><input data-show-archived type="checkbox" class="mr-2">Show archived</label></div>
-              <div data-unit-list class="max-h-[620px] space-y-3 overflow-y-auto p-4"></div>
-            </div>
-
-            <div class="overflow-hidden border border-beach-sky/30 bg-beach-slate shadow-sm">
-              <div class="flex flex-wrap gap-3 bg-white p-3 text-xs" data-map-legend></div>
-              <div id="admin-map" class="h-[300px] w-full md:h-[520px]"></div>
-            </div>
-          </div>
-
-          <aside class="space-y-6 xl:order-2">
-            <form data-update-form class="border border-beach-sky/30 bg-white p-5 shadow-sm xl:sticky xl:top-5">
-              <span class="text-[10px] uppercase tracking-[.3em] text-beach-sand">Quick Update</span><h2 class="mb-2 mt-2 font-serif text-2xl">Update a Unit</h2><p data-existing-record class="mb-5 text-sm text-beach-slate/60">Choose a unit and item.</p>
-              <div class="space-y-4">
-                <label><span class="admin-label">Unit</span><select data-unit-select class="admin-input min-h-11"></select></label>
-                <div data-selected-summary class="hidden border border-beach-sky/30 bg-beach-sky/10 p-3 text-sm"></div>
-                <label><span class="admin-label">Item</span><select data-item-select class="admin-input min-h-11"></select></label>
-                <label><span class="admin-label">Status</span><select data-status-select class="admin-input min-h-11"><option value="open">Open</option><option value="complete">Complete</option><option value="not_applicable">N/A</option><option value="unknown">Unknown</option></select></label>
-                <div class="grid gap-4 sm:grid-cols-2"><label><span class="admin-label">Completed date</span><input data-completed-date type="date" class="admin-input min-h-11"></label><label><span class="admin-label">Due date</span><input data-due-date type="date" class="admin-input min-h-11"></label></div>
-                <label><span class="admin-label">Notes</span><textarea data-notes rows="4" class="admin-input"></textarea></label>
-                <button data-update-submit class="min-h-12 w-full bg-beach-slate px-6 text-[10px] uppercase tracking-[.3em] text-white disabled:opacity-50">Save Update</button>
+              <div class="space-y-3 border-b border-beach-sky/30 p-4">
+                <label>
+                  <span class="admin-label">Search units</span>
+                  <input data-unit-search type="search" placeholder="Number, name, or building" class="admin-input min-h-11" />
+                </label>
+                <div class="grid grid-cols-[1fr_auto] gap-2">
+                  <label>
+                    <span class="admin-label">Filter</span>
+                    <select data-status-filter class="admin-input min-h-11">
+                      <option value="all">All units</option>
+                    </select>
+                  </label>
+                  <button data-clear-filters type="button" class="admin-button-secondary self-end">Clear</button>
+                </div>
+                <div class="flex flex-wrap items-center justify-between gap-2 text-sm">
+                  <label class="flex min-h-10 items-center gap-2"><input data-show-archived type="checkbox" /> Show archived</label>
+                  <button data-export-current type="button" class="text-xs font-semibold text-beach-slate underline decoration-beach-sea underline-offset-4">Export current view</button>
+                </div>
               </div>
-            </form>
 
-            <form data-unit-editor data-unit-form class="hidden border border-beach-sky/30 bg-white p-5 shadow-sm">
-              <div class="mb-5 flex justify-between gap-3"><div><span class="text-[10px] uppercase tracking-[.3em] text-beach-sand">Admin Tools</span><h2 class="mt-2 font-serif text-2xl">Add / Edit Unit</h2></div><button data-new-unit type="button" class="min-h-11 border border-beach-slate px-3 text-[10px] uppercase tracking-[.2em]">New</button></div>
-              <input data-edit-unit-id type="hidden"><div class="space-y-4">
-                <label><span class="admin-label">Unit number</span><input data-edit-unit-number class="admin-input min-h-11"></label>
-                <label><span class="admin-label">Display name</span><input data-edit-unit-display-name class="admin-input min-h-11"></label>
-                <label><span class="admin-label">Building</span><input data-edit-unit-building class="admin-input min-h-11"></label>
-                <div class="grid gap-3 sm:grid-cols-2"><label><span class="admin-label">Latitude</span><input data-edit-unit-lat type="number" step="any" class="admin-input min-h-11"></label><label><span class="admin-label">Longitude</span><input data-edit-unit-lng type="number" step="any" class="admin-input min-h-11"></label></div>
-                <button data-place-unit type="button" class="min-h-11 w-full border border-beach-slate px-4 text-[10px] uppercase tracking-[.2em]">Click Map to Place Unit</button>
-                <label><span class="admin-label">Notes</span><textarea data-edit-unit-notes rows="3" class="admin-input"></textarea></label>
-                <label class="flex min-h-11 items-center gap-3 text-sm"><input data-edit-unit-active type="checkbox" checked>Active unit</label>
-                <button data-save-unit class="min-h-12 w-full bg-beach-slate px-6 text-[10px] uppercase tracking-[.3em] text-white disabled:opacity-50">Save Unit</button>
+              <div class="flex items-center justify-between gap-3 border-b border-beach-sky/30 px-4 py-3">
+                <div>
+                  <h2 class="font-serif text-xl">Units</h2>
+                  <p data-result-count class="text-xs text-beach-slate/60"></p>
+                </div>
+                <button data-select-visible type="button" class="text-[10px] font-semibold uppercase tracking-[.15em] text-beach-slate">Select visible</button>
               </div>
-            </form>
+
+              <div data-batch-bar class="hidden border-b border-beach-sky/30 bg-beach-sky/20 p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <span data-batch-count class="text-sm font-semibold">0 selected</span>
+                  <button data-batch-clear type="button" class="text-xs underline">Clear</button>
+                </div>
+                <button data-batch-open type="button" class="admin-button-primary mt-3 w-full">Update selected units</button>
+              </div>
+
+              <div data-unit-list class="max-h-[calc(100vh-17rem)] min-h-[16rem] space-y-2 overflow-y-auto p-3"></div>
+            </div>
           </aside>
+
+          <main class="min-w-0">
+            <div data-no-unit class="border border-dashed border-beach-sky bg-white p-10 text-center shadow-sm">
+              <p class="font-serif text-2xl text-beach-slate">Choose a unit to view its record.</p>
+              <p class="mt-2 text-sm text-beach-slate/60">Select a unit from the list or map.</p>
+            </div>
+
+            <div data-unit-workspace class="hidden min-w-0 space-y-4">
+              <section class="border border-beach-sky/30 bg-white p-5 shadow-sm">
+                <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                  <div>
+                    <span data-selected-status class="admin-badge admin-badge-neutral">Not reviewed</span>
+                    <h2 data-selected-unit-title class="mt-3 font-serif text-3xl">Unit</h2>
+                    <p data-selected-unit-meta class="mt-1 text-sm text-beach-slate/60"></p>
+                    <p data-selected-unit-notes class="mt-3 max-w-3xl text-sm leading-relaxed text-beach-slate/75"></p>
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <button data-add-record type="button" class="admin-button-primary">Record update</button>
+                    <button data-edit-selected-unit type="button" class="admin-button-secondary hidden">Edit unit</button>
+                  </div>
+                </div>
+              </section>
+
+              <nav class="flex overflow-x-auto border border-beach-sky/30 bg-white p-1 shadow-sm" aria-label="Unit workspace">
+                <button data-workspace-tab="record" type="button" class="admin-tab is-active">Unit Record</button>
+                <button data-workspace-tab="map" type="button" class="admin-tab">Map</button>
+                <button data-workspace-tab="activity" type="button" class="admin-tab">Activity</button>
+              </nav>
+
+              <section data-workspace-panel="record" class="space-y-4">
+                <div class="overflow-hidden border border-beach-sky/30 bg-white shadow-sm">
+                  <div class="hidden grid-cols-[minmax(12rem,1.5fr)_8rem_9rem_9rem_minmax(12rem,1fr)_11rem] gap-3 border-b border-beach-sky/30 bg-beach-sky/15 px-4 py-3 text-[10px] font-semibold uppercase tracking-[.15em] text-beach-slate/65 xl:grid">
+                    <span>Item</span><span>Status</span><span>Last completed</span><span>Next due</span><span>Notes</span><span class="text-right">Actions</span>
+                  </div>
+                  <div data-unit-record></div>
+                </div>
+              </section>
+
+              <section data-workspace-panel="map" class="hidden overflow-hidden border border-beach-sky/30 bg-beach-slate shadow-sm">
+                <div data-map-legend class="flex flex-wrap gap-3 bg-white p-3 text-xs"></div>
+                <div id="admin-map" class="h-[360px] w-full md:h-[620px]"></div>
+              </section>
+
+              <section data-workspace-panel="activity" class="hidden space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-3 border border-beach-sky/30 bg-white p-4 shadow-sm">
+                  <div><h3 class="font-serif text-2xl">Unit Activity</h3><p class="text-sm text-beach-slate/60">Every recorded status change and resolution.</p></div>
+                  <button data-export-history type="button" class="admin-button-secondary">Export history</button>
+                </div>
+                <div data-activity-list class="space-y-3"></div>
+              </section>
+            </div>
+          </main>
         </div>
       </div>
     </div>
   </section>
+
+  <dialog data-issue-dialog class="admin-dialog w-[min(94vw,42rem)]">
+    <form data-issue-form class="admin-dialog-card">
+      <div class="admin-dialog-header">
+        <div><span data-issue-kicker class="admin-kicker">Unit update</span><h2 data-issue-title class="mt-2 font-serif text-2xl">Update item</h2><p data-issue-context class="mt-1 text-sm text-beach-slate/60"></p></div>
+        <button data-dialog-close="issue" type="button" class="admin-icon-button" aria-label="Close">×</button>
+      </div>
+      <input data-issue-unit-id type="hidden" />
+      <input data-issue-item-type-id type="hidden" />
+      <div class="space-y-4 p-5">
+        <label><span class="admin-label">Item</span><select data-issue-item-picker class="admin-input min-h-11"></select></label>
+        <label><span class="admin-label">Status</span><select data-issue-status class="admin-input min-h-11"><option value="open">Open</option><option value="complete">Complete</option><option value="not_applicable">N/A</option><option value="unknown">Not reviewed</option></select></label>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <label><span data-completed-date-label class="admin-label">Completed date</span><input data-issue-completed type="date" class="admin-input min-h-11" /></label>
+          <label data-due-date-field><span data-due-date-label class="admin-label">Next due</span><input data-issue-due type="date" class="admin-input min-h-11" /></label>
+        </div>
+        <label><span class="admin-label">Period / reference</span><input data-issue-period class="admin-input min-h-11" placeholder="Example: 2026 annual dues" /></label>
+        <label><span class="admin-label">Notes</span><textarea data-issue-notes rows="4" class="admin-input" placeholder="What was done, received, or still needs attention?"></textarea></label>
+        <p data-issue-updated-by class="text-xs text-beach-slate/55"></p>
+      </div>
+      <div class="admin-dialog-footer">
+        <button data-dialog-close="issue" type="button" class="admin-button-secondary">Cancel</button>
+        <button data-issue-submit type="submit" class="admin-button-primary">Save update</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog data-batch-dialog class="admin-dialog w-[min(94vw,42rem)]">
+    <form data-batch-form class="admin-dialog-card">
+      <div class="admin-dialog-header"><div><span class="admin-kicker">Batch update</span><h2 class="mt-2 font-serif text-2xl">Update multiple units</h2><p data-batch-dialog-count class="mt-1 text-sm text-beach-slate/60"></p></div><button data-dialog-close="batch" type="button" class="admin-icon-button">×</button></div>
+      <div class="space-y-4 p-5">
+        <label><span class="admin-label">Item</span><select data-batch-item class="admin-input min-h-11"></select></label>
+        <label><span class="admin-label">Status</span><select data-batch-status class="admin-input min-h-11"><option value="complete">Complete</option><option value="open">Open</option><option value="not_applicable">N/A</option><option value="unknown">Not reviewed</option></select></label>
+        <div class="grid gap-4 sm:grid-cols-2"><label><span class="admin-label">Completed date</span><input data-batch-completed type="date" class="admin-input min-h-11" /></label><label><span class="admin-label">Next due</span><input data-batch-due type="date" class="admin-input min-h-11" /></label></div>
+        <label><span class="admin-label">Period / reference</span><input data-batch-period class="admin-input min-h-11" /></label>
+        <label><span class="admin-label">Notes</span><textarea data-batch-notes rows="3" class="admin-input"></textarea></label>
+      </div>
+      <div class="admin-dialog-footer"><button data-dialog-close="batch" type="button" class="admin-button-secondary">Cancel</button><button data-batch-submit type="submit" class="admin-button-primary">Apply update</button></div>
+    </form>
+  </dialog>
+
+  <dialog data-admin-dialog class="admin-dialog w-[min(96vw,70rem)]">
+    <div class="admin-dialog-card max-h-[92vh]">
+      <div class="admin-dialog-header"><div><span class="admin-kicker">Administration</span><h2 class="mt-2 font-serif text-2xl">Admin Tools</h2></div><button data-dialog-close="admin" type="button" class="admin-icon-button">×</button></div>
+      <nav class="flex overflow-x-auto border-b border-beach-sky/30 px-3 pt-2">
+        <button data-admin-tab="units" type="button" class="admin-tab is-active">Units</button>
+        <button data-admin-tab="items" type="button" class="admin-tab">Item Types</button>
+        <button data-admin-tab="users" type="button" class="admin-tab hidden">Users</button>
+        <button data-admin-tab="audit" type="button" class="admin-tab">Audit</button>
+      </nav>
+      <div class="overflow-y-auto p-5">
+        <section data-admin-panel="units">
+          <form data-unit-form class="mx-auto max-w-2xl space-y-4">
+            <div class="flex items-center justify-between gap-3"><div><h3 class="font-serif text-2xl">Add or edit a unit</h3><p class="text-sm text-beach-slate/60">Select a unit from the dashboard before opening this panel, or create a new one.</p></div><button data-new-unit type="button" class="admin-button-secondary">New</button></div>
+            <input data-edit-unit-id type="hidden" />
+            <div class="grid gap-4 sm:grid-cols-2"><label><span class="admin-label">Unit number</span><input data-edit-unit-number class="admin-input min-h-11" required /></label><label><span class="admin-label">Display name</span><input data-edit-unit-display-name class="admin-input min-h-11" /></label></div>
+            <label><span class="admin-label">Building</span><input data-edit-unit-building class="admin-input min-h-11" /></label>
+            <div class="grid gap-4 sm:grid-cols-2"><label><span class="admin-label">Latitude</span><input data-edit-unit-lat type="number" step="any" class="admin-input min-h-11" /></label><label><span class="admin-label">Longitude</span><input data-edit-unit-lng type="number" step="any" class="admin-input min-h-11" /></label></div>
+            <button data-place-unit type="button" class="admin-button-secondary w-full">Click map to place unit</button>
+            <label><span class="admin-label">General unit notes</span><textarea data-edit-unit-notes rows="4" class="admin-input"></textarea></label>
+            <label class="flex min-h-11 items-center gap-3 text-sm"><input data-edit-unit-active type="checkbox" checked /> Active unit</label>
+            <button data-save-unit type="submit" class="admin-button-primary w-full">Save unit</button>
+          </form>
+        </section>
+
+        <section data-admin-panel="items" class="hidden">
+          <div class="grid gap-5 lg:grid-cols-[18rem_1fr]">
+            <div><div class="mb-3 flex items-center justify-between"><h3 class="font-serif text-xl">Item Types</h3><button data-new-item-type type="button" class="admin-button-secondary">New</button></div><div data-item-type-list class="space-y-2"></div></div>
+            <form data-item-type-form class="space-y-4 border border-beach-sky/30 p-4">
+              <input data-item-type-id type="hidden" />
+              <div class="grid gap-4 sm:grid-cols-2"><label><span class="admin-label">Label</span><input data-item-type-label class="admin-input min-h-11" required /></label><label><span class="admin-label">Slug</span><input data-item-type-slug class="admin-input min-h-11" required /></label></div>
+              <label><span class="admin-label">Description</span><textarea data-item-type-description rows="2" class="admin-input"></textarea></label>
+              <div class="grid gap-4 sm:grid-cols-3"><label><span class="admin-label">Color</span><input data-item-type-color type="color" class="admin-input h-11 p-1" value="#c75b39" /></label><label><span class="admin-label">Severity rank</span><input data-item-type-severity type="number" class="admin-input min-h-11" value="100" /></label><label><span class="admin-label">Default interval (months)</span><input data-item-type-interval type="number" min="0" class="admin-input min-h-11" /></label></div>
+              <div class="grid gap-4 sm:grid-cols-3"><label><span class="admin-label">Completion action</span><input data-item-type-action-label class="admin-input min-h-11" placeholder="Mark complete" /></label><label><span class="admin-label">Completion date label</span><input data-item-type-completion-label class="admin-input min-h-11" placeholder="Completed on" /></label><label><span class="admin-label">Due date label</span><input data-item-type-due-label class="admin-input min-h-11" placeholder="Next due" /></label></div>
+              <div class="flex flex-wrap gap-6"><label class="flex min-h-11 items-center gap-2 text-sm"><input data-item-type-supports-due type="checkbox" checked /> Uses due dates</label><label class="flex min-h-11 items-center gap-2 text-sm"><input data-item-type-active type="checkbox" checked /> Active</label></div>
+              <button data-save-item-type type="submit" class="admin-button-primary w-full">Save item type</button>
+            </form>
+          </div>
+        </section>
+
+        <section data-admin-panel="users" class="hidden">
+          <div class="mb-4"><h3 class="font-serif text-2xl">Admin users</h3><p class="text-sm text-beach-slate/60">Create Auth users in Supabase first, then activate them and assign a role here.</p></div>
+          <div data-user-list class="space-y-3"></div>
+        </section>
+
+        <section data-admin-panel="audit" class="hidden">
+          <div class="mb-4"><h3 class="font-serif text-2xl">Audit log</h3><p class="text-sm text-beach-slate/60">Recent database changes generated automatically.</p></div>
+          <div data-audit-list class="space-y-3"></div>
+        </section>
+      </div>
+    </div>
+  </dialog>
 </AdminLayout>
+
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 <script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>import '../../scripts/adminDashboard.js';</script>
+
 <style is:global>
-  .admin-label{display:block;margin-bottom:.5rem;font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(69,90,100,.72)}
-  .admin-input{width:100%;border:1px solid rgba(180,210,225,.75);padding:.75rem 1rem;font-family:Montserrat,sans-serif;font-size:.875rem;color:#455A64;outline:none}.admin-input:focus{border-color:#4f9e9e;box-shadow:0 0 0 2px rgba(79,158,158,.15)}
-  .admin-unit-card{display:flex;align-items:center;justify-content:space-between;gap:1rem;border:1px solid rgba(180,210,225,.55);padding:1rem;text-align:left;transition:.15s}.admin-unit-card:hover,.admin-unit-card.is-selected{border-color:#4f9e9e;background:rgba(216,235,245,.25)}
-  .admin-status-dot{display:inline-block;height:.75rem;width:.75rem;border-radius:999px;margin-right:.5rem}.admin-unit-marker span{display:block;width:20px;height:20px;border:3px solid white;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .admin-label{display:block;margin-bottom:.5rem;font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(69,90,100,.72)}
+  .admin-input{width:100%;border:1px solid rgba(180,210,225,.8);background:white;padding:.75rem 1rem;font-family:Montserrat,sans-serif;font-size:.875rem;color:#455A64;outline:none}.admin-input:focus{border-color:#4f9e9e;box-shadow:0 0 0 3px rgba(79,158,158,.15)}
+  .admin-button-primary,.admin-button-secondary{display:inline-flex;min-height:44px;align-items:center;justify-content:center;padding:.7rem 1rem;font-family:Montserrat,sans-serif;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:.15s}.admin-button-primary{background:#455A64;color:white}.admin-button-primary:hover{background:#4f9e9e}.admin-button-secondary{border:1px solid rgba(69,90,100,.42);background:white;color:#455A64}.admin-button-secondary:hover{border-color:#455A64;background:rgba(216,235,245,.25)}.admin-button-primary:disabled,.admin-button-secondary:disabled{cursor:not-allowed;opacity:.45}
+  .admin-summary-card{display:flex;min-height:92px;flex-direction:column;align-items:flex-start;justify-content:center;border:1px solid rgba(180,210,225,.65);background:white;padding:1rem;text-align:left;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:.15s}.admin-summary-card:hover,.admin-summary-card.is-active{border-color:#4f9e9e;background:rgba(216,235,245,.22)}.admin-summary-number{font-family:"Playfair Display",serif;font-size:2rem;line-height:1;color:#455A64}.admin-summary-label{margin-top:.25rem;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(69,90,100,.68)}
+  .admin-unit-card{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:start;gap:.7rem;border:1px solid rgba(180,210,225,.55);padding:.85rem;text-align:left;transition:.15s}.admin-unit-card:hover,.admin-unit-card.is-selected{border-color:#4f9e9e;background:rgba(216,235,245,.25)}
+  .admin-status-dot{display:inline-block;height:.7rem;width:.7rem;flex:none;border-radius:999px}.admin-unit-marker span{display:block;width:20px;height:20px;border:3px solid white;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  .admin-tab{min-height:44px;white-space:nowrap;border-bottom:2px solid transparent;padding:.7rem 1rem;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(69,90,100,.62)}.admin-tab:hover,.admin-tab.is-active{border-color:#4f9e9e;color:#455A64;background:rgba(216,235,245,.2)}
+  .admin-record-row{border-bottom:1px solid rgba(180,210,225,.45)}.admin-record-main{display:grid;gap:.8rem;padding:1rem}.admin-record-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(69,90,100,.55)}
+  @media(min-width:1280px){.admin-record-main{grid-template-columns:minmax(12rem,1.5fr) 8rem 9rem 9rem minmax(12rem,1fr) 11rem;align-items:center}}
+  .admin-badge{display:inline-flex;min-height:26px;align-items:center;border-radius:999px;padding:.25rem .65rem;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.admin-badge-success{background:#dcfce7;color:#166534}.admin-badge-danger{background:#fee2e2;color:#b91c1c}.admin-badge-warning{background:#fef3c7;color:#92400e}.admin-badge-neutral{background:#e5e7eb;color:#4b5563}.admin-badge-muted{background:#f3f4f6;color:#6b7280}
+  .admin-history{border-top:1px solid rgba(180,210,225,.45);background:rgba(216,235,245,.12);padding:.75rem 1rem}.admin-history summary{cursor:pointer;font-size:.75rem;font-weight:600;color:#455A64}.admin-history-list{margin-top:.75rem;display:grid;gap:.55rem}.admin-history-entry{display:grid;gap:.2rem;border-left:3px solid #9AD9D9;padding-left:.75rem;font-size:.78rem}
+  .admin-dialog{margin:auto;border:0;background:transparent;padding:0}.admin-dialog::backdrop{background:rgba(20,35,42,.58);backdrop-filter:blur(2px)}.admin-dialog-card{overflow:hidden;border:1px solid rgba(180,210,225,.8);background:white;box-shadow:0 24px 70px rgba(0,0,0,.25)}.admin-dialog-header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(180,210,225,.55);padding:1.25rem}.admin-dialog-footer{display:flex;justify-content:flex-end;gap:.75rem;border-top:1px solid rgba(180,210,225,.55);padding:1rem 1.25rem}.admin-icon-button{display:grid;height:44px;width:44px;place-items:center;border:1px solid rgba(69,90,100,.28);font-size:1.5rem;line-height:1}.admin-kicker{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:#968863}
   [data-admin-message][data-type="error"]{border-color:#fecaca;color:#b91c1c}[data-admin-message][data-type="success"]{border-color:#bbf7d0;color:#166534}
+  dialog[open]{animation:admin-dialog-in .15s ease-out}@keyframes admin-dialog-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(max-width:639px){.admin-dialog-footer{flex-direction:column-reverse}.admin-dialog-footer button{width:100%}}
 </style>

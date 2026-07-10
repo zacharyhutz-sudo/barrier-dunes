@@ -1,0 +1,8 @@
+9a64ee9a5dba1d89c7162feffbfdf2cdf1592c10483f5412b4c46f4af85e3097  ./PATCH-INSTRUCTIONS.md
+1edacc57a53b8be4f93cc6fa7204d0f34ee714269ed27ecfb0cf95d557fa9695  ./package-lock.json
+4b42d15796e9ebf30d59ce7f349e45a77eb053216d6252468537fd2affd93730  ./package.json
+0890c08caa1cb6429ba11be6bc2e21d6d340bd9be5a258a187c0f53245081880  ./src/lib/adminStatus.js
+3dd877ca62d474247b5a07917f95e46a02bab2d7591aac8172403f95cb6a707c  ./src/pages/admin/index.astro
+cdbda55456759a91ced950cd20e6c288d5fb72fdd139965833237db8443008a9  ./src/scripts/adminDashboard.js
+a0ecf58adead4ba047d0877a1aae7c2ca8d3b935d91c5e64acfede73c832deb2  ./supabase/migrations/20260710_admin_workspace_history.sql
+84897f5afa90a252ac48b014987dadc714e33b26ce3f07ba0cf2f81450d78b04  ./supabase/schema.sql

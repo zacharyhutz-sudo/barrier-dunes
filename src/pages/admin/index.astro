@@ -1,172 +1,64 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL;
+import AdminLayout from '../../layouts/AdminLayout.astro';
 ---
-
-<Layout title="HOA Admin Dashboard">
-  <section class="bg-beach-sky/10 px-4 py-10 md:py-14">
+<AdminLayout title="HOA Admin Dashboard">
+  <section class="px-4 py-6 sm:px-6 lg:px-8 lg:py-10">
     <div class="mx-auto max-w-7xl">
-      <div class="mb-8 flex flex-col gap-4 border border-beach-sky/30 bg-white p-6 shadow-sm md:flex-row md:items-center md:justify-between">
-        <div>
-          <a href={base} class="mb-4 inline-block text-[10px] font-sans uppercase tracking-[.3em] text-beach-slate/60 hover:text-beach-slate">← Public site</a>
-          <span class="block text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand">Private HOA Dashboard</span>
-          <h1 class="mt-2 font-serif text-3xl text-beach-slate md:text-4xl">Unit Status Map</h1>
-        </div>
-
-        <div class="flex flex-col gap-3 text-left md:items-end md:text-right">
-          <div class="text-sm text-beach-slate/70">
-            Signed in as <strong data-profile-name class="text-beach-slate"></strong>
-            <br />
-            Role: <span data-profile-role class="uppercase tracking-widest"></span>
-          </div>
-          <button data-sign-out type="button" class="border border-beach-slate px-5 py-3 text-[10px] font-sans uppercase tracking-[.3em] text-beach-slate transition hover:bg-beach-slate hover:text-white">
-            Sign Out
-          </button>
-        </div>
+      <div class="mb-6 flex flex-col gap-4 border border-beach-sky/30 bg-white p-5 shadow-sm md:flex-row md:items-center md:justify-between">
+        <div><span class="text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand">Private HOA Dashboard</span><h1 class="mt-2 font-serif text-3xl text-beach-slate">Unit Status</h1></div>
+        <div class="flex items-center justify-between gap-4 md:justify-end"><div class="text-sm text-beach-slate/70">Signed in as <strong data-profile-name></strong><br>Role: <span data-profile-role class="uppercase tracking-widest"></span></div><button data-sign-out class="min-h-11 border border-beach-slate px-4 py-3 text-[10px] uppercase tracking-[.25em]">Sign Out</button></div>
       </div>
 
-      <div data-admin-loading class="border border-beach-sky/30 bg-white p-8 text-sm text-beach-slate/70 shadow-sm">
-        Loading admin dashboard…
-      </div>
+      <div data-admin-loading class="border border-beach-sky/30 bg-white p-8">Loading admin dashboard…</div>
+      <div data-access-denied class="hidden border border-red-200 bg-white p-8 text-red-700"><p>Your account does not have an active HOA admin profile.</p><p class="mt-2">Create or activate the matching row in <code>profiles</code>, then refresh.</p></div>
 
-      <div data-access-denied class="hidden border border-red-200 bg-white p-8 text-sm text-red-700 shadow-sm">
-        <p>You are signed in, but your account does not have an active HOA admin profile yet.</p>
-        <p class="mt-2">Create a matching row in the <code>profiles</code> table for this user, then refresh.</p>
-      </div>
+      <div data-admin-dashboard class="hidden space-y-6">
+        <div data-admin-message class="fixed bottom-4 left-4 right-4 z-[1000] hidden rounded-sm border bg-white p-4 text-sm shadow-xl md:left-auto md:max-w-md" aria-live="polite"></div>
 
-      <div data-admin-dashboard class="hidden space-y-8">
-        <p data-admin-message class="min-h-6 text-sm text-beach-slate/70" aria-live="polite"></p>
+        <div class="grid gap-6 xl:grid-cols-[1.35fr_.8fr]">
+          <div class="space-y-6 xl:order-1">
+            <div class="grid gap-3 border border-beach-sky/30 bg-white p-4 shadow-sm sm:grid-cols-[1fr_1fr_auto]">
+              <label><span class="admin-label">Search unit</span><input data-unit-search type="search" placeholder="Unit number or building" class="admin-input min-h-11"></label>
+              <label><span class="admin-label">Filter</span><select data-status-filter class="admin-input min-h-11"><option value="all">All statuses</option></select></label>
+              <button data-clear-filters type="button" class="self-end min-h-11 border border-beach-slate/30 px-4 text-[10px] uppercase tracking-[.2em]">Clear</button>
+            </div>
 
-        <div class="grid gap-8 xl:grid-cols-[1.45fr_.75fr]">
-          <div class="space-y-6">
-            <div class="grid gap-4 border border-beach-sky/30 bg-white p-4 shadow-sm md:grid-cols-2">
-              <label>
-                <span class="mb-2 block text-[10px] font-sans uppercase tracking-[.25em] text-beach-slate/70">Search unit</span>
-                <input data-unit-search type="search" placeholder="150" class="w-full border border-beach-sky/40 px-4 py-3 font-sans text-sm text-beach-slate outline-none focus:border-beach-sea" />
-              </label>
-
-              <label>
-                <span class="mb-2 block text-[10px] font-sans uppercase tracking-[.25em] text-beach-slate/70">Filter</span>
-                <select data-status-filter class="w-full border border-beach-sky/40 px-4 py-3 font-sans text-sm text-beach-slate outline-none focus:border-beach-sea">
-                  <option value="all">All statuses</option>
-                </select>
-              </label>
+            <div class="border border-beach-sky/30 bg-white shadow-sm">
+              <div class="flex items-center justify-between gap-4 border-b border-beach-sky/30 p-4"><div><h2 class="font-serif text-2xl">Units</h2><p data-result-count class="text-sm text-beach-slate/60"></p></div><label class="text-sm"><input data-show-archived type="checkbox" class="mr-2">Show archived</label></div>
+              <div data-unit-list class="max-h-[620px] space-y-3 overflow-y-auto p-4"></div>
             </div>
 
             <div class="overflow-hidden border border-beach-sky/30 bg-beach-slate shadow-sm">
-              <div id="admin-map" class="h-[430px] w-full md:h-[620px]"></div>
-            </div>
-
-            <div class="border border-beach-sky/30 bg-white p-5 shadow-sm">
-              <h2 class="mb-4 font-serif text-2xl text-beach-slate">Unit List</h2>
-              <div data-unit-list class="space-y-3"></div>
+              <div class="flex flex-wrap gap-3 bg-white p-3 text-xs" data-map-legend></div>
+              <div id="admin-map" class="h-[300px] w-full md:h-[520px]"></div>
             </div>
           </div>
 
-          <aside class="space-y-6">
-            <form data-update-form class="border border-beach-sky/30 bg-white p-5 shadow-sm">
-              <span class="mb-3 block text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand">Quick Update</span>
-              <h2 class="mb-5 font-serif text-2xl text-beach-slate">Update a Unit</h2>
-
+          <aside class="space-y-6 xl:order-2">
+            <form data-update-form class="border border-beach-sky/30 bg-white p-5 shadow-sm xl:sticky xl:top-5">
+              <span class="text-[10px] uppercase tracking-[.3em] text-beach-sand">Quick Update</span><h2 class="mb-2 mt-2 font-serif text-2xl">Update a Unit</h2><p data-existing-record class="mb-5 text-sm text-beach-slate/60">Choose a unit and item.</p>
               <div class="space-y-4">
-                <label class="block">
-                  <span class="admin-label">Unit</span>
-                  <select data-unit-select class="admin-input"></select>
-                </label>
-
-                <label class="block">
-                  <span class="admin-label">Item</span>
-                  <select data-item-select class="admin-input"></select>
-                </label>
-
-                <label class="block">
-                  <span class="admin-label">Status</span>
-                  <select data-status-select class="admin-input">
-                    <option value="open">Open</option>
-                    <option value="complete">Complete</option>
-                    <option value="not_applicable">N/A</option>
-                    <option value="unknown">Unknown</option>
-                  </select>
-                </label>
-
-                <label class="block">
-                  <span class="admin-label">Completed date</span>
-                  <input data-completed-date type="date" class="admin-input" />
-                </label>
-
-                <label class="block">
-                  <span class="admin-label">Due date</span>
-                  <input data-due-date type="date" class="admin-input" />
-                </label>
-
-                <label class="block">
-                  <span class="admin-label">Notes</span>
-                  <textarea data-notes rows="4" class="admin-input resize-y"></textarea>
-                </label>
-
-                <button data-update-submit type="submit" class="w-full bg-beach-slate px-6 py-4 text-[10px] font-sans uppercase tracking-[.35em] text-white transition hover:bg-beach-sea disabled:cursor-not-allowed disabled:opacity-50">
-                  Save Update
-                </button>
+                <label><span class="admin-label">Unit</span><select data-unit-select class="admin-input min-h-11"></select></label>
+                <div data-selected-summary class="hidden border border-beach-sky/30 bg-beach-sky/10 p-3 text-sm"></div>
+                <label><span class="admin-label">Item</span><select data-item-select class="admin-input min-h-11"></select></label>
+                <label><span class="admin-label">Status</span><select data-status-select class="admin-input min-h-11"><option value="open">Open</option><option value="complete">Complete</option><option value="not_applicable">N/A</option><option value="unknown">Unknown</option></select></label>
+                <div class="grid gap-4 sm:grid-cols-2"><label><span class="admin-label">Completed date</span><input data-completed-date type="date" class="admin-input min-h-11"></label><label><span class="admin-label">Due date</span><input data-due-date type="date" class="admin-input min-h-11"></label></div>
+                <label><span class="admin-label">Notes</span><textarea data-notes rows="4" class="admin-input"></textarea></label>
+                <button data-update-submit class="min-h-12 w-full bg-beach-slate px-6 text-[10px] uppercase tracking-[.3em] text-white disabled:opacity-50">Save Update</button>
               </div>
             </form>
 
             <form data-unit-editor data-unit-form class="hidden border border-beach-sky/30 bg-white p-5 shadow-sm">
-              <div class="mb-5 flex items-start justify-between gap-4">
-                <div>
-                  <span class="mb-3 block text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand">Admin Tools</span>
-                  <h2 class="font-serif text-2xl text-beach-slate">Add / Edit Unit</h2>
-                </div>
-                <button data-new-unit type="button" class="border border-beach-slate px-3 py-2 text-[9px] font-sans uppercase tracking-[.25em] text-beach-slate hover:bg-beach-slate hover:text-white">
-                  New
-                </button>
-              </div>
-
-              <input data-edit-unit-id type="hidden" />
-
-              <div class="space-y-4">
-                <label class="block">
-                  <span class="admin-label">Unit number</span>
-                  <input data-edit-unit-number type="text" class="admin-input" />
-                </label>
-
-                <label class="block">
-                  <span class="admin-label">Display name</span>
-                  <input data-edit-unit-display-name type="text" class="admin-input" placeholder="Unit 150" />
-                </label>
-
-                <label class="block">
-                  <span class="admin-label">Building</span>
-                  <input data-edit-unit-building type="text" class="admin-input" />
-                </label>
-
-                <div class="grid grid-cols-2 gap-3">
-                  <label class="block">
-                    <span class="admin-label">Latitude</span>
-                    <input data-edit-unit-lat type="number" step="any" class="admin-input" />
-                  </label>
-                  <label class="block">
-                    <span class="admin-label">Longitude</span>
-                    <input data-edit-unit-lng type="number" step="any" class="admin-input" />
-                  </label>
-                </div>
-
-                <button data-place-unit type="button" class="w-full border border-beach-slate px-4 py-3 text-[10px] font-sans uppercase tracking-[.25em] text-beach-slate transition hover:bg-beach-slate hover:text-white">
-                  Click Map to Place Unit
-                </button>
-
-                <label class="block">
-                  <span class="admin-label">Notes</span>
-                  <textarea data-edit-unit-notes rows="3" class="admin-input resize-y"></textarea>
-                </label>
-
-                <label class="flex items-center gap-3 text-sm text-beach-slate/70">
-                  <input data-edit-unit-active type="checkbox" checked class="h-4 w-4" />
-                  Active unit
-                </label>
-
-                <button data-save-unit type="submit" class="w-full bg-beach-slate px-6 py-4 text-[10px] font-sans uppercase tracking-[.35em] text-white transition hover:bg-beach-sea disabled:cursor-not-allowed disabled:opacity-50">
-                  Save Unit
-                </button>
+              <div class="mb-5 flex justify-between gap-3"><div><span class="text-[10px] uppercase tracking-[.3em] text-beach-sand">Admin Tools</span><h2 class="mt-2 font-serif text-2xl">Add / Edit Unit</h2></div><button data-new-unit type="button" class="min-h-11 border border-beach-slate px-3 text-[10px] uppercase tracking-[.2em]">New</button></div>
+              <input data-edit-unit-id type="hidden"><div class="space-y-4">
+                <label><span class="admin-label">Unit number</span><input data-edit-unit-number class="admin-input min-h-11"></label>
+                <label><span class="admin-label">Display name</span><input data-edit-unit-display-name class="admin-input min-h-11"></label>
+                <label><span class="admin-label">Building</span><input data-edit-unit-building class="admin-input min-h-11"></label>
+                <div class="grid gap-3 sm:grid-cols-2"><label><span class="admin-label">Latitude</span><input data-edit-unit-lat type="number" step="any" class="admin-input min-h-11"></label><label><span class="admin-label">Longitude</span><input data-edit-unit-lng type="number" step="any" class="admin-input min-h-11"></label></div>
+                <button data-place-unit type="button" class="min-h-11 w-full border border-beach-slate px-4 text-[10px] uppercase tracking-[.2em]">Click Map to Place Unit</button>
+                <label><span class="admin-label">Notes</span><textarea data-edit-unit-notes rows="3" class="admin-input"></textarea></label>
+                <label class="flex min-h-11 items-center gap-3 text-sm"><input data-edit-unit-active type="checkbox" checked>Active unit</label>
+                <button data-save-unit class="min-h-12 w-full bg-beach-slate px-6 text-[10px] uppercase tracking-[.3em] text-white disabled:opacity-50">Save Unit</button>
               </div>
             </form>
           </aside>
@@ -174,124 +66,14 @@ const base = import.meta.env.BASE_URL;
       </div>
     </div>
   </section>
-</Layout>
-
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script>
-  import '../../scripts/adminDashboard.js';
-</script>
-
+</AdminLayout>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<script is:inline src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>import '../../scripts/adminDashboard.js';</script>
 <style is:global>
-  [data-admin-message][data-type="error"] { color: #b91c1c; }
-  [data-admin-message][data-type="success"] { color: #166534; }
-
-  .admin-label {
-    display: block;
-    margin-bottom: .5rem;
-    font-family: Montserrat, sans-serif;
-    font-size: 10px;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: rgba(69, 90, 100, .72);
-  }
-
-  .admin-input {
-    width: 100%;
-    border: 1px solid rgba(216, 235, 245, .8);
-    padding: .75rem 1rem;
-    font-family: Montserrat, sans-serif;
-    font-size: .875rem;
-    color: #455A64;
-    outline: none;
-  }
-
-  .admin-input:focus {
-    border-color: #9AD9D9;
-  }
-
-  .admin-unit-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    border: 1px solid rgba(216, 235, 245, .8);
-    padding: 1rem;
-  }
-
-  .admin-unit-card.is-selected {
-    border-color: #455A64;
-    box-shadow: 0 0 0 1px #455A64 inset;
-  }
-
-  .admin-unit-title-row {
-    display: flex;
-    align-items: center;
-    gap: .55rem;
-  }
-
-  .admin-unit-title-row h3 {
-    font-family: Playfair Display, serif;
-    font-size: 1.1rem;
-    color: #455A64;
-  }
-
-  .admin-unit-card p {
-    margin-top: .35rem;
-    font-size: .875rem;
-    color: rgba(69, 90, 100, .72);
-  }
-
-  .admin-unit-card small {
-    display: block;
-    margin-top: .45rem;
-    font-size: .72rem;
-    color: rgba(69, 90, 100, .52);
-  }
-
-  .admin-unit-card button {
-    border: 1px solid #455A64;
-    padding: .65rem .9rem;
-    font-family: Montserrat, sans-serif;
-    font-size: 9px;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    color: #455A64;
-  }
-
-  .admin-unit-card button:hover {
-    background: #455A64;
-    color: white;
-  }
-
-  .admin-status-dot {
-    display: inline-block;
-    height: .75rem;
-    width: .75rem;
-    border-radius: 999px;
-    box-shadow: 0 0 0 2px white, 0 0 0 3px rgba(69, 90, 100, .18);
-  }
-
-  .admin-unit-marker span {
-    display: block;
-    height: 22px;
-    width: 22px;
-    border: 3px solid white;
-    border-radius: 999px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, .45), 0 0 0 3px rgba(255, 255, 255, .25);
-  }
-
-  .admin-map-tiles {
-    filter: brightness(1.1) saturate(0.85) contrast(1.05) hue-rotate(-10deg) !important;
-  }
-
-  .admin-map-popup {
-    min-width: 110px;
-    text-align: center;
-  }
-
-  .admin-map-popup strong,
-  .admin-map-popup span {
-    display: block;
-  }
+  .admin-label{display:block;margin-bottom:.5rem;font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(69,90,100,.72)}
+  .admin-input{width:100%;border:1px solid rgba(180,210,225,.75);padding:.75rem 1rem;font-family:Montserrat,sans-serif;font-size:.875rem;color:#455A64;outline:none}.admin-input:focus{border-color:#4f9e9e;box-shadow:0 0 0 2px rgba(79,158,158,.15)}
+  .admin-unit-card{display:flex;align-items:center;justify-content:space-between;gap:1rem;border:1px solid rgba(180,210,225,.55);padding:1rem;text-align:left;transition:.15s}.admin-unit-card:hover,.admin-unit-card.is-selected{border-color:#4f9e9e;background:rgba(216,235,245,.25)}
+  .admin-status-dot{display:inline-block;height:.75rem;width:.75rem;border-radius:999px;margin-right:.5rem}.admin-unit-marker span{display:block;width:20px;height:20px;border:3px solid white;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  [data-admin-message][data-type="error"]{border-color:#fecaca;color:#b91c1c}[data-admin-message][data-type="success"]{border-color:#bbf7d0;color:#166534}
 </style>

@@ -5,5 +5,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://zacharyhutz-sudo.github.io',
   base: '/barrier-dunes',
+  trailingSlash: 'always',
   integrations: [tailwind()],
 });

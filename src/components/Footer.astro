@@ -1,11 +1,12 @@
 ---
+const base = import.meta.env.BASE_URL;
 const navLinks = [
-	{ text: 'Home', href: '/barrier-dunes/' },
-	{ text: 'Condos', href: '/barrier-dunes/condos' },
-	{ text: 'Rules & Regulations', href: '/barrier-dunes/rules-and-regulations' },
-	{ text: 'Local Attractions', href: '/barrier-dunes/local-attractions' },
-	{ text: 'Local Resources', href: '/barrier-dunes/local-resources' },
-	{ text: 'Resources', href: '/barrier-dunes/barrier-dunes-resources' },
+	{ text: 'Home', href: base },
+	{ text: 'Condos', href: `${base}condos/` },
+	{ text: 'Rules & Regulations', href: `${base}rules-and-regulations/` },
+	{ text: 'Local Attractions', href: `${base}local-attractions/` },
+	{ text: 'Local Resources', href: `${base}local-resources/` },
+	{ text: 'Resources', href: `${base}barrier-dunes-resources/` },
 ];
 ---
 
@@ -57,5 +58,8 @@ const navLinks = [
 		<p class="mt-2 text-[10px] uppercase tracking-widest text-beach-slate/30">
 			Developed by Hutzell Creative Co.
 		</p>
+		<a href={`${base}admin/login/`} class="mt-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[.2em] text-beach-slate/35 transition hover:text-beach-slate/70" aria-label="Board administration login">
+			<span aria-hidden="true">🔒</span> Board Administration
+		</a>
 	</div>
 </footer>

@@ -1,6 +1,7 @@
 export const STATUS_LABELS = {
-  open: 'Open',
-  complete: 'Complete',
+  open: 'Needs attention',
+  complete: 'Good',
+  monitor: 'Monitor',
   not_applicable: 'N/A',
   unknown: 'Not reviewed',
 };
@@ -9,6 +10,7 @@ export const FALLBACK_COLORS = {
   clear: '#4f8f5f',
   unknown: '#6b7280',
   open: '#c75b39',
+  monitor: '#c28a18',
   overdue: '#b42318',
   dueSoon: '#b7791f',
 };
@@ -43,9 +45,10 @@ export function getItemState(item, today = startOfToday()) {
     }
   }
 
-  if (status === 'open') return { key: 'open', label: 'Open', tone: 'danger', rank: 1 };
+  if (status === 'open') return { key: 'open', label: 'Needs attention', tone: 'danger', rank: 1 };
+  if (status === 'monitor') return { key: 'monitor', label: 'Monitor', tone: 'warning', rank: 2 };
   if (status === 'unknown') return { key: 'unknown', label: 'Not reviewed', tone: 'neutral', rank: 3 };
-  if (status === 'complete') return { key: 'complete', label: 'Complete', tone: 'success', rank: 5 };
+  if (status === 'complete') return { key: 'complete', label: 'Good', tone: 'success', rank: 5 };
   return { key: 'not_applicable', label: 'N/A', tone: 'muted', rank: 6 };
 }
 
@@ -59,6 +62,7 @@ function materializeItems(unit, activeItemTypes = []) {
     status: 'unknown',
     due_date: null,
     completed_date: null,
+    last_completed_date: null,
     notes: null,
     item_types: type,
   });
@@ -67,7 +71,7 @@ function materializeItems(unit, activeItemTypes = []) {
 export function getAttentionItems(unit, activeItemTypes = []) {
   return materializeItems(unit, activeItemTypes)
     .map((item) => ({ ...item, computed_state: getItemState(item) }))
-    .filter((item) => ['overdue', 'open', 'due_soon', 'unknown'].includes(item.computed_state.key))
+    .filter((item) => ['overdue', 'open', 'monitor', 'due_soon', 'unknown'].includes(item.computed_state.key))
     .sort((a, b) => a.computed_state.rank - b.computed_state.rank
       || (a.item_types?.severity_rank ?? 999) - (b.item_types?.severity_rank ?? 999)
       || String(a.item_types?.label || '').localeCompare(String(b.item_types?.label || '')));
@@ -116,7 +120,7 @@ export function getPrimaryStatus(unit, activeItemTypes = []) {
 export function getUnitMetrics(unit, activeItemTypes = []) {
   const states = materializeItems(unit, activeItemTypes).map((item) => getItemState(item));
   return {
-    attention: states.filter((state) => ['overdue', 'open', 'due_soon', 'unknown'].includes(state.key)).length,
+    attention: states.filter((state) => ['overdue', 'open', 'monitor', 'due_soon', 'unknown'].includes(state.key)).length,
     overdue: states.filter((state) => state.key === 'overdue').length,
     dueSoon: states.filter((state) => state.key === 'due_soon').length,
     unknown: states.filter((state) => state.key === 'unknown').length,

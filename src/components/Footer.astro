@@ -1,12 +1,13 @@
 ---
-const base = import.meta.env.BASE_URL;
+import { routes } from '../lib/routes.js';
+
 const navLinks = [
-	{ text: 'Home', href: base },
-	{ text: 'Condos', href: `${base}condos/` },
-	{ text: 'Rules & Regulations', href: `${base}rules-and-regulations/` },
-	{ text: 'Local Attractions', href: `${base}local-attractions/` },
-	{ text: 'Local Resources', href: `${base}local-resources/` },
-	{ text: 'Resources', href: `${base}barrier-dunes-resources/` },
+	{ text: 'Home', href: routes.home },
+	{ text: 'Condos', href: routes.condos },
+	{ text: 'Rules & Regulations', href: routes.rules },
+	{ text: 'Local Attractions', href: routes.attractions },
+	{ text: 'Area & Emergency Services', href: routes.areaServices },
+	{ text: 'Community Resources', href: routes.communityResources },
 ];
 ---
 
@@ -15,50 +16,50 @@ const navLinks = [
 		<!-- Branding & Description -->
 		<div class="md:col-span-2 text-center md:text-left">
 			<h2 class="text-xl sm:text-2xl md:text-3xl font-serif mb-6 uppercase tracking-widest leading-none">Barrier Dunes</h2>
-			<p class="max-w-md mx-auto md:mx-0 text-beach-slate/80 leading-relaxed font-sans text-sm">
+			<p class="max-w-md mx-auto md:mx-0 text-beach-slate/85 leading-relaxed font-sans text-sm">
 				A private residential complex on the St. Joseph Peninsula, Cape San Blas, Florida. 
 				Experience sugar-white sand dunes, emerald green waters, and a peaceful environment to live and play.
 			</p>
 			<div class="mt-8 flex justify-center md:justify-start space-x-4">
-				<a href="mailto:Paula@burgmanagement.com" class="bg-white/50 p-3 rounded-full hover:bg-beach-sea transition-colors shadow-sm">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+				<a href="mailto:Paula@burgmanagement.com" aria-label="Email Burg Management" class="bg-white/70 p-3 rounded-full hover:bg-beach-teal hover:text-white transition-colors shadow-sm">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
 				</a>
-				<a href="mailto:cheryl@rapacpas.com" class="bg-white/50 p-3 rounded-full hover:bg-beach-sea transition-colors shadow-sm">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-cards"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 13h18"/><path d="M8 17h.01"/><path d="M12 17h.01"/><path d="M16 17h.01"/></svg>
+				<a href="mailto:cheryl@rapacpas.com" aria-label="Email association records contact" class="bg-white/70 p-3 rounded-full hover:bg-beach-teal hover:text-white transition-colors shadow-sm">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 13h18"/><path d="M8 17h.01"/><path d="M12 17h.01"/><path d="M16 17h.01"/></svg>
 				</a>
 			</div>
 		</div>
 
 		<!-- Links -->
 		<div class="text-center md:text-left">
-			<h3 class="text-[10px] md:text-xs font-sans font-bold uppercase tracking-widest mb-8 md:mb-6 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Explore</h3>
+			<h3 class="text-xs font-sans font-bold uppercase tracking-widest mb-8 md:mb-6 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Explore</h3>
 			<ul class="space-y-4">
 				{navLinks.map((link) => (
-					<li><a href={link.href} class="text-sm font-sans hover:text-white transition-colors uppercase tracking-wider block py-1">{link.text}</a></li>
+					<li><a href={link.href} class="text-sm font-sans hover:text-beach-teal transition-colors uppercase tracking-wider block py-1">{link.text}</a></li>
 				))}
 			</ul>
 		</div>
 
 		<!-- Contact & Legal -->
 		<div class="text-center md:text-left">
-			<h3 class="text-[10px] md:text-xs font-sans font-bold uppercase tracking-widest mb-8 md:mb-6 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Contact</h3>
+			<h3 class="text-xs font-sans font-bold uppercase tracking-widest mb-8 md:mb-6 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Contact</h3>
 			<div class="space-y-4 text-sm font-sans">
 				<p class="font-serif italic">Burg Management, Inc.</p>
 				<p>St. Joseph Peninsula, <br class="md:hidden" /> Cape San Blas, FL 32456</p>
-				<p><a href="mailto:Paula@burgmanagement.com" class="hover:text-white transition-colors border-b border-beach-slate/10 md:border-0 pb-1">Paula@burgmanagement.com</a></p>
-				<p><a href="mailto:cheryl@rapacpas.com" class="hover:text-white transition-colors border-b border-beach-slate/10 md:border-0 pb-1">cheryl@rapacpas.com</a></p>
+				<p><a href="mailto:Paula@burgmanagement.com" class="hover:text-beach-teal transition-colors border-b border-beach-slate/10 md:border-0 pb-1">Paula@burgmanagement.com</a></p>
+				<p><a href="mailto:cheryl@rapacpas.com" class="hover:text-beach-teal transition-colors border-b border-beach-slate/10 md:border-0 pb-1">cheryl@rapacpas.com</a></p>
 			</div>
 		</div>
 	</div>
 
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-white/20 text-center">
-		<p class="text-[10px] uppercase tracking-widest text-beach-slate/50">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-white/30 text-center">
+		<p class="text-[11px] uppercase tracking-[.12em] text-beach-slate/70">
 			&copy; {new Date().getFullYear()} Barrier Dunes Community Association. All rights reserved.
 		</p>
-		<p class="mt-2 text-[10px] uppercase tracking-widest text-beach-slate/30">
+		<p class="mt-2 text-[11px] uppercase tracking-[.12em] text-beach-slate/60">
 			Developed by Hutzell Creative Co.
 		</p>
-		<a href={`${base}admin/login/`} class="mt-5 inline-flex items-center gap-2 text-[10px] uppercase tracking-[.2em] text-beach-slate/35 transition hover:text-beach-slate/70" aria-label="Board administration login">
+		<a href={routes.adminLogin} class="mt-5 inline-flex items-center gap-2 text-[11px] uppercase tracking-[.14em] text-beach-slate/60 transition hover:text-beach-slate" aria-label="Board administration login">
 			<span aria-hidden="true">🔒</span> Board Administration
 		</a>
 	</div>

@@ -1,33 +1,33 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-const base = import.meta.env.BASE_URL;
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { routes } from '../../lib/routes.js';
 ---
 
-<Layout title="Admin Login">
+<AdminLayout title="Admin Login">
   <section class="min-h-[70vh] bg-beach-sky/10 px-4 py-16 md:py-24">
     <div class="mx-auto max-w-md border border-beach-sky/30 bg-white p-8 shadow-sm md:p-10">
-      <a href={base} class="mb-8 inline-block text-[10px] font-sans uppercase tracking-[.3em] text-beach-slate/60 hover:text-beach-slate">
-        ← Back to site
+      <a href={routes.home} class="mb-8 inline-block text-[11px] font-sans uppercase tracking-[.16em] text-beach-slate/70 hover:text-beach-slate">
+        ← Back to public site
       </a>
 
-      <span class="mb-4 block text-[10px] font-sans uppercase tracking-[.3em] text-beach-sand">Private HOA Access</span>
+      <span class="mb-4 block text-[11px] md:text-xs font-sans uppercase tracking-[.2em] text-beach-sand-dark">Private HOA Access</span>
       <h1 class="mb-4 font-serif text-3xl text-beach-slate">Admin Login</h1>
-      <p class="mb-8 text-sm leading-relaxed text-beach-slate/70">
+      <p class="mb-8 text-sm leading-relaxed text-beach-slate/75">
         Sign in to view and update private Barrier Dunes unit status records.
       </p>
 
       <form data-login-form class="space-y-5">
         <label class="block">
-          <span class="mb-2 block text-[10px] font-sans uppercase tracking-[.25em] text-beach-slate/70">Email</span>
-          <input name="email" type="email" autocomplete="email" required class="w-full border border-beach-sky/40 px-4 py-3 font-sans text-sm text-beach-slate outline-none focus:border-beach-sea" />
+          <span class="mb-2 block text-[11px] font-sans uppercase tracking-[.14em] text-beach-slate/80">Email</span>
+          <input name="email" type="email" autocomplete="email" required class="w-full border border-beach-sky/50 px-4 py-3 font-sans text-sm text-beach-slate outline-none focus:border-beach-teal" />
         </label>
 
         <label class="block">
-          <span class="mb-2 block text-[10px] font-sans uppercase tracking-[.25em] text-beach-slate/70">Password</span>
-          <input name="password" type="password" autocomplete="current-password" required class="w-full border border-beach-sky/40 px-4 py-3 font-sans text-sm text-beach-slate outline-none focus:border-beach-sea" />
+          <span class="mb-2 block text-[11px] font-sans uppercase tracking-[.14em] text-beach-slate/80">Password</span>
+          <input name="password" type="password" autocomplete="current-password" required class="w-full border border-beach-sky/50 px-4 py-3 font-sans text-sm text-beach-slate outline-none focus:border-beach-teal" />
         </label>
 
-        <button data-login-submit type="submit" class="w-full bg-beach-slate px-6 py-4 text-[10px] font-sans uppercase tracking-[.35em] text-white transition hover:bg-beach-sea disabled:cursor-not-allowed disabled:opacity-50">
+        <button data-login-submit type="submit" class="w-full bg-beach-slate px-6 py-4 text-xs font-sans uppercase tracking-[.18em] text-white transition hover:bg-beach-teal disabled:cursor-not-allowed disabled:opacity-50">
           Sign In
         </button>
 
@@ -35,7 +35,7 @@ const base = import.meta.env.BASE_URL;
       </form>
     </div>
   </section>
-</Layout>
+</AdminLayout>
 
 <script>
   import '../../scripts/adminLogin.js';

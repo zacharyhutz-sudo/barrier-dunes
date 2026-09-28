@@ -1,30 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { assetUrl, routes } from '../lib/routes.js';
 
 const destinations = [
 	{
 		name: "T.H. Stone Memorial State Park",
 		description: "Located at the tip of the peninsula, this park offers camping, cabins, hiking trails, and boat ramps. It's a sanctuary for wildlife and features some of the tallest dunes in Florida.",
 		address: "8899 Cape San Blas Rd",
-		image: "/barrier-dunes/images/attractions/state-park.jpg"
+		image: assetUrl('images/attractions/state-park.jpg')
 	},
 	{
 		name: "Salinas Park",
 		description: "A dual-access park offering both gulf and bay views. Features a long boardwalk over the marsh, pickleball courts, a playground, and screened picnic areas. Perfect for a family afternoon.",
 		address: "380 Cape San Blas Rd",
-		image: "/barrier-dunes/images/attractions/salinas-park.jpg"
+		image: assetUrl('images/attractions/salinas-park.jpg')
 	},
 	{
 		name: "Cape Palms Park",
 		description: "A dog-friendly park featuring a boardwalk over the dunes, a pavilion with picnic tables, and essential facilities like outdoor showers and bathrooms.",
 		address: "6081 Cape San Blas Rd",
-		image: "/barrier-dunes/images/attractions/cape-palms.jpg"
+		image: assetUrl('images/attractions/cape-palms.jpg')
 	},
 	{
 		name: "Loggerhead Trail",
 		description: "A FREE 8.7-mile paved multi-use trail running the entire length of Cape San Blas Road. It's ideal for walking, biking, or running while enjoying the scenic views of the peninsula.",
 		address: "Runs the length of the Peninsula",
-		image: "/barrier-dunes/images/attractions/loggerhead-trail.jpg"
+		image: assetUrl('images/attractions/loggerhead-trail.jpg')
 	}
 ];
 
@@ -65,9 +66,9 @@ const activityCategories = [
 <Layout title="Local Attractions">
 	<section class="py-16 md:py-20 bg-beach-sand/5">
 		<div class="max-w-4xl mx-auto px-4 text-center">
-			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">EXPLORE GULF COUNTY</span>
+			<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">EXPLORE GULF COUNTY</span>
 			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-8">Local Attractions</h1>
-			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
+			<p class="text-beach-slate/75 font-sans text-sm leading-relaxed tracking-wide">
 				From the pristine shores of T.H. Stone State Park to the legendary donuts at Weber's, 
 				discover everything that makes Cape San Blas a world-class destination.
 			</p>
@@ -76,18 +77,18 @@ const activityCategories = [
 
 	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
-			<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-12 md:mb-16 text-center">Pristine Parks & Trails</h2>
+			<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-12 md:mb-16 text-center">Pristine Parks & Trails</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
 				{destinations.map((dest) => (
 					<div class="group">
 						<div class="aspect-[16/9] bg-beach-sky/20 mb-6 md:mb-8 overflow-hidden relative">
-							<img src={dest.image} alt={dest.name} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-							<div class="absolute bottom-0 left-0 bg-beach-slate/90 text-white px-4 md:px-6 py-2 text-[9px] md:text-[10px] font-sans uppercase tracking-widest">
+							<img src={dest.image} alt={dest.name} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+							<div class="absolute bottom-0 left-0 bg-beach-slate/90 text-white px-4 md:px-6 py-2 text-[11px] md:text-xs font-sans uppercase tracking-[.12em]">
 								{dest.address}
 							</div>
 						</div>
 						<h3 class="text-xl md:text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
-						<p class="text-beach-slate/70 font-sans text-sm leading-relaxed mb-6">{dest.description}</p>
+						<p class="text-beach-slate/75 font-sans text-sm leading-relaxed mb-6">{dest.description}</p>
 					</div>
 				))}
 			</div>
@@ -99,13 +100,13 @@ const activityCategories = [
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
 				{activityCategories.map((cat) => (
 					<div>
-						<h3 class="text-beach-sea font-sans text-[10px] uppercase tracking-[.3em] mb-8 md:mb-12 border-b border-beach-sea/30 pb-4">{cat.title}</h3>
+						<h3 class="text-beach-sea font-sans text-[11px] md:text-xs uppercase tracking-[.2em] mb-8 md:mb-12 border-b border-beach-sea/30 pb-4">{cat.title}</h3>
 						<ul class="space-y-6 md:space-y-8">
 							{cat.items.map((item) => (
 								<li>
 									<p class="text-sm font-serif tracking-wide text-white mb-1">{item.name}</p>
-									<p class="text-[10px] font-sans text-white/50 uppercase tracking-widest leading-relaxed mb-1">{item.info}</p>
-									<p class="text-[9px] font-sans text-beach-sea uppercase tracking-widest">{item.contact}</p>
+									<p class="text-[11px] font-sans text-white/75 uppercase tracking-[.1em] leading-relaxed mb-1">{item.info}</p>
+									<p class="text-[11px] font-sans text-beach-sea uppercase tracking-[.1em]">{item.contact}</p>
 								</li>
 							))}
 						</ul>
@@ -117,13 +118,13 @@ const activityCategories = [
 
 	<section class="py-20 md:py-24 bg-white text-center">
 		<div class="max-w-2xl mx-auto px-4">
-			<h2 class="text-[10px] md:text-xs font-sans font-bold text-beach-sand uppercase tracking-[.4em] mb-8">Plan Your Adventure</h2>
+			<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-8">Plan Your Adventure</h2>
 			<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-8 tracking-tight italic">Ready to see the Cape?</h3>
-			<p class="text-beach-slate/60 font-sans text-sm mb-12 leading-relaxed">
+			<p class="text-beach-slate/70 font-sans text-sm mb-12 leading-relaxed">
 				Whether you're looking for fresh seafood, beach gear, or a sunset horseback ride, the local community 
 				at Cape San Blas has everything you need for a perfect coastal retreat.
 			</p>
-			<a href="/barrier-dunes/condos" class="inline-block bg-beach-slate text-white px-10 md:px-16 py-4 md:py-5 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sand transition-all duration-300 shadow-xl w-full md:w-auto">
+			<a href={routes.condos} class="inline-block bg-beach-slate text-white px-10 md:px-16 py-4 md:py-5 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal transition-all duration-300 shadow-xl w-full md:w-auto">
 				Book Your Stay
 			</a>
 		</div>

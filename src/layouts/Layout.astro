@@ -1,6 +1,7 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import { assetUrl } from '../lib/routes.js';
 
 interface Props {
 	title: string;
@@ -15,7 +16,7 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/barrier-dunes/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={assetUrl('favicon.svg')} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} | Barrier Dunes</title>
 		<meta name="description" content={description} />
@@ -57,6 +58,21 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 	}
 
 	/* Mobile typography refinement */
+
+	a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+		outline: 2px solid #2F7E80;
+		outline-offset: 3px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html { scroll-behavior: auto; }
+		*, *::before, *::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+
 	@media (max-width: 768px) {
 		h1 {
 			font-size: 2rem; /* Reduced from 2.5rem to prevent overflow */

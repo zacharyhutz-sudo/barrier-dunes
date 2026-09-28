@@ -91,9 +91,9 @@ const sections = [
 <Layout title="Rules & Regulations">
 	<section class="py-16 md:py-20 bg-beach-sand/10">
 		<div class="max-w-4xl mx-auto px-4 text-center">
-			<span class="text-beach-sand font-sans text-[10px] uppercase tracking-[.3em] mb-4 block">COMMUNITY GUIDELINES</span>
+			<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">COMMUNITY GUIDELINES</span>
 			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-8">Rules & Regulations</h1>
-			<p class="text-beach-slate/70 font-sans text-sm leading-relaxed tracking-wide">
+			<p class="text-beach-slate/75 font-sans text-sm leading-relaxed tracking-wide">
 				Barrier Dunes is a community designed for peace and preservation. 
 				Please abide by these regulations to ensure a safe and enjoyable stay for everyone.
 			</p>
@@ -106,7 +106,7 @@ const sections = [
 				{sections.map((section) => (
 					<div class="border-t border-beach-sky/30 pt-10 md:pt-12">
 						<div class="flex items-center mb-6 md:mb-8">
-							<span class="w-10 h-10 bg-beach-sand/10 text-beach-sand flex items-center justify-center rounded-sm mr-4 shrink-0">
+							<span class="w-10 h-10 bg-beach-sand/10 text-beach-sand-dark flex items-center justify-center rounded-sm mr-4 shrink-0">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
 									{section.icon === 'home' && <><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></>}
 									{section.icon === 'info' && <><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></>}
@@ -122,7 +122,7 @@ const sections = [
 						</div>
 						<ul class="space-y-4">
 							{section.rules.map((rule) => (
-								<li class="flex items-start text-sm text-beach-slate/70 font-sans leading-relaxed">
+								<li class="flex items-start text-sm text-beach-slate/75 font-sans leading-relaxed">
 									<span class="text-beach-sand mr-3 mt-1.5 w-1.5 h-1.5 rounded-full bg-beach-sand shrink-0"></span>
 									{rule}
 								</li>
@@ -137,14 +137,14 @@ const sections = [
 	<section class="py-16 md:py-24 bg-beach-sky/20">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<h2 class="text-2xl md:text-3xl font-serif text-beach-slate mb-8">Need a PDF Copy?</h2>
-			<p class="text-beach-slate/70 font-sans text-sm mb-12 uppercase tracking-widest leading-loose">
+			<p class="text-beach-slate/75 font-sans text-sm mb-12 uppercase tracking-widest leading-loose">
 				Download the official Rules & Regulations document to keep with your records.
 			</p>
 			<div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
-				<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" class="inline-block bg-beach-slate text-white px-10 md:px-12 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-sand transition-all duration-300 w-full sm:w-auto">
+				<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-beach-slate text-white px-10 md:px-12 py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal transition-all duration-300 w-full sm:w-auto">
 					Download Rules (PDF)
 				</a>
-				<a href="https://myfwc.com/news/all-news/scallop-821/" target="_blank" class="inline-block border border-beach-slate text-beach-slate px-10 md:px-12 py-4 text-[10px] font-sans uppercase tracking-[.4em] hover:bg-beach-slate hover:text-white transition-all duration-300 w-full sm:w-auto">
+				<a href="https://myfwc.com/news/all-news/scallop-821/" target="_blank" rel="noopener noreferrer" class="inline-block border border-beach-slate text-beach-slate px-10 md:px-12 py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-slate hover:text-white transition-all duration-300 w-full sm:w-auto">
 					FWC Scallop Info
 				</a>
 			</div>

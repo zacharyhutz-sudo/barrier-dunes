@@ -1,10 +1,8 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-// https://astro.build/config
+// Root-path build for Cloudflare Pages/custom-domain hosting.
 export default defineConfig({
-  site: 'https://zacharyhutz-sudo.github.io',
-  base: '/barrier-dunes',
   trailingSlash: 'always',
   integrations: [tailwind()],
 });

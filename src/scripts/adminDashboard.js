@@ -194,9 +194,19 @@ async function requireSession() {
     return false;
   }
 
+  // Resolve/refresh the persisted session first, then validate the user with
+  // Supabase. A stale cached session must be cleared before redirecting or the
+  // login page can immediately send the browser back here again.
+  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+  if (sessionError || !sessionData.session) {
+    location.replace(routes.adminLogin);
+    return false;
+  }
+
   const { data, error } = await supabase.auth.getUser();
   if (error || !data.user) {
-    location.assign(routes.adminLogin);
+    await supabase.auth.signOut({ scope: 'local' });
+    location.replace(routes.adminLogin);
     return false;
   }
   state.user = data.user;
@@ -966,7 +976,7 @@ function exportSpreadsheet() {
 function bind() {
   els.signOut.addEventListener('click', async () => {
     await supabase.auth.signOut();
-    location.assign(routes.adminLogin);
+    location.replace(routes.adminLogin);
   });
   els.export.addEventListener('click', exportSpreadsheet);
 

@@ -22,10 +22,20 @@ async function init() {
     return;
   }
 
-  const { data } = await supabase.auth.getSession();
-  if (data.session) {
-    window.location.assign(adminUrl);
+  // Validate the cached auth state with Supabase before redirecting.
+  // getSession() alone can return a stale local session, which previously caused
+  // /admin/login/ and /admin/ to redirect to each other indefinitely.
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (!userError && userData.user) {
+    window.location.replace(adminUrl);
     return;
+  }
+
+  // If a stale session exists locally, remove it before leaving the login form
+  // available. This keeps subsequent page loads from treating it as authenticated.
+  const { data: sessionData } = await supabase.auth.getSession();
+  if (sessionData.session) {
+    await supabase.auth.signOut({ scope: 'local' });
   }
 
   form.addEventListener('submit', async (event) => {
@@ -51,7 +61,7 @@ async function init() {
     }
 
     setMessage('Signed in. Redirecting…', 'success');
-    window.location.assign(adminUrl);
+    window.location.replace(adminUrl);
   });
 }
 

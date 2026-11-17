@@ -26,10 +26,10 @@ const contacts = [
 ---
 
 <Layout title="Area & Emergency Services">
-	<section class="py-16 md:py-20 bg-beach-sand/5">
+	<section class="page-intro py-12 sm:py-16 md:py-20">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">ESSENTIAL SERVICES</span>
-			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-8">Area & Emergency Services</h1>
+			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-4 sm:mb-6">Area & Emergency Services</h1>
 			<p class="text-beach-slate/75 font-sans text-sm leading-relaxed tracking-wide">
 				Directories and safety systems to assist homeowners and guests while in Gulf County.
 			</p>
@@ -38,7 +38,7 @@ const contacts = [
 
 	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-20">
 				
 				<!-- Safety & Fire -->
 				<div class="space-y-10 md:space-y-12">
@@ -50,13 +50,13 @@ const contacts = [
 							Cape San Blas maintains these flags to ensure you stay safe while enjoying the emerald waters. 
 							A dedicated volunteer maintains the beach flags during the winter season.
 						</p>
-						<a href="https://www.facebook.com/sgcfire/" target="_blank" rel="noopener noreferrer" class="group flex items-center text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-beach-slate">
+						<a href="https://www.facebook.com/sgcfire/" target="_blank" rel="noopener noreferrer" class="group inline-flex min-h-11 items-center text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-beach-slate">
 							<span class="border-b border-beach-sand-dark group-hover:border-beach-teal transition-colors pb-1 mr-4">Daily Updates on Facebook</span>
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 						</a>
 					</div>
 
-					<div class="aspect-[16/9] bg-beach-sky/20 overflow-hidden group">
+					<div data-scroll-reveal class="aspect-[16/9] bg-beach-sky/20 overflow-hidden group rounded-sm">
 						<img src={assetUrl('images/beach-sunset.jpeg')} alt="Cape San Blas beach at sunset" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
 					</div>
 				</div>
@@ -75,15 +75,15 @@ const contacts = [
 						</a>
 					</div>
 
-					<div class="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-12 pt-10 md:pt-12 border-t border-beach-sky/30">
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 pt-6 md:pt-8 border-t border-beach-sky">
 						{contacts.map((cat) => (
-							<div>
-								<h4 class="text-[11px] md:text-xs font-sans uppercase tracking-[.18em] text-beach-sand-dark mb-6 font-semibold">{cat.category}</h4>
+							<div class="min-w-0 rounded-sm bg-beach-sky/25 p-4 sm:p-5">
+								<h4 class="text-[11px] md:text-xs font-sans uppercase tracking-[.18em] text-beach-sand-dark mb-4 font-semibold">{cat.category}</h4>
 								<ul class="space-y-4">
 									{cat.items.map((contact) => (
 										<li>
 											<p class="text-sm font-serif text-beach-slate tracking-wide">{contact.name}</p>
-											<p class="text-[11px] font-sans text-beach-slate/70 uppercase tracking-[.1em] mt-1 leading-relaxed">{contact.info}</p>
+											<p class="text-[11px] font-sans text-beach-slate/80 mt-1 leading-relaxed [overflow-wrap:anywhere]">{contact.info}</p>
 										</li>
 									))}
 								</ul>

@@ -1,6 +1,8 @@
 ---
 import { routes } from '../lib/routes.js';
 
+const normalizePath = (path) => path.replace(/\/index\.html$/, '/').replace(/\/$/, '');
+const currentPath = normalizePath(Astro.url.pathname);
 const navLinks = [
 	{ text: 'Home', href: routes.home },
 	{ text: 'Condos', href: routes.condos },
@@ -8,7 +10,7 @@ const navLinks = [
 	{ text: 'Local Attractions', href: routes.attractions },
 	{ text: 'Area & Emergency Services', href: routes.areaServices },
 	{ text: 'Community Resources', href: routes.communityResources },
-];
+].map((link) => ({ ...link, current: normalizePath(link.href) === currentPath }));
 ---
 
 <header class="bg-white border-b border-beach-sky/30 sticky top-0 z-50">
@@ -27,7 +29,7 @@ const navLinks = [
 
 		<div class="hidden xl:flex items-center space-x-4 2xl:space-x-6">
 			{navLinks.map((link) => (
-				<a href={link.href} class="text-[11px] 2xl:text-xs font-sans text-beach-slate hover:text-beach-teal transition-colors uppercase tracking-[.11em] whitespace-nowrap">
+				<a href={link.href} aria-current={link.current ? 'page' : undefined} class="text-[11px] 2xl:text-xs font-sans text-beach-slate hover:text-beach-teal transition-colors uppercase tracking-[.11em] whitespace-nowrap">
 					{link.text}
 				</a>
 			))}
@@ -36,110 +38,91 @@ const navLinks = [
 			</a>
 		</div>
 
-		<!-- Mobile Menu Button (Tablet & Mobile) -->
-		<div class="xl:hidden">
-			<button id="mobile-menu-button" class="text-beach-slate p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-beach-teal focus-visible:ring-offset-2" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-				<svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-				<svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+			<div class="xl:hidden">
+			<button id="mobile-menu-button" type="button" class="grid size-11 place-items-center rounded-sm text-beach-slate" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" aria-haspopup="dialog">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
 			</button>
 		</div>
 	</nav>
 
-	<!-- Mobile Menu Sidebar -->
-	<div id="mobile-menu" class="fixed inset-0 z-[100] transform translate-x-full transition-transform duration-500 ease-in-out xl:hidden invisible overflow-hidden" aria-hidden="true">
-		<!-- Backdrop -->
-		<div id="mobile-menu-backdrop" class="absolute inset-0 bg-beach-slate/60 backdrop-blur-md opacity-0 transition-opacity duration-500"></div>
-		
-		<!-- Sidebar -->
-		<div class="absolute right-0 top-0 h-full w-[88%] max-w-sm bg-white shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.3)] p-7 sm:p-8 overflow-y-auto flex flex-col justify-between">
-			<div class="flex flex-col space-y-2 mt-12">
-				{navLinks.map((link, i) => (
-					<a 
-						href={link.href} 
-						class="mobile-nav-link opacity-0 translate-x-12 transition-all duration-500 text-[1.05rem] font-serif text-beach-slate hover:text-beach-sand-dark uppercase tracking-[.08em] border-b border-beach-sky/20 py-3.5 flex items-center justify-between gap-4"
-						style={`transition-delay: ${100 + i * 40}ms`}
-					>
+	<dialog id="mobile-menu" aria-label="Site menu" class="fixed inset-0 m-0 h-full max-h-none w-full max-w-none overflow-hidden bg-transparent text-beach-slate">
+		<div class="mobile-menu-panel ml-auto flex h-full w-[88%] max-w-sm flex-col overflow-y-auto overscroll-contain bg-white p-5 shadow-xl sm:p-8">
+			<button id="mobile-menu-close" type="button" class="mb-3 grid size-11 shrink-0 place-items-center self-end rounded-sm text-beach-slate" aria-label="Close menu" autofocus>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+			</button>
+			<nav aria-label="Mobile navigation" class="flex flex-col">
+				{navLinks.map((link, index) => (
+					<a href={link.href} aria-current={link.current ? 'page' : undefined}
+						class="mobile-menu-link flex min-h-12 items-center justify-between gap-3 border-b border-beach-sky px-2 py-3 font-serif text-base uppercase tracking-[.08em] hover:text-beach-teal"
+						style={`--menu-link-delay: ${Math.min(index * 12, 60)}ms`}>
 						<span>{link.text}</span>
-						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-beach-sand-dark/70 shrink-0" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-beach-sand-dark" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
 					</a>
 				))}
-				<a 
-					href="https://app.condocontrol.com/login?brand=barrier" 
-					target="_blank"
-					rel="noopener noreferrer"
-					class="mobile-nav-link opacity-0 translate-x-12 transition-all duration-500 bg-beach-slate text-white px-8 py-4 rounded-sm text-xs font-sans uppercase tracking-[.2em] text-center hover:bg-beach-teal transition-colors shadow-lg mt-6"
-					style={`transition-delay: ${100 + navLinks.length * 40}ms`}
-				>
+				<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer" class="mt-5 rounded-sm bg-beach-slate px-6 py-4 text-center text-xs uppercase tracking-[.2em] text-white transition-colors hover:bg-beach-teal">
 					HOA Login
 				</a>
-			</div>
-
-			<div class="mt-8 pb-4 text-center">
-				<p class="text-[11px] font-sans text-beach-sand-dark uppercase tracking-[.2em] leading-relaxed">Established on the St. Joseph Peninsula</p>
-			</div>
+			</nav>
+			<p class="mt-auto pt-7 text-center text-[11px] uppercase tracking-[.16em] text-beach-sand-dark">Established on the St. Joseph Peninsula</p>
 		</div>
-	</div>
+	</dialog>
 </header>
 
-<script>
-	const menuButton = document.getElementById('mobile-menu-button');
-	const mobileMenu = document.getElementById('mobile-menu');
-	const backdrop = document.getElementById('mobile-menu-backdrop');
-	const menuIcon = document.getElementById('menu-icon');
-	const closeIcon = document.getElementById('close-icon');
-	const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+<style>
+	a[aria-current="page"] {
+		color: #2f7e80;
+		text-decoration: underline;
+		text-decoration-thickness: 2px;
+		text-underline-offset: .4em;
+	}
+	.mobile-menu-link[aria-current="page"] { background-color: #f1f7fa; }
 
-	function toggleMenu() {
-		const isOpen = mobileMenu?.classList.contains('translate-x-0');
-		
-		if (isOpen) {
-			mobileMenu?.classList.add('translate-x-full');
-			mobileMenu?.classList.remove('translate-x-0');
-			backdrop?.classList.add('opacity-0');
-			backdrop?.classList.remove('opacity-100');
-			
-			mobileNavLinks.forEach(link => {
-				link.classList.add('opacity-0', 'translate-x-12');
-				link.classList.remove('opacity-100', 'translate-x-0');
-			});
+	#mobile-menu::backdrop { background: rgb(32 52 62 / 50%); }
+	:global(body:has(#mobile-menu[open])) { overflow: hidden; }
 
-			setTimeout(() => {
-				mobileMenu?.classList.add('invisible');
-			}, 500);
-
-			menuIcon?.classList.remove('hidden');
-			closeIcon?.classList.add('hidden');
-			menuButton?.setAttribute('aria-expanded', 'false');
-			menuButton?.setAttribute('aria-label', 'Open menu');
-			mobileMenu?.setAttribute('aria-hidden', 'true');
-			document.body.style.overflow = 'auto';
-		} else {
-			mobileMenu?.classList.remove('invisible');
-			mobileMenu?.classList.remove('translate-x-full');
-			mobileMenu?.classList.add('translate-x-0');
-			backdrop?.classList.remove('opacity-0');
-			backdrop?.classList.add('opacity-100');
-			
-			mobileNavLinks.forEach(link => {
-				link.classList.remove('opacity-0', 'translate-x-12');
-				link.classList.add('opacity-100', 'translate-x-0');
-			});
-
-			menuIcon?.classList.add('hidden');
-			closeIcon?.classList.remove('hidden');
-			menuButton?.setAttribute('aria-expanded', 'true');
-			menuButton?.setAttribute('aria-label', 'Close menu');
-			mobileMenu?.setAttribute('aria-hidden', 'false');
-			document.body.style.overflow = 'hidden';
+	@media (prefers-reduced-motion: no-preference) {
+		#mobile-menu[open] .mobile-menu-panel { animation: menu-slide 240ms ease-out; }
+		#mobile-menu[open] .mobile-menu-link {
+			animation: menu-link 170ms ease-out var(--menu-link-delay) both;
 		}
 	}
 
-	menuButton?.addEventListener('click', toggleMenu);
-	backdrop?.addEventListener('click', toggleMenu);
+	@keyframes menu-slide {
+		from { transform: translateX(100%); }
+		to { transform: translateX(0); }
+	}
 
-	mobileNavLinks.forEach(link => {
-		link.addEventListener('click', () => {
-			toggleMenu();
+	@keyframes menu-link {
+		from { opacity: .65; transform: translateX(6px); }
+		to { opacity: 1; transform: translateX(0); }
+	}
+</style>
+
+<script>
+	const menuButton = document.querySelector<HTMLButtonElement>('#mobile-menu-button');
+	const menu = document.querySelector<HTMLDialogElement>('#mobile-menu');
+	const closeButton = document.querySelector<HTMLButtonElement>('#mobile-menu-close');
+
+	if (menuButton && menu && closeButton) {
+		menuButton.addEventListener('click', () => {
+			menu.showModal();
+			menuButton.setAttribute('aria-expanded', 'true');
 		});
-	});
+
+		closeButton.addEventListener('click', () => menu.close());
+
+		menu.addEventListener('click', (event) => {
+			if (event.target === menu || (event.target instanceof Element && event.target.closest('a'))) {
+				menu.close();
+			}
+		});
+
+		menu.addEventListener('close', () => {
+			menuButton.setAttribute('aria-expanded', String(menu.open));
+		});
+
+		window.matchMedia('(min-width: 1280px)').addEventListener('change', ({ matches }) => {
+			if (matches && menu.open) menu.close();
+		});
+	}
 </script>

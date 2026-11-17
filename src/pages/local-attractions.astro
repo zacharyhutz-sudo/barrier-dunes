@@ -64,10 +64,10 @@ const activityCategories = [
 ---
 
 <Layout title="Local Attractions">
-	<section class="py-16 md:py-20 bg-beach-sand/5">
+	<section class="page-intro py-12 sm:py-16 md:py-20">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">EXPLORE GULF COUNTY</span>
-			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-8">Local Attractions</h1>
+			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-4 sm:mb-6">Local Attractions</h1>
 			<p class="text-beach-slate/75 font-sans text-sm leading-relaxed tracking-wide">
 				From the pristine shores of T.H. Stone State Park to the legendary donuts at Weber's, 
 				discover everything that makes Cape San Blas a world-class destination.
@@ -78,17 +78,17 @@ const activityCategories = [
 	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
 			<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-12 md:mb-16 text-center">Pristine Parks & Trails</h2>
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24">
-				{destinations.map((dest) => (
-					<div class="group">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-14">
+				{destinations.map((dest, index) => (
+					<div data-scroll-reveal={index % 2 ? 'second' : 'first'} class="group min-w-0 rounded-sm border border-beach-sky p-4 sm:p-5">
 						<div class="aspect-[16/9] bg-beach-sky/20 mb-6 md:mb-8 overflow-hidden relative">
-							<img src={dest.image} alt={dest.name} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+							<img src={dest.image} alt={dest.name} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-[1.035] transition-transform duration-500" />
 							<div class="absolute bottom-0 left-0 bg-beach-slate/90 text-white px-4 md:px-6 py-2 text-[11px] md:text-xs font-sans uppercase tracking-[.12em]">
 								{dest.address}
 							</div>
 						</div>
 						<h3 class="text-xl md:text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
-						<p class="text-beach-slate/75 font-sans text-sm leading-relaxed mb-6">{dest.description}</p>
+						<p class="text-beach-slate/75 font-sans text-sm leading-relaxed">{dest.description}</p>
 					</div>
 				))}
 			</div>
@@ -98,8 +98,8 @@ const activityCategories = [
 	<section class="py-16 md:py-24 bg-beach-slate text-white">
 		<div class="max-w-7xl mx-auto px-4">
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
-				{activityCategories.map((cat) => (
-					<div>
+				{activityCategories.map((cat, index) => (
+					<div data-scroll-reveal={index === 0 ? 'first' : index === 1 ? 'second' : 'third'} class="min-w-0">
 						<h3 class="text-beach-sea font-sans text-[11px] md:text-xs uppercase tracking-[.2em] mb-8 md:mb-12 border-b border-beach-sea/30 pb-4">{cat.title}</h3>
 						<ul class="space-y-6 md:space-y-8">
 							{cat.items.map((item) => (

@@ -4,10 +4,10 @@ import { assetUrl } from '../lib/routes.js';
 ---
 
 <Layout title="Community Resources">
-	<section class="py-16 md:py-20 bg-beach-sky/20">
+	<section class="page-intro py-12 sm:py-16 md:py-20">
 		<div class="max-w-4xl mx-auto px-4 text-center">
 			<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">COMMUNITY MANAGEMENT</span>
-			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-8">Community Resources</h1>
+			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-4 sm:mb-6">Community Resources</h1>
 			<p class="text-beach-slate/75 font-sans text-sm leading-relaxed tracking-wide">
 				Forms, documents, and essential information for renters and homeowners. 
 				Manage your stay and access community amenities.
@@ -16,16 +16,16 @@ import { assetUrl } from '../lib/routes.js';
 	</section>
 
 	<section class="py-16 md:py-24 bg-white">
-		<div class="max-w-5xl mx-auto px-4 space-y-20 md:space-y-32">
+		<div class="max-w-5xl mx-auto px-4 space-y-14 md:space-y-24">
 			
 			<!-- Renter Maintenance -->
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
 				<div>
 					<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-6 md:mb-8">Maintenance</h2>
 					<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Report Amenity Issues</h3>
 					<p class="text-beach-slate/75 font-sans text-sm leading-relaxed mb-10">
 						If you are a renter at Barrier Dunes and need to report issues concerning our services, rental amenities, 
-						or missing items, please contact your **rental contact person** as shown on your rental contract.
+						or missing items, please contact your <strong>rental contact person</strong> as shown on your rental contract.
 					</p>
 					<div class="p-6 md:p-8 bg-beach-sky/10 border-l-2 border-beach-sea">
 						<p class="text-[11px] md:text-xs font-sans text-beach-slate/70 uppercase tracking-[.12em] leading-loose">
@@ -33,7 +33,7 @@ import { assetUrl } from '../lib/routes.js';
 						</p>
 					</div>
 				</div>
-				<div class="aspect-square bg-beach-sea/5 overflow-hidden group rounded-sm">
+				<div data-scroll-reveal class="aspect-[4/3] md:aspect-square bg-beach-sea/5 overflow-hidden group rounded-sm">
 					<img
 						src={assetUrl('images/optimized/pool-overhead-1200.webp')}
 						srcset={`${assetUrl('images/optimized/pool-overhead-720.webp')} 720w, ${assetUrl('images/optimized/pool-overhead-1200.webp')} 1200w, ${assetUrl('images/pool-overhead.webp')} 1600w`}
@@ -49,9 +49,9 @@ import { assetUrl } from '../lib/routes.js';
 			</div>
 
 			<!-- Clubhouse Rental -->
-			<div class="bg-beach-slate text-white p-8 md:p-24 relative overflow-hidden rounded-sm shadow-2xl">
+			<div class="bg-beach-slate text-white p-5 sm:p-8 lg:p-12 relative overflow-hidden rounded-sm shadow-md">
 				<!-- Decorative Background Text -->
-				<div class="absolute top-0 right-0 text-white/5 font-serif text-[8rem] md:text-[12rem] select-none pointer-events-none -translate-y-1/2 translate-x-1/4">Rental</div>
+				<div aria-hidden="true" class="absolute top-0 right-0 text-white/5 font-serif text-[8rem] md:text-[12rem] select-none pointer-events-none -translate-y-1/2 translate-x-1/4">Rental</div>
 				
 				<div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16">
 					<div class="lg:col-span-2">
@@ -61,18 +61,18 @@ import { assetUrl } from '../lib/routes.js';
 							The clubhouse is available for private events, meetings, and community gatherings. 
 							We encourage all residents to do their due diligence before renting the space and read the agreement in full to ensure a seamless experience.
 						</p>
-						<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
-							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/CLUBHOUSE%20RENTAL%20AGREEMENT%20August%202020.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-beach-slate px-10 py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal hover:text-white transition-all duration-300 text-center w-full sm:w-auto">
+						<div class="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/CLUBHOUSE%20RENTAL%20AGREEMENT%20August%202020.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-beach-slate px-5 sm:px-6 py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal hover:text-white transition-all duration-300 text-center w-full sm:w-auto">
 								Download Agreement
 							</a>
-							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/20 px-10 py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-white hover:text-beach-slate transition-all duration-300 text-center w-full sm:w-auto">
+							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/20 px-5 sm:px-6 py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-white hover:text-beach-slate transition-all duration-300 text-center w-full sm:w-auto">
 								Rules & Regulations
 							</a>
 						</div>
 					</div>
 					
 					<div class="flex flex-col justify-center">
-						<div class="bg-white/5 p-8 md:p-10 border border-white/10 backdrop-blur-sm rounded-sm">
+						<div class="bg-white/5 p-5 sm:p-7 border border-white/10 backdrop-blur-sm rounded-sm">
 							<h4 class="text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-beach-sea mb-6 text-center lg:text-left">Reservation Form</h4>
 							<p class="text-xs text-white/50 font-sans leading-relaxed mb-8 text-center lg:text-left">
 								Clubhouse booking requests are managed via the official Homeowner Portal.
@@ -87,7 +87,7 @@ import { assetUrl } from '../lib/routes.js';
 			</div>
 
 			<!-- Lost & Found Integration -->
-			<div id="lost-and-found" class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24 items-start">
+			<div id="lost-and-found" class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-14 items-start">
 				<div class="space-y-10 md:space-y-12">
 					<div>
 						<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-6 md:mb-8">Community Assistance</h2>
@@ -98,25 +98,25 @@ import { assetUrl } from '../lib/routes.js';
 						</p>
 					</div>
 
-					<div class="p-6 md:p-8 bg-beach-sand/5 border border-beach-sand/20 rounded-sm">
+					<div data-scroll-reveal class="p-5 md:p-7 bg-beach-sand/5 border border-beach-sand/20 rounded-sm">
 						<h4 class="text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-beach-sand-dark mb-4">Current Notices</h4>
-						<div class="flex items-center text-beach-slate/40 italic font-serif py-4 border-t border-beach-sand/10 text-sm">
+						<div class="flex items-center text-beach-slate/75 italic font-serif py-4 border-t border-beach-sand/10 text-sm">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-3 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
 							No active lost or found items.
 						</div>
 					</div>
 				</div>
 
-				<div class="bg-beach-slate p-8 md:p-12 text-white rounded-sm shadow-2xl">
+				<div class="bg-beach-slate p-5 sm:p-8 md:p-10 text-white rounded-sm shadow-md">
 					<h4 class="text-xl font-serif mb-6 uppercase tracking-widest text-beach-sea">Report an Item</h4>
 					<form class="space-y-6">
 						<div class="space-y-2">
-							<label class="text-[11px] uppercase tracking-[.12em] text-white/70">Full Name</label>
-							<input type="text" class="w-full bg-white/5 border-b border-white/20 py-2 text-sm focus:border-beach-sea outline-none transition-colors rounded-none appearance-none" placeholder="John Doe" />
+							<label for="lost-found-name" class="block text-xs tracking-wide text-white/90">Full Name</label>
+							<input id="lost-found-name" type="text" class="min-h-11 w-full rounded-sm border border-white/35 bg-white/10 px-3 py-2 text-base focus-visible:outline-beach-sea" placeholder="John Doe" />
 						</div>
 						<div class="space-y-2">
-							<label class="text-[11px] uppercase tracking-[.12em] text-white/70">Item Description</label>
-							<textarea class="w-full bg-white/5 border-b border-white/20 py-2 text-sm focus:border-beach-sea outline-none transition-colors min-h-[80px] rounded-none appearance-none" placeholder="Description..."></textarea>
+							<label for="lost-found-description" class="block text-xs tracking-wide text-white/90">Item Description</label>
+							<textarea id="lost-found-description" class="min-h-24 w-full rounded-sm border border-white/35 bg-white/10 px-3 py-2 text-base focus-visible:outline-beach-sea" placeholder="Description..."></textarea>
 						</div>
 						<button type="submit" class="w-full bg-white text-beach-slate py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal hover:text-white transition-all duration-300 shadow-xl">
 							Submit Notice

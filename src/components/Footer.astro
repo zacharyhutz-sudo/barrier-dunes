@@ -11,10 +11,10 @@ const navLinks = [
 ];
 ---
 
-<footer class="bg-beach-sky text-beach-slate py-16 md:py-24">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16">
+<footer class="bg-beach-sky text-beach-slate py-12 md:py-16">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
 		<!-- Branding & Description -->
-		<div class="md:col-span-2 text-center md:text-left">
+		<div class="sm:col-span-2 text-center sm:text-left">
 			<h2 class="text-xl sm:text-2xl md:text-3xl font-serif mb-6 uppercase tracking-widest leading-none">Barrier Dunes</h2>
 			<p class="max-w-md mx-auto md:mx-0 text-beach-slate/85 leading-relaxed font-sans text-sm">
 				A private residential complex on the St. Joseph Peninsula, Cape San Blas, Florida. 
@@ -31,28 +31,28 @@ const navLinks = [
 		</div>
 
 		<!-- Links -->
-		<div class="text-center md:text-left">
-			<h3 class="text-xs font-sans font-bold uppercase tracking-widest mb-8 md:mb-6 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Explore</h3>
-			<ul class="space-y-4">
+		<div class="min-w-0 text-center sm:text-left">
+			<h3 class="text-xs font-sans font-bold uppercase tracking-widest mb-4 sm:mb-5 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Explore</h3>
+			<ul class="space-y-1">
 				{navLinks.map((link) => (
-					<li><a href={link.href} class="text-sm font-sans hover:text-beach-teal transition-colors uppercase tracking-wider block py-1">{link.text}</a></li>
+					<li><a href={link.href} class="inline-flex min-h-10 items-center text-sm font-sans hover:text-beach-teal transition-colors uppercase tracking-wider py-1">{link.text}</a></li>
 				))}
 			</ul>
 		</div>
 
 		<!-- Contact & Legal -->
-		<div class="text-center md:text-left">
-			<h3 class="text-xs font-sans font-bold uppercase tracking-widest mb-8 md:mb-6 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Contact</h3>
+		<div class="min-w-0 text-center sm:text-left">
+			<h3 class="text-xs font-sans font-bold uppercase tracking-widest mb-4 sm:mb-5 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Contact</h3>
 			<div class="space-y-4 text-sm font-sans">
 				<p class="font-serif italic">Burg Management, Inc.</p>
 				<p>St. Joseph Peninsula, <br class="md:hidden" /> Cape San Blas, FL 32456</p>
-				<p><a href="mailto:Paula@burgmanagement.com" class="hover:text-beach-teal transition-colors border-b border-beach-slate/10 md:border-0 pb-1">Paula@burgmanagement.com</a></p>
-				<p><a href="mailto:cheryl@rapacpas.com" class="hover:text-beach-teal transition-colors border-b border-beach-slate/10 md:border-0 pb-1">cheryl@rapacpas.com</a></p>
+				<p><a href="mailto:Paula@burgmanagement.com" class="hover:text-beach-teal transition-colors border-b border-beach-slate/10 md:border-0 pb-1 [overflow-wrap:anywhere]">Paula@burgmanagement.com</a></p>
+				<p><a href="mailto:cheryl@rapacpas.com" class="hover:text-beach-teal transition-colors border-b border-beach-slate/10 md:border-0 pb-1 [overflow-wrap:anywhere]">cheryl@rapacpas.com</a></p>
 			</div>
 		</div>
 	</div>
 
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-8 border-t border-white/30 text-center">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-9 pt-6 md:mt-12 border-t border-white/30 text-center">
 		<p class="text-[11px] uppercase tracking-[.12em] text-beach-slate/70">
 			&copy; {new Date().getFullYear()} Barrier Dunes Community Association. All rights reserved.
 		</p>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
 import { assetUrl } from '../lib/routes.js';
 
 const contacts = [
@@ -26,15 +27,11 @@ const contacts = [
 ---
 
 <Layout title="Area & Emergency Services">
-	<section class="page-intro py-12 sm:py-16 md:py-20">
-		<div class="max-w-4xl mx-auto px-4 text-center">
-			<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">ESSENTIAL SERVICES</span>
-			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-4 sm:mb-6">Area & Emergency Services</h1>
-			<p class="text-beach-slate/75 font-sans text-sm leading-relaxed tracking-wide">
-				Directories and safety systems to assist homeowners and guests while in Gulf County.
-			</p>
-		</div>
-	</section>
+	<PageHero title="Area & Emergency Services"
+		image="images/hero.webp"
+		imagePosition="center 49%">
+		<p>Directories and safety systems to assist homeowners and guests while in Gulf County.</p>
+	</PageHero>
 
 	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
@@ -45,7 +42,7 @@ const contacts = [
 					<div>
 						<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-6 md:mb-8">Beach Safety</h2>
 						<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Beach Flag Warning System</h3>
-						<p class="text-beach-slate/75 font-sans text-sm leading-relaxed mb-8">
+						<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-8">
 							We encourage all guests to become familiar with the South Gulf Fire and Rescue's Flag Warning System. 
 							Cape San Blas maintains these flags to ensure you stay safe while enjoying the emerald waters. 
 							A dedicated volunteer maintains the beach flags during the winter season.
@@ -57,7 +54,7 @@ const contacts = [
 					</div>
 
 					<div data-scroll-reveal class="aspect-[16/9] bg-beach-sky/20 overflow-hidden group rounded-sm">
-						<img src={assetUrl('images/beach-sunset.jpeg')} alt="Cape San Blas beach at sunset" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+						<img src={assetUrl('images/beach-sunset.jpeg')} alt="Playground at Barrier Dunes" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
 					</div>
 				</div>
 
@@ -66,7 +63,7 @@ const contacts = [
 					<div>
 						<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-6 md:mb-8">Directories</h2>
 						<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Vacation Catalog</h3>
-						<p class="text-beach-slate/75 font-sans text-sm leading-relaxed mb-8">
+						<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-8">
 							Access current directories to help assist you with locating services, medical support, 
 							and other resources while in Gulf County.
 						</p>

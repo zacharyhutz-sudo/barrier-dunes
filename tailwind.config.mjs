@@ -4,12 +4,13 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				'beach-sky': '#D8EBF5',
-				'beach-sea': '#9AD9D9',
-				'beach-teal': '#2F7E80',
-				'beach-sand': '#968863',
-				'beach-sand-dark': '#756846',
-				'beach-slate': '#455A64',
+				'beach-ivory': '#F8F4EC',
+				'beach-sky': 'rgb(var(--beach-sky, 216 235 245) / <alpha-value>)',
+				'beach-sea': 'rgb(var(--beach-sea, 154 217 217) / <alpha-value>)',
+				'beach-teal': 'rgb(var(--beach-teal, 47 126 128) / <alpha-value>)',
+				'beach-sand': 'rgb(var(--beach-sand, 150 136 99) / <alpha-value>)',
+				'beach-sand-dark': 'rgb(var(--beach-sand-dark, 117 104 70) / <alpha-value>)',
+				'beach-slate': 'rgb(var(--beach-slate, 69 90 100) / <alpha-value>)',
 			},
 			fontFamily: {
 				serif: ['"Playfair Display"', 'serif'],

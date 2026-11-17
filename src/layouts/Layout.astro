@@ -24,7 +24,7 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-white font-sans text-beach-slate min-h-screen flex flex-col">
+	<body class="public-site bg-beach-ivory font-sans text-beach-slate min-h-screen flex flex-col">
 		<Navigation />
 		<main class="flex-grow">
 			<slot />
@@ -38,16 +38,14 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 </script>
 
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+	.public-site {
+		--beach-sky: 216 229 222;
+		--beach-sea: 157 203 191;
+		--beach-teal: 39 104 96;
+		--beach-sand: 151 132 103;
+		--beach-sand-dark: 112 88 59;
+		--beach-slate: 44 60 57;
+		--public-muted: #51615d;
 	}
 	html, body {
 		font-family: 'Montserrat', sans-serif;
@@ -64,10 +62,6 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 		font-family: 'Playfair Display', serif;
 	}
 
-	.page-intro {
-		background: linear-gradient(180deg, #f1f7fa, #f7f5ef);
-		border-bottom: 1px solid #d8ebf5;
-	}
 
 	[data-scroll-reveal].is-revealing:not(:focus-within) {
 		animation: scroll-reveal 400ms ease-out both;
@@ -84,7 +78,7 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 	}
 
 	a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-		outline: 2px solid #2F7E80;
+		outline: 2px solid rgb(var(--beach-teal));
 		outline-offset: 3px;
 	}
 
@@ -98,14 +92,4 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 		}
 	}
 
-	@media (max-width: 768px) {
-		h1 {
-			font-size: 2rem; /* Reduced from 2.5rem to prevent overflow */
-			line-height: 1.2;
-		}
-		h2 {
-			font-size: 1.5rem; /* Reduced from 1.875rem */
-			line-height: 1.3;
-		}
-	}
 </style>

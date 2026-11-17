@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
 import { assetUrl, routes } from '../lib/routes.js';
 
 const destinations = [
@@ -64,16 +65,13 @@ const activityCategories = [
 ---
 
 <Layout title="Local Attractions">
-	<section class="page-intro py-12 sm:py-16 md:py-20">
-		<div class="max-w-4xl mx-auto px-4 text-center">
-			<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">EXPLORE GULF COUNTY</span>
-			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-4 sm:mb-6">Local Attractions</h1>
-			<p class="text-beach-slate/75 font-sans text-sm leading-relaxed tracking-wide">
-				From the pristine shores of T.H. Stone State Park to the legendary donuts at Weber's, 
-				discover everything that makes Cape San Blas a world-class destination.
-			</p>
-		</div>
-	</section>
+	<PageHero title="Local Attractions"
+		eyebrow="Explore Gulf County"
+		image="images/optimized/attractions-header-1280.webp"
+		imagePosition="center 58%"
+		imageSet={`${assetUrl('images/optimized/attractions-header-640.webp')} 640w, ${assetUrl('images/optimized/attractions-header-1280.webp')} 1280w`}>
+		<p>Explore parks, trails, and favorite local stops on Cape San Blas.</p>
+	</PageHero>
 
 	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
@@ -88,7 +86,7 @@ const activityCategories = [
 							</div>
 						</div>
 						<h3 class="text-xl md:text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
-						<p class="text-beach-slate/75 font-sans text-sm leading-relaxed">{dest.description}</p>
+						<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed">{dest.description}</p>
 					</div>
 				))}
 			</div>

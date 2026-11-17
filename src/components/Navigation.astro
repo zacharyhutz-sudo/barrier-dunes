@@ -13,7 +13,7 @@ const navLinks = [
 ].map((link) => ({ ...link, current: normalizePath(link.href) === currentPath }));
 ---
 
-<header class="bg-white border-b border-beach-sky/30 sticky top-0 z-50">
+<header class="bg-beach-ivory border-b border-beach-sky/30 sticky top-0 z-50">
 	<nav class="mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between" aria-label="Primary navigation">
 		<div class="flex-shrink-0">
 			<a href={routes.home} class="flex items-center group">
@@ -70,12 +70,12 @@ const navLinks = [
 
 <style>
 	a[aria-current="page"] {
-		color: #2f7e80;
+		color: rgb(var(--beach-teal));
 		text-decoration: underline;
 		text-decoration-thickness: 2px;
 		text-underline-offset: .4em;
 	}
-	.mobile-menu-link[aria-current="page"] { background-color: #f1f7fa; }
+	.mobile-menu-link[aria-current="page"] { background-color: #edf3ed; }
 
 	#mobile-menu::backdrop { background: rgb(32 52 62 / 50%); }
 	:global(body:has(#mobile-menu[open])) { overflow: hidden; }

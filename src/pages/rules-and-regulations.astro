@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
 
 const sections = [
 	{
@@ -89,16 +90,11 @@ const sections = [
 ---
 
 <Layout title="Rules & Regulations">
-	<section class="page-intro py-12 sm:py-16 md:py-20">
-		<div class="max-w-4xl mx-auto px-4 text-center">
-			<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">COMMUNITY GUIDELINES</span>
-			<h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-beach-slate mb-4 sm:mb-6">Rules & Regulations</h1>
-			<p class="text-beach-slate/75 font-sans text-sm leading-relaxed tracking-wide">
-				Barrier Dunes is a community designed for peace and preservation. 
-				Please abide by these regulations to ensure a safe and enjoyable stay for everyone.
-			</p>
-		</div>
-	</section>
+	<PageHero title="Rules & Regulations"
+		image="images/beach-boardwalk.webp"
+		imagePosition="center 62%">
+		<p>Barrier Dunes is a community designed for peace and preservation. Please abide by these regulations to ensure a safe and enjoyable stay for everyone.</p>
+	</PageHero>
 
 	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">

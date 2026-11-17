@@ -1,0 +1,81 @@
+---
+import { assetUrl } from '../lib/routes.js';
+
+interface Props {
+	title: string;
+	eyebrow?: string;
+	image: string;
+	imageSet?: string;
+	imagePosition?: string;
+}
+
+const { title, eyebrow, image, imageSet, imagePosition = 'center' } = Astro.props;
+---
+
+<header class="page-hero bg-beach-ivory">
+	<div class="page-hero-inner">
+		<div class="page-hero-copy">
+			{eyebrow && <p class="page-hero-eyebrow">{eyebrow}</p>}
+			<h1>{title}</h1>
+			<div class="page-hero-description"><slot /></div>
+		</div>
+		<div class="page-hero-media">
+			<img src={assetUrl(image)} srcset={imageSet} sizes={imageSet ? '(min-width: 1280px) 656px, (min-width: 768px) 53vw, 100vw' : undefined}
+				alt="" fetchpriority="high" decoding="async" style={{ objectPosition: imagePosition }} />
+		</div>
+	</div>
+</header>
+
+<style>
+	.page-hero {
+		border-bottom: 1px solid #e3ddd1;
+	}
+	.page-hero-inner {
+		display: grid;
+		max-width: 80rem;
+		margin-inline: auto;
+	}
+	.page-hero-copy {
+		padding: clamp(1.75rem, 5vw, 4.5rem) clamp(1.25rem, 4.5vw, 4.25rem);
+		align-self: center;
+	}
+	.page-hero-eyebrow {
+		color: var(--public-muted);
+		font-size: .75rem;
+		font-weight: 600;
+		letter-spacing: .13em;
+		text-transform: uppercase;
+		margin-bottom: .75rem;
+	}
+	h1 {
+		font-size: clamp(2.125rem, 4.2vw, 4.25rem);
+		line-height: 1.06;
+		letter-spacing: -.035em;
+		text-wrap: balance;
+	}
+	.page-hero-description {
+		color: var(--public-muted);
+		max-width: 36ch;
+		margin-top: 1rem;
+		font-size: clamp(.9375rem, 1.2vw, 1.0625rem);
+		line-height: 1.65;
+	}
+	.page-hero-media {
+		position: relative;
+		min-height: clamp(7.5rem, 27vw, 12rem);
+		background: #e1e8e1;
+	}
+	.page-hero-media img {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	@media (min-width: 768px) {
+		.page-hero-inner {
+			grid-template-columns: minmax(0, .47fr) minmax(0, .53fr);
+			min-height: clamp(18rem, 27vw, 23rem);
+		}
+	}
+</style>

@@ -11,23 +11,15 @@ const navLinks = [
 ];
 ---
 
-<footer class="bg-beach-sky text-beach-slate py-12 md:py-16">
+<footer class="bg-beach-sky text-beach-slate py-9 md:py-12">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
 		<!-- Branding & Description -->
 		<div class="sm:col-span-2 text-center sm:text-left">
-			<h2 class="text-xl sm:text-2xl md:text-3xl font-serif mb-6 uppercase tracking-widest leading-none">Barrier Dunes</h2>
+			<h2 class="text-xl sm:text-2xl md:text-3xl font-serif mb-3 tracking-tight leading-tight">Barrier Dunes</h2>
 			<p class="max-w-md mx-auto md:mx-0 text-beach-slate/85 leading-relaxed font-sans text-sm">
 				A private residential complex on the St. Joseph Peninsula, Cape San Blas, Florida. 
 				Experience sugar-white sand dunes, emerald green waters, and a peaceful environment to live and play.
 			</p>
-			<div class="mt-8 flex justify-center md:justify-start space-x-4">
-				<a href="mailto:Paula@burgmanagement.com" aria-label="Email Burg Management" class="bg-white/70 p-3 rounded-full hover:bg-beach-teal hover:text-white transition-colors shadow-sm">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-				</a>
-				<a href="mailto:cheryl@rapacpas.com" aria-label="Email association records contact" class="bg-white/70 p-3 rounded-full hover:bg-beach-teal hover:text-white transition-colors shadow-sm">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 13h18"/><path d="M8 17h.01"/><path d="M12 17h.01"/><path d="M16 17h.01"/></svg>
-				</a>
-			</div>
 		</div>
 
 		<!-- Links -->
@@ -35,7 +27,7 @@ const navLinks = [
 			<h3 class="text-xs font-sans font-bold uppercase tracking-widest mb-4 sm:mb-5 border-b border-beach-slate/10 pb-4 md:border-0 md:pb-0">Explore</h3>
 			<ul class="space-y-1">
 				{navLinks.map((link) => (
-					<li><a href={link.href} class="inline-flex min-h-10 items-center text-sm font-sans hover:text-beach-teal transition-colors uppercase tracking-wider py-1">{link.text}</a></li>
+					<li><a href={link.href} class="inline-flex min-h-10 items-center text-sm font-sans hover:text-beach-teal transition-colors py-1">{link.text}</a></li>
 				))}
 			</ul>
 		</div>
@@ -46,21 +38,21 @@ const navLinks = [
 			<div class="space-y-4 text-sm font-sans">
 				<p class="font-serif italic">Burg Management, Inc.</p>
 				<p>St. Joseph Peninsula, <br class="md:hidden" /> Cape San Blas, FL 32456</p>
-				<p><a href="mailto:Paula@burgmanagement.com" class="hover:text-beach-teal transition-colors border-b border-beach-slate/10 md:border-0 pb-1 [overflow-wrap:anywhere]">Paula@burgmanagement.com</a></p>
-				<p><a href="mailto:cheryl@rapacpas.com" class="hover:text-beach-teal transition-colors border-b border-beach-slate/10 md:border-0 pb-1 [overflow-wrap:anywhere]">cheryl@rapacpas.com</a></p>
+				<p><a href="mailto:Paula@burgmanagement.com" class="hover:text-beach-teal transition-colors underline underline-offset-4 [overflow-wrap:anywhere]">Email Burg Management</a></p>
+				<p><a href="mailto:cheryl@rapacpas.com" class="hover:text-beach-teal transition-colors underline underline-offset-4 [overflow-wrap:anywhere]">Email Association Records</a></p>
 			</div>
 		</div>
 	</div>
 
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-9 pt-6 md:mt-12 border-t border-white/30 text-center">
-		<p class="text-[11px] uppercase tracking-[.12em] text-beach-slate/70">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-7 pt-5 md:mt-8 border-t border-beach-slate/15 text-center">
+		<p class="text-xs text-beach-slate/85">
 			&copy; {new Date().getFullYear()} Barrier Dunes Community Association. All rights reserved.
 		</p>
-		<p class="mt-2 text-[11px] uppercase tracking-[.12em] text-beach-slate/60">
+		<p class="mt-1 text-xs text-beach-slate/80">
 			Developed by Hutzell Creative Co.
 		</p>
-		<a href={routes.adminLogin} class="mt-5 inline-flex items-center gap-2 text-[11px] uppercase tracking-[.14em] text-beach-slate/60 transition hover:text-beach-slate" aria-label="Board administration login">
-			<span aria-hidden="true">🔒</span> Board Administration
+		<a href={routes.adminLogin} class="mt-3 inline-flex min-h-11 items-center gap-2 text-xs font-medium text-beach-slate/85 transition hover:text-beach-slate" aria-label="Board administration login">
+			Board Administration
 		</a>
 	</div>
 </footer>

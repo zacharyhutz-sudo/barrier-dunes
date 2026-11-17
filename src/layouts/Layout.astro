@@ -63,6 +63,58 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 	}
 
 
+	.site-button {
+		display: inline-flex;
+		min-height: 2.75rem;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid transparent;
+		border-radius: .125rem;
+		padding: .65rem 1.1rem;
+		background: rgb(var(--beach-slate));
+		color: white;
+		font-size: .875rem;
+		font-weight: 600;
+		line-height: 1.35;
+		text-align: center;
+		transition: background-color .2s, border-color .2s, color .2s;
+	}
+	.site-button:hover {
+		background: rgb(var(--beach-teal));
+		color: white;
+	}
+	.site-button--outline {
+		background: transparent;
+		border-color: rgb(var(--beach-slate) / 55%);
+		color: rgb(var(--beach-slate));
+	}
+	.site-button--outline:hover { border-color: rgb(var(--beach-teal)); }
+	.site-button--light {
+		background: white;
+		color: rgb(var(--beach-slate));
+	}
+	.site-button--light:hover {
+		background: rgb(var(--beach-sky));
+		color: rgb(var(--beach-slate));
+	}
+	.site-button--outline-light {
+		background: transparent;
+		border-color: rgb(255 255 255 / 65%);
+	}
+	.site-button--outline-light:hover {
+		background: white;
+		border-color: white;
+		color: rgb(var(--beach-slate));
+	}
+	.site-text-link {
+		display: inline-flex;
+		min-height: 2.75rem;
+		align-items: center;
+		color: rgb(var(--beach-slate));
+		font-size: .875rem;
+		font-weight: 600;
+	}
+
 	[data-scroll-reveal].is-revealing:not(:focus-within) {
 		animation: scroll-reveal 400ms ease-out both;
 	}
@@ -82,6 +134,9 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 		outline-offset: 3px;
 	}
 
+	.site-button:is(.site-button--light, .site-button--outline-light):focus-visible {
+		outline-color: white;
+	}
 	@media (prefers-reduced-motion: reduce) {
 		html { scroll-behavior: auto; }
 		[data-scroll-reveal].is-revealing { animation: none !important; }

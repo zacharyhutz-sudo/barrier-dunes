@@ -3,20 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import { assetUrl, routes } from '../lib/routes.js';
 
 const galleryImages = [
-	{ src: assetUrl('images/gallery/home/entrance.webp'), alt: 'Barrier Dunes entrance on the St. Joseph Peninsula' },
-	{ src: assetUrl('images/gallery/home/sunset.webp'), alt: 'Sunset near Barrier Dunes on Cape San Blas' },
-	{ src: assetUrl('images/gallery/home/gulf-soft.webp'), alt: 'Calm Gulf water along Cape San Blas' },
-	{ src: assetUrl('images/gallery/home/boardwalk.webp'), alt: 'Beach access and dunes near Barrier Dunes' },
-	{ src: assetUrl('images/gallery/home/shoreline.webp'), alt: 'Palm-lined shoreline near Barrier Dunes' },
-	{ src: assetUrl('images/gallery/home/gulf-blue.webp'), alt: 'Emerald Gulf water and white sand near Barrier Dunes' },
+	{ src: assetUrl('images/gallery/home/entrance.webp'), alt: 'Barrier Dunes entrance on the St. Joseph Peninsula', position: '50% 48%' },
+	{ src: assetUrl('images/gallery/home/sunset.webp'), alt: 'Sunset near Barrier Dunes on Cape San Blas', position: '50% 48%' },
+	{ src: assetUrl('images/gallery/home/gulf-soft.webp'), alt: 'Calm Gulf water along Cape San Blas', position: '50% 56%' },
+	{ src: assetUrl('images/gallery/home/boardwalk.webp'), alt: 'Beach access and dunes near Barrier Dunes', position: '50% 60%' },
+	{ src: assetUrl('images/gallery/home/shoreline.webp'), alt: 'Palm-lined shoreline near Barrier Dunes', position: '54% 62%' },
+	{ src: assetUrl('images/gallery/home/gulf-blue.webp'), alt: 'Emerald Gulf water and white sand near Barrier Dunes', position: '50% 59%' },
 ];
 ---
 
 <Layout title="Welcome to Barrier Dunes">
 	<!-- Hero Section -->
-	<section class="relative min-h-[70vh] supports-[height:1svh]:min-h-[70svh] md:min-h-[80vh] flex items-center overflow-hidden">
-		<!-- Gradient preserves more of the aerial image while maintaining text contrast. -->
-		<div class="absolute inset-0 bg-gradient-to-b from-beach-slate/55 via-beach-slate/35 to-beach-slate/45 z-10"></div>
+	<section class="home-hero relative isolate flex items-center overflow-hidden bg-beach-slate">
+		<div class="hero-shade absolute inset-0 z-10" aria-hidden="true"></div>
 		<img 
 			src={assetUrl('images/optimized/hero-1440.webp')}
 			srcset={`${assetUrl('images/optimized/hero-960.webp')} 960w, ${assetUrl('images/optimized/hero-1440.webp')} 1440w, ${assetUrl('images/optimized/hero-1920.webp')} 1920w, ${assetUrl('images/hero-optimized.webp')} 2560w`}
@@ -26,37 +25,33 @@ const galleryImages = [
 			alt="Aerial view of the Barrier Dunes community and Gulf of Mexico"
 			fetchpriority="high"
 			decoding="async"
-			class="absolute inset-0 w-full h-full object-cover scale-105"
+			class="hero-image absolute inset-0 h-full w-full object-cover"
 		/>
 		
 		<!-- Hero Content -->
-		<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20 py-12 sm:py-16">
-			<span class="inline-block text-white font-sans text-[11px] md:text-xs uppercase tracking-[.18em] md:tracking-[.3em] mb-6 drop-shadow-md">ESTABLISHED ON THE ST. JOSEPH PENINSULA</span>
-			<h1 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-5 sm:mb-8 leading-[1.04] tracking-tight drop-shadow-lg">
-				Coastal Life, <br />
+		<div class="relative w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 z-20 py-14 sm:py-20">
+			<span class="block text-white/90 text-xs font-semibold uppercase tracking-[.14em] mb-4">St. Joseph Peninsula, Florida</span>
+			<h1 class="hero-title max-w-[40rem] text-white mb-5 sm:mb-6">
+				Coastal Life,<br />
 				<span class="italic font-light">Elegantly Defined.</span>
 			</h1>
-			<p class="max-w-xl mx-auto text-white/95 font-sans leading-relaxed mb-7 sm:mb-10 text-[0.9375rem] md:text-lg drop-shadow-md">
-				Discover one of the most beautiful and pristine capes in a private residential complex.
+			<p class="max-w-sm text-white leading-relaxed mb-6 sm:mb-7 text-base md:text-lg">
+				A private coastal community on Cape San Blas.
 			</p>
-			<div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8">
-				<a href={routes.rules} class="bg-white text-beach-slate px-10 py-4 rounded-sm text-xs font-sans uppercase tracking-[.2em] hover:bg-beach-teal hover:text-white transition-all duration-300 shadow-xl">
-					Explore Community
+			<div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+				<a href={routes.rules} class="site-button site-button--light">
+					Rules & Regulations
 				</a>
-				<a href={routes.communityResources} class="inline-flex min-h-11 items-center text-white text-xs font-sans uppercase tracking-[.2em] underline underline-offset-8 decoration-white hover:decoration-beach-sea transition-colors duration-300 drop-shadow-md">
+				<a href={routes.communityResources} class="site-button site-button--outline-light">
 					Community Resources
 				</a>
 			</div>
 		</div>
 
-		<!-- Scroll Indicator -->
-		<div class="absolute hidden md:block bottom-4 left-1/2 -translate-x-1/2 opacity-75 text-white z-20" aria-hidden="true">
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m7 13 5 5 5-5"/><path d="m7 6 5 5 5-5"/></svg>
-		</div>
 	</section>
 
 	<!-- Amenity Highlight -->
-	<section class="py-16 md:py-24 bg-beach-ivory border-b border-beach-sky/70">
+	<section class="py-9 md:py-12 bg-beach-ivory border-b border-beach-sky/70">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div data-scroll-reveal class="grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-8 text-center items-center">
 				<div class="px-4 md:border-r border-beach-sky/20 last:border-0">
@@ -80,40 +75,35 @@ const galleryImages = [
 	</section>
 
 	<!-- Content Section 1: The Area -->
-	<section class="py-14 md:py-28 bg-beach-sky/10">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-9 md:gap-20 items-center">
+	<section class="py-12 md:py-20 bg-beach-sky/10">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-12 lg:gap-16 items-center">
 			<div data-scroll-reveal>
 				<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">THE PENINSULA</span>
 				<h2 class="text-3xl md:text-4xl font-serif text-beach-slate mb-6 md:mb-8 leading-tight">
 					Cape San Blas is one of Florida's rarest finds.
 				</h2>
-				<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-8">
+				<p class="text-beach-slate/90 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-8">
 					This slender peninsula of sugar-white sand juts into the emerald green waters of the Gulf of Mexico in the center of Florida's northwest coastline. 
 					For years St. Joseph Peninsula State Park, which occupies the last 10 miles of the peninsula, was the only sign of development. 
 					Now, the park has a friendly neighbor.
 				</p>
-				<a href={routes.attractions} class="group flex items-center text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-beach-slate">
+				<a href={routes.attractions} class="site-text-link group">
 					<span class="border-b border-beach-sand-dark group-hover:border-beach-teal transition-colors pb-1 mr-4">Local Attractions</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</a>
 			</div>
-			<div data-scroll-reveal="second" class="relative">
-				<div class="aspect-[4/5] bg-beach-sea/20 overflow-hidden">
-					<img src={assetUrl('images/beach-boardwalk.webp')} width="768" height="960" loading="lazy" decoding="async" alt="Beach boardwalk through coastal dunes" class="w-full h-full object-cover" />
+			<figure data-scroll-reveal="second">
+				<div class="aspect-[5/4] overflow-hidden rounded-sm bg-beach-sky">
+					<img src={assetUrl('images/beach-boardwalk.webp')} width="575" height="767" loading="lazy" decoding="async" alt="Beach boardwalk through coastal dunes" class="h-full w-full object-cover object-[center_68%]" />
 				</div>
-				<!-- Floating Decorative Element -->
-				<div class="absolute -bottom-6 -left-2 sm:-left-6 md:-bottom-10 md:-left-10 w-36 h-36 md:w-48 md:h-48 bg-beach-sky p-5 md:p-8 flex items-center">
-					<p class="text-[11px] md:text-xs font-sans uppercase tracking-[.14em] leading-loose text-beach-slate/75">
-						Sugar-white sand and emerald green waters.
-					</p>
-				</div>
-			</div>
+				<figcaption class="mt-3 text-sm text-[var(--public-muted)]">The boardwalk to the Gulf at Barrier Dunes.</figcaption>
+			</figure>
 		</div>
 	</section>
 
 	<!-- Content Section 2: The Community -->
-	<section class="py-14 md:py-28 bg-white">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-9 md:gap-20 items-center">
+	<section class="py-12 md:py-20 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-12 lg:gap-16 items-center">
 			<div data-scroll-reveal="second" class="order-2 md:order-1 relative">
 				<div class="aspect-[4/3] bg-beach-sand/20 overflow-hidden">
 					<img src={assetUrl('images/pool-beach-view.jpg')} width="1200" height="900" loading="lazy" decoding="async" alt="Barrier Dunes Gulf-front pool" class="w-full h-full object-cover" />
@@ -124,12 +114,12 @@ const galleryImages = [
 				<h2 class="text-3xl md:text-4xl font-serif text-beach-slate mb-6 md:mb-8 leading-tight">
 					Barrier Dunes is the place to go.
 				</h2>
-				<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-8">
+				<p class="text-beach-slate/90 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-8">
 					Barrier Dunes is a gated community development located just outside the gates of the State Park. 
 					Townhomes and palm trees, sand dunes and sea oats, lakes, boardwalks and beaches all blend to create a peaceful unspoiled environment in which to live and play. 
 					Many homes are available for vacation stays, rented through local vacation rentals companies.
 				</p>
-				<a href={routes.communityResources} class="group flex items-center text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-beach-slate">
+				<a href={routes.communityResources} class="site-text-link group">
 					<span class="border-b border-beach-sand-dark group-hover:border-beach-teal transition-colors pb-1 mr-4">Community Resources</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</a>
@@ -138,26 +128,22 @@ const galleryImages = [
 	</section>
 
 	<!-- Community Gallery -->
-	<section class="py-14 md:py-24 bg-beach-sky/10 overflow-hidden">
+	<section class="py-12 md:py-20 bg-beach-sky/10 overflow-hidden">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div data-scroll-reveal class="max-w-2xl mb-8 md:mb-12">
 				<span class="text-beach-sand-dark font-sans text-[11px] md:text-xs uppercase tracking-[.22em] mb-4 block">LIFE AT BARRIER DUNES</span>
 				<h2 class="text-3xl md:text-4xl font-serif text-beach-slate mb-5 leading-tight">A community shaped by the coast.</h2>
-				<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed">
+				<p class="text-beach-slate/90 font-sans text-[0.9375rem] sm:text-base leading-relaxed">
 					From quiet mornings by the Gulf to colorful evenings beneath the palms, Barrier Dunes sits within one of the peninsula's most distinctive coastal settings.
 				</p>
 			</div>
 
 			<div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
 				{galleryImages.map((image, index) => (
-					<figure data-scroll-reveal={index % 3 === 0 ? 'first' : index % 3 === 1 ? 'second' : 'third'} class:list={[
-						'group relative overflow-hidden rounded-sm bg-beach-sky/30',
-						index === 0 ? 'col-span-2 aspect-[16/9]'
-							: index === 3 ? 'col-span-2 md:col-span-1 aspect-[16/10] md:aspect-[4/5]'
-							: 'aspect-[4/5]',
-					]}>
-						<img src={image.src} alt={image.alt} loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-						<div class="absolute inset-0 bg-gradient-to-t from-beach-slate/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true"></div>
+					<figure data-scroll-reveal={index % 3 === 0 ? 'first' : index % 3 === 1 ? 'second' : 'third'}
+						class="aspect-[5/4] overflow-hidden rounded-sm bg-beach-sky/30">
+						<img src={image.src} alt={image.alt} loading="lazy" decoding="async"
+							class="h-full w-full object-cover" style={{ objectPosition: image.position }} />
 					</figure>
 				))}
 			</div>
@@ -165,15 +151,32 @@ const galleryImages = [
 	</section>
 
 	<!-- Homeowner CTA -->
-	<section class="py-16 md:py-24 bg-beach-slate text-white text-center">
+	<section class="py-10 md:py-14 bg-beach-slate text-white text-center">
 		<div class="max-w-xl mx-auto px-4">
-			<h2 class="text-2xl md:text-3xl font-serif mb-8">Homeowner Account Panel</h2>
-			<p class="text-white/80 font-sans text-xs md:text-sm mb-12 uppercase tracking-[.12em] leading-loose">
-				Already own a property in Barrier Dunes? Login to your account to manage your documents and requests.
+			<h2 class="text-2xl md:text-3xl font-serif mb-3">Homeowner Account Panel</h2>
+			<p class="text-white/90 text-sm sm:text-base mb-5 leading-relaxed">
+				Sign in to manage your association documents and requests.
 			</p>
-			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer" class="inline-block border border-white px-10 md:px-12 py-4 text-xs font-sans uppercase tracking-[.2em] hover:bg-white hover:text-beach-slate transition-all duration-300 w-full sm:w-auto">
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer" class="site-button site-button--outline-light">
 				Access Portal
 			</a>
 		</div>
 	</section>
 </Layout>
+
+<style>
+	.home-hero { min-height: clamp(29rem, 61vh, 43rem); }
+	.hero-image { object-position: 57% center; }
+	.hero-shade {
+		background: linear-gradient(90deg, rgb(19 39 36 / 84%), rgb(19 39 36 / 60%) 52%, rgb(19 39 36 / 10%) 100%);
+	}
+	.hero-title {
+		font-size: clamp(2.1rem, 6.25vw, 5rem);
+		line-height: 1.02;
+		letter-spacing: -.035em;
+	}
+	@media (max-width: 639px) {
+		.home-hero { min-height: clamp(24rem, 58svh, 32rem); }
+		.hero-shade { background: linear-gradient(90deg, rgb(19 39 36 / 84%), rgb(19 39 36 / 48%)); }
+	}
+</style>

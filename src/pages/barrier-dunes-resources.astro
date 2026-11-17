@@ -19,12 +19,12 @@ import { assetUrl } from '../lib/routes.js';
 				<div>
 					<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-6 md:mb-8">Maintenance</h2>
 					<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Report Amenity Issues</h3>
-					<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-10">
+					<p class="text-beach-slate/90 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-10">
 						If you are a renter at Barrier Dunes and need to report issues concerning our services, rental amenities, 
 						or missing items, please contact your <strong>rental contact person</strong> as shown on your rental contract.
 					</p>
 					<div class="p-6 md:p-8 bg-beach-sky/10 border-l-2 border-beach-sea">
-						<p class="text-[11px] md:text-xs font-sans text-beach-slate/70 uppercase tracking-[.12em] leading-loose">
+						<p class="text-sm text-beach-slate/90 leading-relaxed">
 							Note: The Association does not manage individual rentals directly. Issues within the home must be addressed via your rental agency or owner.
 						</p>
 					</div>
@@ -45,42 +45,19 @@ import { assetUrl } from '../lib/routes.js';
 			</div>
 
 			<!-- Clubhouse Rental -->
-			<div class="bg-beach-slate text-white p-5 sm:p-8 lg:p-12 relative overflow-hidden rounded-sm shadow-md">
-				<!-- Decorative Background Text -->
-				<div aria-hidden="true" class="absolute top-0 right-0 text-white/5 font-serif text-[8rem] md:text-[12rem] select-none pointer-events-none -translate-y-1/2 translate-x-1/4">Rental</div>
-				
-				<div class="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-12 md:gap-16">
-					<div class="lg:col-span-2">
-						<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sea uppercase tracking-[.22em] mb-6 md:mb-8">Private Events</h2>
-						<h3 class="text-3xl md:text-4xl font-serif mb-6 md:mb-8 italic">Reserve the Barrier Dunes Clubhouse</h3>
-						<p class="text-white/70 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-10 md:mb-12 max-w-xl">
-							The clubhouse is available for private events, meetings, and community gatherings. 
-							We encourage all residents to do their due diligence before renting the space and read the agreement in full to ensure a seamless experience.
-						</p>
-						<div class="flex flex-col sm:flex-row sm:flex-wrap gap-3">
-							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/CLUBHOUSE%20RENTAL%20AGREEMENT%20August%202020.pdf" target="_blank" rel="noopener noreferrer" class="inline-block bg-white text-beach-slate px-5 sm:px-6 py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal hover:text-white transition-all duration-300 text-center w-full sm:w-auto">
-								Download Agreement
-							</a>
-							<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/20 px-5 sm:px-6 py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-white hover:text-beach-slate transition-all duration-300 text-center w-full sm:w-auto">
-								Rules & Regulations
-							</a>
-						</div>
-					</div>
-					
-					<div class="flex flex-col justify-center">
-						<div class="bg-white/5 p-5 sm:p-7 border border-white/10 backdrop-blur-sm rounded-sm">
-							<h4 class="text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-beach-sea mb-6 text-center lg:text-left">Reservation Form</h4>
-							<p class="text-xs text-white/50 font-sans leading-relaxed mb-8 text-center lg:text-left">
-								Clubhouse booking requests are managed via the official Homeowner Portal.
-							</p>
-							<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-center lg:justify-start text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-white">
-								<span class="border-b border-beach-sea pb-1 mr-4">Access Portal</span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-							</a>
-						</div>
-					</div>
+			<section class="rounded-sm bg-beach-slate p-6 text-white sm:p-9 lg:p-12">
+				<p class="mb-3 text-xs font-semibold uppercase tracking-[.14em] text-beach-sea">Private Events</p>
+				<h2 class="mb-4 text-3xl md:text-4xl">Reserve the Barrier Dunes Clubhouse</h2>
+				<p class="max-w-2xl text-[0.9375rem] leading-relaxed text-white/95 sm:text-base">
+					The clubhouse is available for private events, meetings, and community gatherings.
+					Review the rental agreement and rules, then request a booking through the Homeowner Portal.
+				</p>
+				<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+					<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/CLUBHOUSE%20RENTAL%20AGREEMENT%20August%202020.pdf" target="_blank" rel="noopener noreferrer" class="site-button site-button--outline-light">Download Agreement</a>
+					<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" rel="noopener noreferrer" class="site-button site-button--outline-light">Rules &amp; Regulations</a>
+					<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer" class="site-button site-button--light">Access Portal</a>
 				</div>
-			</div>
+			</section>
 
 			<!-- Lost & Found Integration -->
 			<div id="lost-and-found" class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-14 items-start">
@@ -88,7 +65,7 @@ import { assetUrl } from '../lib/routes.js';
 					<div>
 						<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-6 md:mb-8">Community Assistance</h2>
 						<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Lost & Found</h3>
-						<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-6">
+						<p class="text-beach-slate/90 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-6">
 							The Barrier Dunes' Lost and Found helps reunite pets and property with their owners. 
 							Whether it's a family pet, sunglasses, or beach gear, use our community board to share information.
 						</p>
@@ -96,7 +73,7 @@ import { assetUrl } from '../lib/routes.js';
 
 					<div data-scroll-reveal class="p-5 md:p-7 bg-beach-sand/5 border border-beach-sand/20 rounded-sm">
 						<h4 class="text-[11px] md:text-xs font-sans uppercase tracking-[.16em] text-beach-sand-dark mb-4">Current Notices</h4>
-						<div class="flex items-center text-beach-slate/75 italic font-serif py-4 border-t border-beach-sand/10 text-sm">
+						<div class="flex items-center text-beach-slate/90 italic font-serif py-4 border-t border-beach-sand/10 text-sm">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mr-3 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
 							No active lost or found items.
 						</div>
@@ -104,7 +81,7 @@ import { assetUrl } from '../lib/routes.js';
 				</div>
 
 				<div class="bg-beach-slate p-5 sm:p-8 md:p-10 text-white rounded-sm shadow-md">
-					<h4 class="text-xl font-serif mb-6 uppercase tracking-widest text-beach-sea">Report an Item</h4>
+					<h4 class="text-xl font-serif mb-6 text-beach-sea">Report an Item</h4>
 					<form class="space-y-6">
 						<div class="space-y-2">
 							<label for="lost-found-name" class="block text-xs tracking-wide text-white/90">Full Name</label>
@@ -114,7 +91,7 @@ import { assetUrl } from '../lib/routes.js';
 							<label for="lost-found-description" class="block text-xs tracking-wide text-white/90">Item Description</label>
 							<textarea id="lost-found-description" class="min-h-24 w-full rounded-sm border border-white/35 bg-white/10 px-3 py-2 text-base focus-visible:outline-beach-sea" placeholder="Description..."></textarea>
 						</div>
-						<button type="submit" class="w-full bg-white text-beach-slate py-4 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal hover:text-white transition-all duration-300 shadow-xl">
+						<button type="submit" class="site-button site-button--light w-full">
 							Submit Notice
 						</button>
 					</form>
@@ -129,10 +106,10 @@ import { assetUrl } from '../lib/routes.js';
 		<div class="max-w-2xl mx-auto px-4">
 			<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-8">Homeowner Access</h2>
 			<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-8 tracking-tight">Already own a property?</h3>
-			<p class="text-beach-slate/70 font-sans text-sm mb-12 leading-relaxed">
+			<p class="text-beach-slate/90 font-sans text-sm mb-12 leading-relaxed">
 				Login to your Homeowner Association account panel to view private community updates, manage documents, and submit maintenance requests.
 			</p>
-			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer" class="inline-block bg-beach-slate text-white px-10 md:px-16 py-4 md:py-5 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal transition-all duration-300 shadow-xl w-full sm:w-auto">
+			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer" class="site-button w-full sm:w-auto">
 				HOA Login
 			</a>
 		</div>

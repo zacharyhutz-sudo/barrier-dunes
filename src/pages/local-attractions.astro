@@ -67,9 +67,8 @@ const activityCategories = [
 <Layout title="Local Attractions">
 	<PageHero title="Local Attractions"
 		eyebrow="Explore Gulf County"
-		image="images/optimized/attractions-header-1280.webp"
-		imagePosition="center 58%"
-		imageSet={`${assetUrl('images/optimized/attractions-header-640.webp')} 640w, ${assetUrl('images/optimized/attractions-header-1280.webp')} 1280w`}>
+		image="images/gallery/home/gulf-soft.webp"
+		imagePosition="center 59%">
 		<p>Explore parks, trails, and favorite local stops on Cape San Blas.</p>
 	</PageHero>
 
@@ -81,12 +80,10 @@ const activityCategories = [
 					<div data-scroll-reveal={index % 2 ? 'second' : 'first'} class="group min-w-0 rounded-sm border border-beach-sky p-4 sm:p-5">
 						<div class="aspect-[16/9] bg-beach-sky/20 mb-6 md:mb-8 overflow-hidden relative">
 							<img src={dest.image} alt={dest.name} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-[1.035] transition-transform duration-500" />
-							<div class="absolute bottom-0 left-0 bg-beach-slate/90 text-white px-4 md:px-6 py-2 text-[11px] md:text-xs font-sans uppercase tracking-[.12em]">
-								{dest.address}
-							</div>
 						</div>
-						<h3 class="text-xl md:text-2xl font-serif text-beach-slate mb-4 uppercase tracking-wider">{dest.name}</h3>
-						<p class="text-beach-slate/75 font-sans text-[0.9375rem] sm:text-base leading-relaxed">{dest.description}</p>
+						<h3 class="mb-1 text-xl md:text-2xl text-beach-slate">{dest.name}</h3>
+						<p class="mb-3 text-sm font-medium text-beach-sand-dark">{dest.address}</p>
+						<p class="text-beach-slate/90 font-sans text-[0.9375rem] sm:text-base leading-relaxed">{dest.description}</p>
 					</div>
 				))}
 			</div>
@@ -103,8 +100,8 @@ const activityCategories = [
 							{cat.items.map((item) => (
 								<li>
 									<p class="text-sm font-serif tracking-wide text-white mb-1">{item.name}</p>
-									<p class="text-[11px] font-sans text-white/75 uppercase tracking-[.1em] leading-relaxed mb-1">{item.info}</p>
-									<p class="text-[11px] font-sans text-beach-sea uppercase tracking-[.1em]">{item.contact}</p>
+									<p class="text-sm text-white/90 leading-relaxed mb-1">{item.info}</p>
+									<p class="text-sm text-beach-sea">{item.contact}</p>
 								</li>
 							))}
 						</ul>
@@ -118,11 +115,11 @@ const activityCategories = [
 		<div class="max-w-2xl mx-auto px-4">
 			<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-8">Plan Your Adventure</h2>
 			<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-8 tracking-tight italic">Ready to see the Cape?</h3>
-			<p class="text-beach-slate/70 font-sans text-sm mb-12 leading-relaxed">
+			<p class="text-beach-slate/90 font-sans text-sm mb-12 leading-relaxed">
 				Whether you're looking for fresh seafood, beach gear, or a sunset horseback ride, the local community 
 				at Cape San Blas has everything you need for a perfect coastal retreat.
 			</p>
-			<a href={routes.condos} class="inline-block bg-beach-slate text-white px-10 md:px-16 py-4 md:py-5 text-xs font-sans uppercase tracking-[.18em] hover:bg-beach-teal transition-all duration-300 shadow-xl w-full md:w-auto">
+			<a href={routes.condos} class="site-button w-full sm:w-auto">
 				Book Your Stay
 			</a>
 		</div>

@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
-import { assetUrl, routes } from '../lib/routes.js';
+import { assetUrl } from '../lib/routes.js';
 
 const condos = [
 	{
@@ -42,34 +42,13 @@ const condos = [
 
 <Layout title="Condos for Rent">
 	<!-- Title Section -->
-	<PageHero title="Community Map"
+	<PageHero title="Condos at Barrier Dunes"
 		eyebrow="Stay at Barrier Dunes"
 		image="images/community-drone.webp"
 		imagePosition="center 52%">
-		<p>Use the interactive map to explore vacation rentals and community amenities.</p>
+		<p>Browse privately owned vacation rentals and check availability with each owner.</p>
+		<a href="#community-map" class="site-text-link mt-3 underline underline-offset-4">View community map</a>
 	</PageHero>
-
-	<!-- Map Section -->
-	<section class="relative h-[400px] md:h-[600px] w-full bg-beach-slate overflow-hidden border-y border-beach-sky/20">
-		<div id="condo-map" class="h-full w-full z-10"></div>
-		
-		<!-- Mobile Interaction Overlay -->
-		<button id="map-interaction-overlay" type="button" class="absolute inset-0 w-full z-[15] bg-beach-slate/10 flex items-center justify-center cursor-pointer group md:hidden">
-			<span class="bg-white/90 backdrop-blur-sm px-6 py-3 border border-beach-sky/20 shadow-lg text-[11px] font-sans uppercase tracking-[.16em] text-beach-slate">Tap to Explore Map</span>
-		</button>
-
-		<!-- Map Legend -->
-		<div class="absolute bottom-6 right-6 z-20 hidden md:block">
-			<div class="bg-white/90 backdrop-blur-sm p-4 border border-beach-sky/20 shadow-lg space-y-2">
-				<div class="flex items-center text-[11px] md:text-xs font-sans uppercase tracking-[.12em] text-beach-slate">
-					<span class="w-3 h-3 bg-beach-sea rounded-full mr-3 shadow-sm"></span> Available Condos
-				</div>
-				<div class="flex items-center text-[11px] md:text-xs font-sans uppercase tracking-[.12em] text-beach-slate">
-					<span class="w-3 h-3 bg-beach-sand rounded-full mr-3 shadow-sm"></span> Amenities
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<section class="py-12 md:py-20 bg-beach-ivory" aria-label="Vacation rentals">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -122,11 +101,33 @@ const condos = [
 			<div class="mt-16 md:mt-24 p-8 md:p-12 bg-white border border-beach-sand/30 text-center rounded-sm">
 				<h3 class="text-xl font-serif text-beach-slate mb-4">Want to list your condo?</h3>
 				<p class="text-beach-slate/90 font-sans text-sm sm:text-base leading-relaxed mb-6 max-w-xl mx-auto">
-					This page is a directory of private rentals at Barrier Dunes. Owners can contact the association to have their listing included.
+					Email Hutzell Creative Co. to add your Barrier Dunes rental to this directory.
 				</p>
-				<a href={routes.communityResources} class="site-button site-button--outline w-full sm:w-auto">
-					Contact Association
+				<a href="mailto:hutzellcreativeco@gmail.com?subject=Barrier%20Dunes%20condo%20listing" class="site-button site-button--outline w-full sm:w-auto">
+					List your condo
 				</a>
+			</div>
+		</div>
+	</section>
+	<h2 id="community-map" tabindex="-1" class="mx-auto w-full max-w-7xl px-4 pb-5 pt-8 text-3xl sm:px-6">Community map</h2>
+	<!-- Map Section -->
+	<section class="relative h-[400px] md:h-[600px] w-full bg-beach-slate overflow-hidden border-y border-beach-sky/20">
+		<div id="condo-map" class="h-full w-full z-10"></div>
+		
+		<!-- Mobile Interaction Overlay -->
+		<button id="map-interaction-overlay" type="button" class="absolute inset-0 w-full z-[15] bg-beach-slate/10 flex items-center justify-center cursor-pointer group md:hidden">
+			<span class="bg-white/90 backdrop-blur-sm px-6 py-3 border border-beach-sky/20 shadow-lg text-[11px] font-sans uppercase tracking-[.16em] text-beach-slate">Tap to Explore Map</span>
+		</button>
+
+		<!-- Map Legend -->
+		<div class="absolute bottom-6 right-6 z-20 hidden md:block">
+			<div class="bg-white/90 backdrop-blur-sm p-4 border border-beach-sky/20 shadow-lg space-y-2">
+				<div class="flex items-center text-[11px] md:text-xs font-sans uppercase tracking-[.12em] text-beach-slate">
+					<span class="w-3 h-3 bg-beach-sea rounded-full mr-3 shadow-sm"></span> Available Condos
+				</div>
+				<div class="flex items-center text-[11px] md:text-xs font-sans uppercase tracking-[.12em] text-beach-slate">
+					<span class="w-3 h-3 bg-beach-sand rounded-full mr-3 shadow-sm"></span> Amenities
+				</div>
 			</div>
 		</div>
 	</section>

@@ -7,17 +7,17 @@ const contacts = [
 	{
 		category: "Safety & Emergency",
 		items: [
-			{ name: "Emergency Dispatch", info: "Dial 911" },
-			{ name: "South Gulf Fire & Rescue", info: "850-227-7338 (Park Phone)" },
-			{ name: "Ascension Sacred Heart Gulf", info: "850-229-6712 (Emergency Room)" },
-			{ name: "Gulf County Sheriff’s Office", info: "850-227-1115 (Non-Emergency)" },
+			{ name: "Emergency Dispatch", info: "Call 911", href: "tel:911" },
+			{ name: "South Gulf Fire & Rescue", info: "469-323-4634 (administrative)", href: "tel:+14693234634" },
+			{ name: "Ascension Sacred Heart Gulf", info: "850-229-5600", href: "tel:+18502295600" },
+			{ name: "Gulf County Sheriff’s Office", info: "850-227-1115 (non-emergency)", href: "tel:+18502271115" },
 			{ name: "Florida Fish & Wildlife", info: "Tallahassee Headquarters" }
 		]
 	},
 	{
 		category: "Addresses",
 		items: [
-			{ name: "Ascension Sacred Heart Gulf", info: "3801 Hwy 98, Port St. Joe" },
+			{ name: "Ascension Sacred Heart Gulf", info: "3801 E Highway 98, Port St. Joe" },
 			{ name: "SGCFR Station 1", info: "240 Cape San Blas Rd" },
 			{ name: "SGCFR Station 2", info: "7590 Cape San Blas Rd" },
 			{ name: "Sheriff's Office", info: "418 Cecil G. Costin Sr. Blvd" }
@@ -31,6 +31,10 @@ const contacts = [
 		image="images/hero.webp"
 		imagePosition="center 49%">
 		<p>Directories and safety systems to assist homeowners and guests while in Gulf County.</p>
+		<div class="mt-4 flex flex-wrap gap-2">
+			<a href="#emergency-contacts" class="site-button">Emergency contacts</a>
+			<a href="https://www.facebook.com/sgcfire/" target="_blank" rel="noopener noreferrer" class="site-button site-button--outline">Beach flag updates</a>
+		</div>
 	</PageHero>
 
 	<section class="py-16 md:py-24 bg-white">
@@ -47,10 +51,7 @@ const contacts = [
 							Cape San Blas maintains these flags to ensure you stay safe while enjoying the emerald waters. 
 							A dedicated volunteer maintains the beach flags during the winter season.
 						</p>
-						<a href="https://www.facebook.com/sgcfire/" target="_blank" rel="noopener noreferrer" class="site-text-link group">
-							<span class="border-b border-beach-sand-dark group-hover:border-beach-teal transition-colors pb-1 mr-4">Daily Updates on Facebook</span>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-						</a>
+
 					</div>
 
 					<div data-scroll-reveal class="aspect-[16/9] bg-beach-sky/20 overflow-hidden rounded-sm">
@@ -58,8 +59,26 @@ const contacts = [
 					</div>
 				</div>
 
-				<!-- Directories & Contacts -->
+				<!-- Contacts and directories -->
 				<div class="space-y-12 md:space-y-16">
+					<div id="emergency-contacts" tabindex="-1" class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 pt-6 md:pt-8 border-t border-beach-sky">
+						{contacts.map((cat) => (
+							<div class="min-w-0 rounded-sm border border-beach-sky bg-beach-sky/25 p-4 sm:p-5">
+								<h4 class="text-lg text-beach-slate mb-4">{cat.category}</h4>
+								<ul class="space-y-4">
+									{cat.items.map((contact) => (
+										<li class="border-b border-beach-slate/15 pb-3 last:border-0 last:pb-0">
+											<p class="text-sm font-semibold text-beach-slate">{contact.name}</p>
+											<p class="text-sm text-beach-slate/90 mt-1 leading-relaxed [overflow-wrap:anywhere]">{contact.href ? (
+													<a href={contact.href} class="inline-flex min-h-11 items-center underline underline-offset-4" aria-label={`${contact.name}, ${contact.info}`}>{contact.info}</a>
+												) : contact.info}</p>
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
+					</div>
+
 					<div data-scroll-reveal>
 						<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-6 md:mb-8">Directories</h2>
 						<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Vacation Catalog</h3>
@@ -70,22 +89,6 @@ const contacts = [
 						<a href="https://business.gulfchamber.org/list/searchalpha/c" target="_blank" rel="noopener noreferrer" class="site-button site-button--outline w-full sm:w-auto">
 							Search Directory
 						</a>
-					</div>
-
-					<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 pt-6 md:pt-8 border-t border-beach-sky">
-						{contacts.map((cat) => (
-							<div class="min-w-0 rounded-sm border border-beach-sky bg-beach-sky/25 p-4 sm:p-5">
-								<h4 class="text-lg text-beach-slate mb-4">{cat.category}</h4>
-								<ul class="space-y-4">
-									{cat.items.map((contact) => (
-										<li class="border-b border-beach-slate/15 pb-3 last:border-0 last:pb-0">
-											<p class="text-sm font-semibold text-beach-slate">{contact.name}</p>
-											<p class="text-sm text-beach-slate/90 mt-1 leading-relaxed [overflow-wrap:anywhere]">{contact.info}</p>
-										</li>
-									))}
-								</ul>
-							</div>
-						))}
 					</div>
 				</div>
 

@@ -4,6 +4,8 @@ import PageHero from '../components/PageHero.astro';
 
 const sections = [
 	{
+		id: "homes",
+		label: "Homes",
 		title: "Town Houses & Cottages",
 		icon: "home",
 		rules: [
@@ -13,6 +15,8 @@ const sections = [
 		]
 	},
 	{
+		id: "general",
+		label: "General",
 		title: "General Information",
 		icon: "info",
 		rules: [
@@ -24,6 +28,8 @@ const sections = [
 		]
 	},
 	{
+		id: "trash",
+		label: "Trash",
 		title: "Garbage & Maintenance",
 		icon: "trash",
 		rules: [
@@ -35,6 +41,8 @@ const sections = [
 		]
 	},
 	{
+		id: "parking",
+		label: "Parking",
 		title: "Parking & Vehicles",
 		icon: "truck",
 		rules: [
@@ -46,6 +54,8 @@ const sections = [
 		]
 	},
 	{
+		id: "pets",
+		label: "Pets & grounds",
 		title: "Common Grounds & Pets",
 		icon: "heart",
 		rules: [
@@ -55,6 +65,8 @@ const sections = [
 		]
 	},
 	{
+		id: "pools",
+		label: "Pools",
 		title: "Pool Rules",
 		icon: "droplet",
 		rules: [
@@ -66,6 +78,8 @@ const sections = [
 		]
 	},
 	{
+		id: "courts",
+		label: "Courts",
 		title: "Tennis Court Rules",
 		icon: "target",
 		rules: [
@@ -76,6 +90,8 @@ const sections = [
 		]
 	},
 	{
+		id: "beach",
+		label: "Beach",
 		title: "Beach Information",
 		icon: "sun",
 		rules: [
@@ -95,12 +111,25 @@ const sections = [
 		imagePosition="center 62%">
 		<p>Barrier Dunes is a community designed for peace and preservation. Please abide by these regulations to ensure a safe and enjoyable stay for everyone.</p>
 	</PageHero>
+	<nav aria-labelledby="rule-topics" class="border-b border-beach-sky bg-beach-ivory">
+		<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+			<div class="mb-3 flex flex-wrap items-center justify-between gap-x-5">
+				<h2 id="rule-topics" class="text-2xl">Rules by topic</h2>
+				<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" rel="noopener noreferrer" class="site-text-link underline underline-offset-4">Download Rules (PDF)</a>
+			</div>
+			<ul class="flex flex-wrap gap-2">
+				{sections.map((section) => (
+					<li><a class="site-button site-button--outline" href={`#${section.id}`}>{section.label}</a></li>
+				))}
+			</ul>
+		</div>
+	</nav>
 
 	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-7xl mx-auto px-4">
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
 				{sections.map((section, index) => (
-					<div data-scroll-reveal={index % 2 ? 'second' : 'first'} class="border-t border-beach-sky pt-6 md:pt-8 min-w-0">
+					<div id={section.id} tabindex="-1" data-scroll-reveal={index % 2 ? 'second' : 'first'} class="border-t border-beach-sky pt-6 md:pt-8 min-w-0">
 						<div class="flex items-center mb-4 md:mb-6">
 							<span class="w-10 h-10 bg-beach-sky/60 text-beach-teal flex items-center justify-center rounded-sm mr-4 shrink-0">
 								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -130,20 +159,7 @@ const sections = [
 		</div>
 	</section>
 
-	<section class="py-16 md:py-24 bg-beach-sky/20">
-		<div class="max-w-4xl mx-auto px-4 text-center">
-			<h2 class="text-2xl md:text-3xl font-serif text-beach-slate mb-8">Need a PDF Copy?</h2>
-			<p class="text-beach-slate/90 font-sans text-base mb-6 leading-relaxed">
-				Download the official Rules & Regulations document to keep with your records.
-			</p>
-			<div class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3 sm:gap-5 text-center">
-				<a href="https://irp-cdn.multiscreensite.com/98c7d9ee/files/uploaded/BD%20Rules%20and%20Regulations%20Revised%2010-12-2020.pdf" target="_blank" rel="noopener noreferrer" class="site-button w-full sm:w-auto">
-					Download Rules (PDF)
-				</a>
-				<a href="https://myfwc.com/news/all-news/scallop-821/" target="_blank" rel="noopener noreferrer" class="site-button site-button--outline w-full sm:w-auto">
-					FWC Scallop Info
-				</a>
-			</div>
-		</div>
-	</section>
+	<div class="bg-beach-sky/20 px-4 py-6 text-center">
+		<a href="https://myfwc.com/news/all-news/scallop-821/" target="_blank" rel="noopener noreferrer" class="site-text-link underline underline-offset-4">FWC Scallop Info</a>
+	</div>
 </Layout>

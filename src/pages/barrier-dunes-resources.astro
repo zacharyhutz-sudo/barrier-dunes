@@ -10,12 +10,19 @@ import { assetUrl } from '../lib/routes.js';
 		imagePosition="center 49%">
 		<p>Find forms, documents, and community information for renters and homeowners.</p>
 	</PageHero>
+	<nav aria-label="Community resource shortcuts" class="border-b border-beach-sky bg-beach-ivory">
+		<div class="mx-auto flex max-w-5xl flex-wrap gap-2 px-4 py-5">
+			<a class="site-button site-button--outline" href="#rental-issues">Rental issues</a>
+			<a class="site-button site-button--outline" href="#clubhouse">Clubhouse</a>
+			<a class="site-button" href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer">Owner login</a>
+		</div>
+	</nav>
 
 	<section class="py-16 md:py-24 bg-white">
 		<div class="max-w-5xl mx-auto px-4 space-y-14 md:space-y-24">
 			
 			<!-- Renter Maintenance -->
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
+			<div id="rental-issues" tabindex="-1" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center">
 				<div data-scroll-reveal>
 					<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-6 md:mb-8">Maintenance</h2>
 					<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-6">Report Amenity Issues</h3>
@@ -45,7 +52,7 @@ import { assetUrl } from '../lib/routes.js';
 			</div>
 
 			<!-- Clubhouse Rental -->
-			<section data-scroll-reveal class="rounded-sm bg-beach-slate p-6 text-white sm:p-9 lg:p-12">
+			<section id="clubhouse" tabindex="-1" data-scroll-reveal class="rounded-sm bg-beach-slate p-6 text-white sm:p-9 lg:p-12">
 				<p class="mb-3 text-xs font-semibold uppercase tracking-[.14em] text-beach-sea">Private Events</p>
 				<h2 class="mb-4 text-3xl md:text-4xl">Reserve the Barrier Dunes Clubhouse</h2>
 				<p class="max-w-2xl text-[0.9375rem] leading-relaxed text-white/95 sm:text-base">

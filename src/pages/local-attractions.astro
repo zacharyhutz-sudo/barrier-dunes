@@ -79,7 +79,7 @@ const activityCategories = [
 				{destinations.map((dest, index) => (
 					<div data-scroll-reveal={index % 2 ? 'second' : 'first'} class="group min-w-0 rounded-sm border border-beach-sky p-4 sm:p-5">
 						<div class="aspect-[16/9] bg-beach-sky/20 mb-6 md:mb-8 overflow-hidden relative">
-							<img src={dest.image} alt={dest.name} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-[1.035] transition-transform duration-500" />
+							<img data-reveal-photo src={dest.image} alt={dest.name} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-[1.035] transition-transform duration-500" />
 						</div>
 						<h3 class="mb-1 text-xl md:text-2xl text-beach-slate">{dest.name}</h3>
 						<p class="mb-3 text-sm font-medium text-beach-sand-dark">{dest.address}</p>
@@ -112,7 +112,7 @@ const activityCategories = [
 	</section>
 
 	<section class="py-20 md:py-24 bg-white text-center">
-		<div class="max-w-2xl mx-auto px-4">
+		<div data-scroll-reveal class="max-w-2xl mx-auto px-4">
 			<h2 class="text-[11px] md:text-xs font-sans font-bold text-beach-sand-dark uppercase tracking-[.22em] mb-8">Plan Your Adventure</h2>
 			<h3 class="text-2xl md:text-3xl font-serif text-beach-slate mb-8 tracking-tight italic">Ready to see the Cape?</h3>
 			<p class="text-beach-slate/90 font-sans text-sm mb-12 leading-relaxed">

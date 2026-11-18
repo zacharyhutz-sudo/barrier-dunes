@@ -75,10 +75,10 @@ const condos = [
 		<div class="max-w-7xl mx-auto px-4 sm:px-6">
 			<div class="space-y-8 md:space-y-12">
 				{condos.map((condo) => (
-					<article id={condo.id} class="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] bg-white border border-beach-sand/30 rounded-sm">
+					<article data-scroll-reveal id={condo.id} class="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] bg-white border border-beach-sand/30 rounded-sm">
 						<!-- Image Left -->
 						<div class="relative aspect-[4/3] md:aspect-auto md:min-h-96 overflow-hidden rounded-t-sm md:rounded-r-none md:rounded-l-sm bg-beach-sky">
-							<img data-scroll-reveal
+							<img data-reveal-photo
 								src={assetUrl(`images/optimized/${condo.image}-1000.webp`)}
 								srcset={`${assetUrl(`images/optimized/${condo.image}-480.webp`)} 480w, ${assetUrl(`images/optimized/${condo.image}-1000.webp`)} 1000w`}
 								sizes="(min-width: 1280px) 650px, (min-width: 768px) 51vw, 100vw"

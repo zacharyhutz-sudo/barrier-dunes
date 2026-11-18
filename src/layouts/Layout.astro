@@ -115,18 +115,25 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 		font-weight: 600;
 	}
 
-	[data-scroll-reveal].is-revealing:not(:focus-within) {
-		animation: scroll-reveal 400ms ease-out both;
+	@media (prefers-reduced-motion: no-preference) {
+		[data-scroll-reveal].is-revealing:not(:focus-within):not(:target) {
+			animation: scroll-reveal 620ms cubic-bezier(.18,.68,.25,1) var(--reveal-delay, 0ms) backwards;
+		}
+		.is-revealing:not(:focus-within):not(:target) [data-reveal-photo] {
+			animation: photo-settle 620ms ease-out var(--reveal-delay, 0ms) backwards;
+		}
 	}
-
 	@media (min-width: 768px) {
-		[data-scroll-reveal="second"].is-revealing { animation-delay: 55ms; }
-		[data-scroll-reveal="third"].is-revealing { animation-delay: 90ms; }
+		[data-scroll-reveal="second"] { --reveal-delay: 80ms; }
+		[data-scroll-reveal="third"] { --reveal-delay: 160ms; }
 	}
-
 	@keyframes scroll-reveal {
-		from { opacity: .72; transform: translateY(8px); }
+		from { opacity: .32; transform: translateY(24px); }
 		to { opacity: 1; transform: translateY(0); }
+	}
+	@keyframes photo-settle {
+		from { transform: scale(1.045); }
+		to { transform: scale(1); }
 	}
 
 	a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {

@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import { assetUrl } from '../lib/routes.js';
 
+// Adjacent rentals share one marker at the midpoint of their address coordinates.
+const onBeachTimeMapPoint = [29.74793, -85.39823];
+
 const condos = [
 	{
 		id: "sherri",
@@ -36,6 +39,42 @@ const condos = [
 		],
 		link: "https://www.thecapeescape.com/cape-san-blas-vacation-rentals/dune-reel-good/",
 		coordinates: [29.74788, -85.39801]
+	},
+	{
+		id: "on-beach-time",
+		name: "On Beach Time",
+		address: "118 Sabal Circle",
+		image: "on-beach-time",
+		imageAlt: "On Beach Time end-unit townhome with a screened porch and stacked decks",
+		beds: "2 Bedrooms (King, Queen)",
+		baths: "2 Full Bathrooms",
+		features: [
+			"Short walk to the beach boardwalk",
+			"Gulf views from the king suite’s private deck",
+			"Kitchen with granite counters and stainless steel appliances",
+			"Covered parking and beach gear provided",
+			"No pets"
+		],
+		link: "https://www.thecapeescape.com/cape-san-blas-vacation-rentals/beach-time/",
+		coordinates: onBeachTimeMapPoint
+	},
+	{
+		id: "on-beach-time-2",
+		name: "On Beach Time 2",
+		address: "120 Sabal Circle",
+		image: "on-beach-time-2",
+		imageAlt: "On Beach Time 2 townhome with a screened porch over the covered carport",
+		beds: "2 Bedrooms (King, Queen)",
+		baths: "2 Full Bathrooms, 1 Half Bath",
+		features: [
+			"Screened Gulf-facing deck with outdoor dining and a gas grill",
+			"Private upstairs deck and soaking tub in the king suite",
+			"Short walk to the beach boardwalk",
+			"Dedicated workspace",
+			"No pets"
+		],
+		link: "https://www.thecapeescape.com/cape-san-blas-vacation-rentals/beach-time2/",
+		coordinates: onBeachTimeMapPoint
 	}
 ];
 ---
@@ -67,6 +106,7 @@ const condos = [
 						
 						<!-- Content Right -->
 						<div class="min-w-0 p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
+							{condo.address && <p class="mb-2 text-sm font-medium text-beach-sand-dark">{condo.address}</p>}
 							<h2 class="text-[1.75rem] md:text-3xl lg:text-[2.625rem] font-serif text-beach-slate mb-4 sm:mb-5 leading-tight tracking-tight">{condo.name}</h2>
 							
 							<div class="flex flex-wrap items-center gap-x-5 gap-y-2 mb-5 sm:mb-7 text-sm font-sans text-beach-sand-dark font-semibold">
@@ -173,20 +213,34 @@ const condos = [
 			iconAnchor: [7, 7]
 		});
 
-		// Add markers for each condo
-		condos.forEach(condo => {
-			if (condo.coordinates) {
-				const marker = L.marker(condo.coordinates, { icon: condoIcon }).addTo(map);
-				marker.bindPopup(`
-					<div style="font-family: serif; text-align: center; padding: 5px;">
-						<p style="margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 1px; font-size: 11px; font-weight: bold; color: #333;">${condo.name}</p>
-						<a href="#${condo.id}" style="color: #008080; text-decoration: none; font-size: 10px; text-transform: uppercase; font-weight: bold;">View Details</a>
-					</div>
-				`);
-			}
-		});
+		// Group rentals that share a pin so every listing stays selectable at the default zoom.
+	const rentalsByLocation = new Map();
+	for (const condo of condos) {
+		if (!condo.coordinates) continue;
+		const location = condo.coordinates.join(',');
+		if (!rentalsByLocation.has(location)) rentalsByLocation.set(location, []);
+		rentalsByLocation.get(location).push(condo);
+	}
 
-		// Add Amenities markers
+	for (const rentals of rentalsByLocation.values()) {
+		const popup = document.createElement('ul');
+		popup.className = 'condo-map-list';
+		for (const rental of rentals) {
+			const row = document.createElement('li');
+			const link = document.createElement('a');
+			link.href = `#${rental.id}`;
+			link.textContent = rental.name;
+			row.append(link);
+			popup.append(row);
+		}
+
+		const title = rentals.map((rental) => rental.name).join(' and ');
+		L.marker(rentals[0].coordinates, { icon: condoIcon, title, alt: title })
+			.addTo(map)
+			.bindPopup(popup);
+	}
+
+	// Add Amenities markers
 		const amenityIcon = L.divIcon({
 			className: 'custom-div-icon',
 			html: `<div style="background-color: #ff9f43; width: 10px; height: 10px; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.4);"></div>`,
@@ -224,6 +278,23 @@ const condos = [
 	.leaflet-popup-content-wrapper {
 		border-radius: 0;
 		padding: 5px;
+	}
+	.condo-map-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.condo-map-list a {
+		display: flex;
+		min-height: 2.75rem;
+		align-items: center;
+		color: #276860;
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: .2em;
+	}
+	.condo-map-list li + li {
+		border-top: 1px solid rgb(44 60 57 / 18%);
 	}
 	.leaflet-popup-tip {
 		display: none;

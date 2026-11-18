@@ -3,12 +3,35 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import { assetUrl } from '../lib/routes.js';
 
+import { pages, photoDescriptions, publicOrigin } from '../lib/seo';
+
 interface Props {
-	title: string;
-	description?: string;
+	page: keyof typeof pages | 'notFound';
 }
 
-const { title, description = "Barrier Dunes - A private residential complex on St. Joseph Peninsula, Cape San Blas, FL." } = Astro.props;
+const { page } = Astro.props;
+const seo = page === 'notFound' ? null : pages[page];
+const canonical = seo && publicOrigin + seo.path;
+const image = seo && `${publicOrigin}/images/social/${seo.photo}.jpg`;
+const homeSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'WebSite',
+			'@id': publicOrigin + '/#website',
+			url: publicOrigin + '/',
+			name: 'Barrier Dunes',
+			publisher: { '@id': publicOrigin + '/#association' },
+		},
+		{
+			'@type': 'Organization',
+			'@id': publicOrigin + '/#association',
+			name: 'Barrier Dunes Community Association',
+			url: publicOrigin + '/',
+			logo: publicOrigin + '/favicon.svg',
+		},
+	],
+};
 ---
 
 <!doctype html>
@@ -18,8 +41,29 @@ const { title, description = "Barrier Dunes - A private residential complex on S
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href={assetUrl('favicon.svg')} />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} | Barrier Dunes</title>
-		<meta name="description" content={description} />
+		<title>{seo?.title ?? 'Page not found | Barrier Dunes'}</title>
+		{seo ? (
+			<>
+				<meta name="description" content={seo.description} />
+				<link rel="canonical" href={canonical} />
+				<meta property="og:site_name" content="Barrier Dunes" />
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content={canonical} />
+				<meta property="og:title" content={seo.title} />
+				<meta property="og:description" content={seo.description} />
+				<meta property="og:image" content={image} />
+				<meta property="og:image:type" content="image/jpeg" />
+				<meta property="og:image:width" content="1200" />
+				<meta property="og:image:height" content="630" />
+				<meta property="og:image:alt" content={photoDescriptions[seo.photo]} />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content={seo.title} />
+				<meta name="twitter:description" content={seo.description} />
+				<meta name="twitter:image" content={image} />
+				<meta name="twitter:image:alt" content={photoDescriptions[seo.photo]} />
+			</>
+		) : <meta name="robots" content="noindex" />}
+		{page === 'home' && <script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />}
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">

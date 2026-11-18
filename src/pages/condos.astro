@@ -40,7 +40,7 @@ const condos = [
 ];
 ---
 
-<Layout title="Condos for Rent">
+<Layout page="condos">
 	<!-- Title Section -->
 	<PageHero title="Condos at Barrier Dunes"
 		eyebrow="Stay at Barrier Dunes"
@@ -89,7 +89,7 @@ const condos = [
 								))}
 							</ul>
 
-							<a href={condo.link} target="_blank" rel="noopener noreferrer" class="site-button w-full sm:w-fit">
+							<a href={condo.link} aria-label={`View availability for ${condo.name}`} target="_blank" rel="sponsored noopener noreferrer" class="site-button w-full sm:w-fit">
 								View Availability
 							</a>
 						</div>

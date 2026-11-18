@@ -12,7 +12,7 @@ const galleryImages = [
 ];
 ---
 
-<Layout title="Welcome to Barrier Dunes">
+<Layout page="home">
 	<!-- Hero Section -->
 	<section class="home-hero relative isolate flex items-center overflow-hidden bg-beach-slate">
 		<div class="hero-shade absolute inset-0 z-10" aria-hidden="true"></div>
@@ -102,8 +102,8 @@ const galleryImages = [
 				<p class="text-beach-slate/90 font-sans text-[0.9375rem] sm:text-base leading-relaxed mb-8">
 					Spend the morning at the beachfront pool or head inland for tennis and pickleball. Two pools, three ponds, and a playground sit among the townhomes.
 				</p>
-				<a href={routes.communityResources} class="site-text-link group">
-					<span class="border-b border-beach-sand-dark group-hover:border-beach-teal transition-colors pb-1 mr-4">Community Resources</span>
+				<a href={`${routes.condos}#community-map`} class="site-text-link group">
+					<span class="border-b border-beach-sand-dark group-hover:border-beach-teal transition-colors pb-1 mr-4">View the community map</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-2 transition-transform duration-300" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</a>
 			</div>
@@ -137,7 +137,7 @@ const galleryImages = [
 				Sign in to manage your association documents and requests.
 			</p>
 			<a href="https://app.condocontrol.com/login?brand=barrier" target="_blank" rel="noopener noreferrer" class="site-button site-button--outline-light">
-				Access Portal
+				Homeowner portal
 			</a>
 		</div>
 	</section>

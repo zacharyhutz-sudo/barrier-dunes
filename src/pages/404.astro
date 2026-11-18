@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { routes } from '../lib/routes.js';
+---
+
+<Layout page="notFound">
+	<section class="mx-auto max-w-3xl px-5 py-20 md:py-28">
+		<h1 class="mb-4 text-4xl md:text-5xl">Page not found</h1>
+		<p class="mb-6">This address may have changed. You can find rentals, rules, and owner resources from the homepage.</p>
+		<a class="site-button" href={routes.home}>Go to the homepage</a>
+	</section>
+</Layout>
